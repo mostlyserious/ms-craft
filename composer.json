@@ -1,5 +1,5 @@
 {
-	"name": "craftcms/craft",
+	"name": "mostlyserious/ms-craft",
 	"description": "Craft CMS",
 	"type": "project",
 	"require": {
