@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    {% include 'modules/navigation.twig' %}
+    <main>
+        {% block preBlocks %}{% endblock %}
+        {% include 'modules/blocks/_index.twig' %}
+        {% block postBlocks %}{% endblock %}
+    </main>
+    {% include 'modules/footer.twig' %}
+{% endblock %}

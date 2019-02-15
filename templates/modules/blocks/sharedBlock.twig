@@ -1,0 +1,4 @@
+{% set blocks = block.sharedBlock.one().blocks.level(1).all() %}
+{% for block in blocks %}
+    {% include ['modules/blocks/' ~ block.type, 'modules/blocks/noBlock.html'] with { block: block } %}
+{% endfor %}

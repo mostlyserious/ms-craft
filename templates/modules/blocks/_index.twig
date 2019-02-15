@@ -1,0 +1,3 @@
+{% for block in entry.blocks.level(1).all() %}
+    {% include ['modules/blocks/' ~ block.type, 'modules/blocks/noBlock.html'] with { block: block } %}
+{% endfor %}

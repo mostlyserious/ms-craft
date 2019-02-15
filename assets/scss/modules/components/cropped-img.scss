@@ -1,0 +1,19 @@
+.component-cropped-img {
+    position: relative;
+    overflow: hidden;
+
+    .img {
+        z-index: 10;
+        position: absolute;
+        left: -10000%;
+        right: -10000%;
+        top: -10000%;
+        bottom: -10000%;
+        margin: auto;
+        transform: scale(.101);
+        min-width: 1000%;
+        min-height: 1000%;
+        max-width: 10000%;
+        max-height: 10000%;
+    }
+}

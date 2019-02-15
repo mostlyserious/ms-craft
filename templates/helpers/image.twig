@@ -1,0 +1,89 @@
+{% macro cropped(image, options) %}
+    {% if options is defined %}
+        {% set dimensions = {
+            mode: 'crop',
+            width: options.width,
+            height: options.height,
+            quality: options.quality ?? 100,
+            position: 'center-center'
+        } %}
+
+        {% set attrs = '' %}
+
+        {% if options.attrs is defined %}
+            {% set attrs = options.attrs %}
+        {% endif %}
+        <img class="img" src="{{ image.getUrl(dimensions) }}" alt="{{ image.altText }}" {{ attrs }}>
+    {% else %}
+        <img class="img" src="{{ image.url }}" alt="{{ image.altText }}">
+    {% endif %}
+{% endmacro %}
+
+{% macro backgroundCropped(image, options) %}
+    {% if options is defined %}
+        {% set dimensions = {
+            mode: 'crop',
+            width: options.width,
+            height: options.height,
+            quality: options.quality ?? 100,
+            position: 'center-center'
+        } %}
+
+        {% set styles = '' %}
+
+        {% if options.additionalStyles is defined %}
+            {% set styles = ' ' ~ options.additionalStyles %}
+        {% endif %}
+        style="background-image: url('{{ image.getUrl(dimensions) }}');{{ styles }}"
+    {% else %}
+        style="background-image: url('{{ image.url }}');"
+    {% endif %}
+{% endmacro %}
+
+{% macro backgroundFit(image, options) %}
+    {% if image %}
+        {% if options is defined %}
+            {% set styles = '' %}
+
+            {% if options.additionalStyles is defined %}
+                {% set styles = ' ' ~ options.additionalStyles %}
+            {% endif %}
+
+            {% if options.width is defined %}
+                {% set dimensions = {
+                    mode: 'fit',
+                    width: options.width
+                } %}
+            {% elseif options.height is defined %}
+                {% set dimensions = {
+                    mode: 'fit',
+                    height: options.height
+                } %}
+            {% endif %}
+            style="background-image: url('{{ image.getUrl(dimensions) }}');{{ styles }}"
+        {% else %}
+            style="background-image: url('{{ image.url }}');"
+        {% endif %}
+    {% endif %}
+{% endmacro %}
+
+{% macro fit(image, options) %}
+    {% if image %}
+        {% if options is defined %}
+            {% if options.width is defined %}
+                {% set dimensions = {
+                    mode: 'fit',
+                    width: options.width
+                } %}
+            {% elseif options.height is defined %}
+                {% set dimensions = {
+                    mode: 'fit',
+                    height: options.height
+                } %}
+            {% endif %}
+            <img class="img" src="{{ image.getUrl(dimensions) }}" alt="{{ image.altText }}">
+        {% else %}
+            <img class="img" src="{{ image.url }}" alt="{{ image.altText }}">
+        {% endif %}
+    {% endif %}
+{% endmacro %}

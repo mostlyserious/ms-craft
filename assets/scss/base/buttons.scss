@@ -1,0 +1,23 @@
+.btn {
+    appearance: none;
+    cursor: pointer;
+    text-decoration: none;
+    background: transparent;
+    margin: 0;
+    padding: 0;
+    border: none;
+    display: inline-block;
+    text-align: center;
+    transition: color 250ms ease-in-out, background 250ms ease-in-out, border 250ms ease-in-out;
+
+
+    &.btn-primary {
+
+        &:hover,
+        &:focus {
+            &:not(.disabled) {
+
+            }
+        }
+    }
+}

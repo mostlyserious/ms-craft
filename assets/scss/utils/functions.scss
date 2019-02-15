@@ -1,0 +1,35 @@
+@function color($color, $tone: 'base') {
+    @if map-has-key($colors, $color) == true {
+        @return map-get(map-get($colors, $color), $tone);
+    } @else {
+        @warn "Couldn't find a color named `#{$color}`.";
+        @return inherit;
+    }
+}
+
+
+@function z-index($level: 'default') {
+    @if map-has_key($z-index, $level) == true {
+        @return map-get($z-index, $level);
+    } @else {
+        @warn "Couldn't find a z-index `#{$level}`.";
+        @return inherit;
+    }
+}
+
+@function breakpoint($bp) {
+    @if map-has_key($breakpoints, $bp) == true {
+        @return map-get($breakpoints, $bp) + 0px;
+    } @else {
+        @return null;
+    }
+}
+
+@function strip-unit($number) {
+    @if type-of($number) == 'number' and not unitless($number) {
+        @return $number / ($number * 0 + 1);
+    }
+
+    @return $number;
+}
+
