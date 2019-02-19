@@ -1,32 +1,40 @@
 {
-	"name": "mostlyserious/ms-craft",
-	"description": "Craft CMS",
-	"type": "project",
-	"require": {
-		"craftcms/cms": "^3.0.0",
-		"vlucas/phpdotenv": "^2.4.0"
-	},
-	"autoload": {
-		"psr-4": {
-			"modules\\": "modules/"
-		}
-	},
-	"config": {
-		"optimize-autoloader": true,
-		"platform": {
-			"php": "7.0"
-		}
-	},
-	"scripts": {
-		"post-create-project-cmd": [
-			"@php -r \"copy('.env.example', '.env');\"",
-			"@php -r \"unlink('composer.json');\"",
-			"@php -r \"unlink('LICENSE.md');\"",
-			"@php -r \"unlink('README.md');\"",
-			"@php -r \"rename('composer.json.default', 'composer.json');\"",
-			"@composer dump-autoload -o",
+    "name": "mostlyserious/ms-craft",
+    "description": "Craft CMS",
+    "type": "project",
+    "require": {
+        "anubarak/craft-relabel": "^1.2",
+        "craftcms/aws-s3": "^1.1",
+        "craftcms/cms": "^3.0.0",
+        "craftcms/redactor": "^2.3",
+        "lukeyouell/craft-sentry": "^1.5",
+        "misterbk/mix": "^1.5",
+        "sebastianlenz/linkfield": "^1.0",
+        "spicyweb/craft-neo": "^2.2",
+        "verbb/super-table": "^2.1",
+        "vlucas/phpdotenv": "^2.4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "modules\\": "modules/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "platform": {
+            "php": "7.0"
+        }
+    },
+    "scripts": {
+        "post-create-project-cmd": [
+            "@php -r \"copy('.env.example', '.env');\"",
+            "@php -r \"unlink('composer.json');\"",
+            "@php -r \"unlink('LICENSE.md');\"",
+            "@php -r \"unlink('README.md');\"",
+            "@php -r \"rename('composer.json.default', 'composer.json');\"",
+            "@composer dump-autoload -o",
             "npm install",
-			"@php craft setup/welcome"
-		]
-	}
+            "@php craft setup/welcome"
+        ]
+    }
 }

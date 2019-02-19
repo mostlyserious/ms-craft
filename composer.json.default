@@ -1,31 +1,31 @@
 {
-  "require": {
-    "anubarak/craft-relabel": "^1.2",
-    "craftcms/aws-s3": "^1.1",
-    "craftcms/cms": "^3.0.0",
-    "craftcms/redactor": "^2.3",
-    "lukeyouell/craft-sentry": "^1.5",
-    "misterbk/mix": "^1.5",
-    "sebastianlenz/linkfield": "^1.0",
-    "spicyweb/craft-neo": "^2.2",
-    "verbb/super-table": "^2.1",
-    "vlucas/phpdotenv": "^2.4.0"
-  },
-  "autoload": {
-    "psr-4": {
-      "modules\\": "modules/"
+    "require": {
+        "anubarak/craft-relabel": "^1.2",
+        "craftcms/aws-s3": "^1.1",
+        "craftcms/cms": "^3.0.0",
+        "craftcms/redactor": "^2.3",
+        "lukeyouell/craft-sentry": "^1.5",
+        "misterbk/mix": "^1.5",
+        "sebastianlenz/linkfield": "^1.0",
+        "spicyweb/craft-neo": "^2.2",
+        "verbb/super-table": "^2.1",
+        "vlucas/phpdotenv": "^2.4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "modules\\": "modules/"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "optimize-autoloader": true,
+        "platform": {
+            "php": "7.0"
+        }
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ]
     }
-  },
-  "config": {
-    "sort-packages": true,
-    "optimize-autoloader": true,
-    "platform": {
-      "php": "7.0"
-    }
-  },
-  "scripts": {
-    "post-root-package-install": [
-      "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
-    ]
-  }
 }
