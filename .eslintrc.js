@@ -1,26 +1,20 @@
 module.exports = {
 	"extends": [
-		"airbnb-base",
-		"plugin:vue/recommended"
-	],
+		"airbnb-base"
+    ],
 	"rules": {
 		"max-len": ["error", {
 			"code": 120,
 		}],
         "import/prefer-default-export": ["never"],
 		"indent": ["error", 4],
-		"vue/html-indent": ["error", 4],
-		"vue/html-closing-bracket-newline": ["error", {
-			"singleline": "never",
-			"multiline": "always"
-		}],
-		"vue/max-attributes-per-line": [3, {
-			"singleline": 3,
-			"multiline": {
-				"max": 1,
-				"allowFirstLine": false
-			}
-		}]
+        "no-use-before-define": ["error", { "functions": false, "classes": true }],
+        "no-param-reassign": ["error", { "props": false }],
+        "consistent-return": ["off"],
+        "arrow-body-style": ["off"],
+        "class-methods-use-this": ["off"],
+        "func-names": ["off"],
+        "prefer-arrow-callback": ["off"],
 	},
 	"parserOptions": {
 		"parser": "babel-eslint",

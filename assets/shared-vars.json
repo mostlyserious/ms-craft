@@ -14,14 +14,11 @@
 		"default": 0
 	},
 	"breakpoints": {
-		"x-tiny": 350,
-		"tiny": 400,
-		"x-small": 480,
-		"mid-small": 600,
-		"small": 768,
-		"medium": 960,
-		"large": 1224,
-		"x-large": 1440,
-		"xx-large": 1525
+        "phone-small": 340,
+        "phone-large": 600,
+        "tablet": 870,
+        "tablet-large": 1030,
+        "desktop-small": 1230,
+        "desktop-medium": 1270
 	}
 }

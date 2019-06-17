@@ -5,9 +5,7 @@ require('laravel-mix-stylelint');
 mix.version()
     .disableNotifications()
     .setPublicPath('web')
-    .extract([
-        'vue',
-    ])
+    // .extract([])
     .js('assets/js/main.js', 'web/js')
     .sass('assets/scss/main.scss', 'web/css', {
         importer: sassJsonImporter(),
@@ -15,6 +13,8 @@ mix.version()
     .stylelint({
         context: './assets/',
     })
+    .copyDirectory('assets/img', 'web/img')
+    .copyDirectory('assets/web', 'web')
     .sourceMaps()
     .webpackConfig({
         output: {

@@ -1,0 +1,7 @@
+version: 2
+
+# called before Composer runs
+#pre:
+
+# called after Composer runs
+post: scripts/fortrabbit-post-install.php

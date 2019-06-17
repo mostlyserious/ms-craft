@@ -8,6 +8,8 @@
  * @see \craft\config\GeneralConfig
  */
 
+use craft\helpers\ConfigHelper;
+
 return [
     // Global settings
     '*' => [
@@ -26,12 +28,18 @@ return [
         // Whether to save the project config out to config/project.yaml
         // (see https://docs.craftcms.com/v3/project-config.html)
         'useProjectConfigFile' => true,
+
+        'pageTrigger' => '?page=',
+
+        'maxUploadFileSize' => ConfigHelper::sizeInBytes('128M'),
     ],
 
     // Dev environment settings
     'dev' => [
         // Dev Mode (see https://craftcms.com/guides/what-dev-mode-does)
         'devMode' => true,
+
+        'enableTemplateCaching' => false,
     ],
 
     // Staging environment settings

@@ -20,6 +20,12 @@
 return [
     'modules' => [
         'my-module' => \modules\Module::class,
+        'twighelpers' => [
+            'class' => \modules\twighelpers\TwigHelpers::class,
+        ],
     ],
-    //'bootstrap' => ['my-module'],
+//    'bootstrap' => [
+//        'my-module',
+//        'twighelpers',
+//    ],
 ];

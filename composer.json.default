@@ -1,6 +1,5 @@
 {
     "require": {
-        "anubarak/craft-relabel": "^1.2",
         "craftcms/aws-s3": "^1.1",
         "craftcms/cms": "^3.0.0",
         "craftcms/redactor": "^2.3",
