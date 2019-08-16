@@ -3,6 +3,7 @@
         "craftcms/cms": "^3.2.0",
         "craftcms/redactor": "^2.3",
         "misterbk/mix": "^1.5",
+         "ostark/craft-async-queue": "^2.0",
         "vlucas/phpdotenv": "^2.4.0"
     },
     "autoload": {
@@ -14,7 +15,7 @@
         "sort-packages": true,
         "optimize-autoloader": true,
         "platform": {
-            "php": "7.0"
+            "php": "7.2"
         }
     },
     "scripts": {

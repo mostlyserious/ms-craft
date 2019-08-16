@@ -5,7 +5,7 @@ Powered by Craft CMS
 ## Software requirements
 - node 8
 - npm 6
-- php >= 7.1
+- php >= 7.2
 - mysql 5.7
 - composer
 
@@ -30,6 +30,6 @@ Powered by Craft CMS
 
         $ npm run build
 
-- Startup a php server pointing to the web folder
+- Startup a php server by using craft's serve command
 
-        $ php -S localhost:8000 -t web
+        $ ./craft serve
