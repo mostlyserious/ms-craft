@@ -1,6 +1,16 @@
 {
-  "buttons": ["formatting", "bold", "italic", "unorderedlist", "orderedlist", "link", "file", "image", "video"],
-  "plugins": ["alignment", "fullscreen", "video"],
+  "buttons": ["formatting", "bold", "italic", "unorderedlist", "orderedlist", "line", "link", "image", "html"],
+  "plugins": ["alignment", "fullscreen"],
+  "formattingHide": [
+    "pre",
+    "blockquote",
+    "h1",
+    "h4",
+    "h5",
+    "h6"
+  ],
   "linkNewTab": true,
-  "toolbarFixed": true
+  "toolbarFixed": true,
+  "imageCaption": false,
+  "linebreaks": true
 }
