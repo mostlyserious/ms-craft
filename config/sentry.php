@@ -2,10 +2,10 @@
 
 return [
     '*' => [
-
+      'enabled' => false
     ],
 
-    'dev' => [
-        'enabled' => false,
+    'production' => [
+        'enabled' => true
     ],
 ];

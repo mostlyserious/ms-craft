@@ -24,8 +24,8 @@ return [
             'class' => \modules\twighelpers\TwigHelpers::class,
         ],
     ],
-//    'bootstrap' => [
-//        'my-module',
-//        'twighelpers',
-//    ],
+   'bootstrap' => [
+       // 'my-module',
+       'twighelpers',
+   ],
 ];

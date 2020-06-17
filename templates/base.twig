@@ -3,56 +3,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-{#  {% for block in codeBlocks %}#}
-{#    {% if block.position == 'headTop' %}#}
-{#      {{ block.code|raw }}#}
-{#    {% endif %}#}
-{#  {% endfor %}#}
-  <link rel="stylesheet" href="{{ mix('css/main.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-{#  {% for block in codeBlocks %}#}
-{#    {% if block.position == 'headBottom' %}#}
-{#      {{ block.code|raw }}#}
-{#    {% endif %}#}
-{#  {% endfor %}#}
+    {# {% for block in codeBlocks %} #}
+        {# {% if block.position == 'headTop' %} #}
+            {# {{ block.code|raw }} #}
+        {# {% endif %} #}
+    {# {% endfor %} #}
+
+    <script type="text/javascript">
+        (function (global) {
+            global.$app = global.$app || {};
+            global.$app.csrfTokenName = '{{ craft.app.config.general.csrfTokenName|raw }}';
+            global.$app.csrfTokenValue = '{{ craft.app.request.csrfToken|raw }}';
+            global.$app.devMode = '{{ devMode }}'
+        })(window);
+    </script>
+
+    {% block beforeScripts %}
+    {% endblock %}
+
+    {{ entry('app') }}
+    {{ entry('utilities') }}
+
+    {% block afterScripts %}
+    {% endblock %}
 </head>
 <body>
-{#  {% for block in codeBlocks %}#}
-{#    {% if block.position == 'bodyTop' %}#}
-{#      {{ block.code|raw }}#}
-{#    {% endif %}#}
-{#  {% endfor %}#}
-
-  {% block navigation %}{% endblock %}
-
-  <main>
-    {% block main %}{% endblock %}
-  </main>
-
-  {% block footer %}{% endblock %}
-
-  <script type="text/javascript">
-    (function (global) {
-      global.$app = global.$app || {};
-      global.$app.csrfTokenName = '{{ craft.app.config.general.csrfTokenName|raw }}';
-      global.$app.csrfTokenValue = '{{ craft.app.request.csrfToken|raw }}';
-      global.$app.devMode = '{{ devMode }}'
-    })(window);
-  </script>
-  <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
-  {% block beforeScripts %}{% endblock %}
-  <script src="{{ mix('js/manifest.js') }}"></script>
-  <script src="{{ mix('js/vendor.js') }}"></script>
-  <script src="{{ mix('js/main.js') }}"></script>
-  {% block afterScripts %}{% endblock %}
-
-{#  {% for block in codeBlocks %}#}
-{#    {% if block.position == 'bodyBottom' %}#}
-{#      {{ block.code|raw }}#}
-{#    {% endif %}#}
-{#  {% endfor %}#}
+    {% block navigation %}
+    {% endblock %}
+    <main>
+        {% block main %}
+        {% endblock %}
+    </main>
+    {% block footer %}
+    {% endblock %}
 </body>
 </html>

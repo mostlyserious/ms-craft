@@ -1,22 +1,54 @@
+const fs = require('fs');
+const path = require('path');
+const __home = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
+const extend = path.resolve(__home, '.eslintrc.json');
+
 module.exports = {
-	"extends": [
-		"airbnb-base"
+    parserOptions: {
+        parser: 'babel-eslint',
+        sourceType: 'module',
+        allowImportExportEverywhere: true,
+        ecmaVersion: 8,
+        ecmaFeatures: {
+            impliedStrict: true
+        }
+    },
+    extends: [
+        'plugin:vue/base',
+        fs.existsSync(extend) ? extend : null
+    ].filter(Boolean),
+    plugins: [
+        'svelte3',
+        'html',
+        'vue'
     ],
-	"rules": {
-		"max-len": ["error", {
-			"code": 120,
-		}],
-        "import/prefer-default-export": ["never"],
-		"indent": ["error", 4],
-        "no-use-before-define": ["error", { "functions": false, "classes": true }],
-        "no-param-reassign": ["error", { "props": false }],
-        "consistent-return": ["off"],
-        "arrow-body-style": ["off"],
-        "class-methods-use-this": ["off"],
-        "func-names": ["off"],
-        "prefer-arrow-callback": ["off"],
-	},
-	"parserOptions": {
-		"parser": "babel-eslint",
-	}
+    settings: {
+        'html/indent': '+4',
+        'html/html-extensions': [ '.html' ],
+        'svelte3/ignore-styles': () => true
+    },
+    rules: {
+        'vue/html-indent': [ 'error', 4, {
+            baseIndent: 1
+        } ],
+        'vue/script-indent': [ 'error', 4, {
+            baseIndent: 1
+        } ]
+    },
+    overrides: [
+        {
+            files: [ '**/*.vue' ],
+            rules: {
+                indent: 0
+            }
+        },
+        {
+            files: [ '**/*.svelte', '**/*.svlt' ],
+            processor: 'svelte3/svelte3',
+            rules: {
+                'one-var': 0,
+                'no-multiple-empty-lines': 0
+            }
+        }
+    ]
 };

@@ -4,6 +4,7 @@ namespace modules\twighelpers;
 
 use modules\twighelpers\assetbundles\uuidmodule\UuidModuleAsset;
 use modules\twighelpers\twigextensions\TwigHelpersTwigExtension;
+use modules\twighelpers\twigextensions\BrightpackTwigExtensions;
 use modules\twighelpers\twigextensions\UuidModuleTwigExtension;
 
 use Craft;
@@ -39,7 +40,8 @@ class TwigHelpers extends Module
         self::$instance = $this;
 
         // Add in our Twig extensions
-        Craft::$app->view->registerTwigExtension(new TwigHelpersTwigExtension());
+        // Craft::$app->view->registerTwigExtension(new TwigHelpersTwigExtension());
+        Craft::$app->view->registerTwigExtension(new BrightpackTwigExtensions());
 
         Craft::info('twighelpers module loaded', __METHOD__);
     }

@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+html {
+    text-rendering: geometricPrecision;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    @apply text-gray-800;
+}
+
+img {
+    @apply select-none;
+}

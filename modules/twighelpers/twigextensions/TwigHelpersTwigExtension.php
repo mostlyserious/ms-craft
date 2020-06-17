@@ -1,4 +1,5 @@
 <?php
+
 namespace modules\twighelpers\twigextensions;
 
 use craft\helpers\StringHelper;
