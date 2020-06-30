@@ -6,6 +6,7 @@
 .DS_Store
 /node_modules
 /web/cpresources
+/web/assets
 /storage/**
 !/storage/.gitkeep
 /config/license.key
