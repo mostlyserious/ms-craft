@@ -19,10 +19,17 @@ module.exports = {
                 }
             }
         },
-        'autoprefixer': global.inProduction
-            ? { flexbox: 'no-2009', grid: 'no-autoplace' }
-            : false,
-        'postcss-nesting': {},
-        'postcss-color-function': {}
+        'postcss-preset-env': {
+            autoprefixer: global.inProduction ? {
+                flexbox: 'no-2009',
+                grid: 'no-autoplace'
+            } : false,
+            features: {
+                'color-mod-function': true,
+                'prefers-color-scheme-query': false
+            },
+            preserve: false,
+            stage: 1
+        }
     }
 };
