@@ -25,10 +25,12 @@ return [
 
     'dev' => [
         'devMode' => true,
+        'disallowRobots' => true,
         'enableTemplateCaching' => false
     ],
 
     'staging' => [
+        'disallowRobots' => true,
         'allowAdminChanges' => false
     ],
 

@@ -1,4 +1,3 @@
-{% set devMode = craft.app.config.general.devMode ? 'true' : 'false' %}
 {% set codeBlocks = (globalCode ?? null) and (globalCode.codeBlocks ?? null) ? globalCode.codeBlocks.all : [] %}
 <!DOCTYPE html>
 <html style="max-height: var(--viewport-height);" lang="en">
@@ -22,7 +21,7 @@
 
     {{ (codeBlocks|find('position', 'headTop').code ?? '')|raw }}
 
-    {% if craft.app.config.env != 'production' %}
+    {% if craft.app.config.general.disallowRobots %}
         <meta name="robots" content="noindex">
     {% endif %}
 
@@ -44,7 +43,7 @@
             global.$app.isAdmin = {{ currentUser and currentUser.admin ? 'true' : 'false' }};
             global.$app.csrfTokenName = '{{ craft.app.config.general.csrfTokenName|raw }}';
             global.$app.csrfTokenValue = '{{ craft.app.request.csrfToken|raw }}';
-            global.$app.devMode = {{ devMode }}
+            global.$app.devMode = {{ craft.app.config.general.devMode ? 'true' : 'false' }}
         })(window);
     </script>
 
