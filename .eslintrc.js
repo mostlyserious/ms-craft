@@ -15,7 +15,7 @@ module.exports = {
     },
     extends: [
         'plugin:vue/base',
-        fs.existsSync(extend) ? extend : null
+        fs.existsSync(extend) ? extend : 'airbnb-base'
     ].filter(Boolean),
     plugins: [
         'svelte3',

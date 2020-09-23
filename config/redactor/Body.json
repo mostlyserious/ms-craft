@@ -1,0 +1,9 @@
+{
+    "linkNewTab": true,
+    "toolbarFixed": true,
+    "imageCaption": false,
+    "linebreaks": true,
+    "buttons": [
+       "bold", "italic", "unorderedlist", "orderedlist", "line", "link"
+    ]
+}

@@ -1,12 +1,12 @@
 <?php
 
-namespace modules\twighelpers\twigextensions;
+namespace Modules\TwigHelpers\TwigExtensions;
 
-use Twig_Extension;
-use Twig_SimpleFilter;
+use Craft;
 use Twig_SimpleFunction;
+use Twig\Extension\AbstractExtension;
 
-class BrightpackTwigExtensions extends Twig_Extension
+class BrightpackTwigExtensions extends AbstractExtension
 {
     /**
      * @inheritdoc
@@ -27,6 +27,9 @@ class BrightpackTwigExtensions extends Twig_Extension
             ]),
             new Twig_SimpleFunction('asset', [$this, 'asset'], [
                 'is_safe' => ['html']
+            ]),
+            new Twig_SimpleFunction('external', [$this, 'external'], [
+                'is_safe' => ['html']
             ])
         ];
     }
@@ -34,9 +37,10 @@ class BrightpackTwigExtensions extends Twig_Extension
     /**
      * Returns versioned file(s) or the entire tag.
      *
-     * @param  string  $file
-     * @param  bool  $markup  (optional)
-     * @param  bool  $manifest  (optional)
+     * @param  string     $file
+     * @param  bool       $markup   (optional)
+     * @param  bool       $manifest (optional)
+     * @param  null|mixed $entry
      * @return string
      */
     public function entry($entry = null, $markup = true, $manifest = 'web/static/entries.json')
@@ -95,9 +99,10 @@ class BrightpackTwigExtensions extends Twig_Extension
     /**
      * Returns versioned file(s) or the entire tag.
      *
-     * @param  string  $file
-     * @param  bool  $markup  (optional)
-     * @param  bool  $manifest  (optional)
+     * @param  string     $file
+     * @param  bool       $markup   (optional)
+     * @param  bool       $manifest (optional)
+     * @param  null|mixed $entry
      * @return string
      */
     public function asset($entry = null, $markup = true, $manifest = 'web/static/assets.json')
@@ -125,6 +130,15 @@ class BrightpackTwigExtensions extends Twig_Extension
         }
 
         return null;
+    }
+
+    public function external($path)
+    {
+        if (is_readable(Craft::getAlias($path))) {
+            return file_get_contents(Craft::getAlias($path));
+        }
+
+        return '';
     }
 
     protected function preload($resource)

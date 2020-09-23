@@ -1,3 +1,0 @@
-{% for block in entry.blocks.level(1).all() %}
-  {% include ['modules/blocks/' ~ block.type, 'modules/blocks/noBlock.twig'] with { block: block } %}
-{% endfor %}

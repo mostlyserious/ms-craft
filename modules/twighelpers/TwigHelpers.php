@@ -1,22 +1,11 @@
 <?php
 
-namespace modules\twighelpers;
-
-use modules\twighelpers\assetbundles\uuidmodule\UuidModuleAsset;
-use modules\twighelpers\twigextensions\TwigHelpersTwigExtension;
-use modules\twighelpers\twigextensions\BrightpackTwigExtensions;
-use modules\twighelpers\twigextensions\UuidModuleTwigExtension;
+namespace Modules\TwigHelpers;
 
 use Craft;
-use craft\events\RegisterTemplateRootsEvent;
-use craft\events\TemplateEvent;
-use craft\i18n\PhpMessageSource;
-use craft\web\View;
-
-use yii\base\Event;
-use yii\base\InvalidConfigException;
 use yii\base\Module;
-
+use Modules\TwigHelpers\TwigExtensions\BrightpackTwigExtensions;
+use Modules\TwigHelpers\TwigExtensions\TwigHelpersTwigExtension;
 
 class TwigHelpers extends Module
 {
@@ -27,7 +16,7 @@ class TwigHelpers extends Module
      */
     public function __construct($id, $parent = null, array $config = [])
     {
-        Craft::setAlias('@modules/twighelpers', $this->getBasePath());
+        Craft::setAlias('@Modules/TwigHelpers', $this->getBasePath());
 
         static::setInstance($this);
 
@@ -40,10 +29,9 @@ class TwigHelpers extends Module
         self::$instance = $this;
 
         // Add in our Twig extensions
-        // Craft::$app->view->registerTwigExtension(new TwigHelpersTwigExtension());
+        Craft::$app->view->registerTwigExtension(new TwigHelpersTwigExtension());
         Craft::$app->view->registerTwigExtension(new BrightpackTwigExtensions());
 
         Craft::info('twighelpers module loaded', __METHOD__);
     }
-
 }

@@ -7,14 +7,23 @@ const dest = 'web/static';
 const publicPath = '/static/';
 const watch = [
     'templates/**/*.{twig,html}',
+    'modules/**/*.{twig,html}',
     'config/**/*.php'
 ];
 
 module.exports = brightpack({ dest, publicPath, watch }, config => {
     const assets = glob('src/{img,font,media}/**.*');
 
+    brightpack.editLoader(config, 'babel-loader', (use, rule) => {
+
+    });
+
     config.entry = {
         app: [
+            // Include for IE11 support.
+            // 'custom-event-polyfill',
+            // 'core-js/modules/es.promise',
+            // 'core-js/modules/es.array.iterator',
             path.resolve('src/js/main.js'),
             path.resolve('src/css/main.css'),
             ...assets.map(p => path.resolve(p))

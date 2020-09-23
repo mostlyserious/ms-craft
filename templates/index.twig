@@ -1,8 +1,8 @@
-{% extends 'layouts/main.twig' %}
+{% extends 'layouts/_main' %}
 
 {# Starter Welcome Screen for MS Craft - Feel free to scrap contents of main block below #}
 {% block main %}
-    <div class="p-4 min-h-screen flex">
+    <div class="p-4 min-h-vh-100 flex">
         <div class="pb-40 m-auto w-full max-w-3xl text-center">
             <span class="text-brand-orange">
                 <svg class="mx-auto w-64 fill-current" enable-background="new 0 0 787.5 715.5" viewBox="0 0 787.5 715.5" xmlns="http://www.w3.org/2000/svg">
@@ -12,7 +12,9 @@
             <div class="mb-10 pt-2 pb-3 mx-auto border-t-4 border-b-4 border-brand-orange ">
                 <h1 class="text-3xl font-black">Welcome to your new MS Craft site!</h1>
             </div>
-            <a href="https://template-modules.mostlyserious.io/" class="inline-block py-2 px-5 rounded-full bg-brand-orange text-white font-bold" target="_blank">Template Modules</a>
+            <a href="https://template-modules.mostlyserious.io/" class="inline-block py-2 px-5 rounded-full bg-brand-orange text-white font-bold" target="_blank">
+                Template Modules
+            </a>
         </div>
     </div>
 {% endblock %}

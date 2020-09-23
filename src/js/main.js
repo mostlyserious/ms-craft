@@ -6,4 +6,6 @@
     }
 })(() => {
     console.log('Ready.');
+
+    Array.prototype.forEach.call(document.querySelectorAll('[target=_blank]'), el => el.setAttribute('rel', 'noreferrer noopener'));
 });

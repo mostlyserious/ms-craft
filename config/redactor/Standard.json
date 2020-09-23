@@ -1,16 +1,15 @@
 {
-  "buttons": ["formatting", "bold", "italic", "unorderedlist", "orderedlist", "line", "link", "image", "html"],
-  "plugins": ["alignment", "fullscreen"],
-  "formattingHide": [
-    "pre",
-    "blockquote",
-    "h1",
-    "h4",
-    "h5",
-    "h6"
-  ],
-  "linkNewTab": true,
-  "toolbarFixed": true,
-  "imageCaption": false,
-  "linebreaks": true
+    "linkNewTab": true,
+    "toolbarFixed": true,
+    "imageCaption": false,
+    "linebreaks": true,
+    "plugins": [
+        "alignment", "fullscreen", "buttons"
+    ],
+    "buttons": [
+        "formatting", "bold", "italic", "unorderedlist", "orderedlist", "line", "link", "image", "html"
+    ],
+    "formattingHide": [
+        "pre", "blockquote", "h1", "h5", "h6"
+    ]
 }

@@ -1,0 +1,7 @@
+{% extends 'layouts/_main' %}
+
+{% set entry = craft.entries
+    .slug(craft.app.response.statusCode)
+    .section('page')
+    .status(null)
+    .one %}

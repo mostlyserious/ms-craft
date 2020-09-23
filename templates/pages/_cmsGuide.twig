@@ -1,0 +1,4 @@
+{% redirect 'admin/usermanual/' ~ [
+    entry.parent.uri ?? false,
+    entry.slug
+]|filter(v => v)|join('/') %}

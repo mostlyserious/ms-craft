@@ -1,0 +1,93 @@
+{% set devMode = craft.app.config.general.devMode ? 'true' : 'false' %}
+{% set codeBlocks = (globalCode ?? null) and (globalCode.codeBlocks ?? null) ? globalCode.codeBlocks.all : [] %}
+<!DOCTYPE html>
+<html style="max-height: var(--viewport-height);" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="preconnect" href="https://assets.naacpspringfieldmo.org" >
+    <link rel="preconnect" href="https://use.typekit.net" >
+    <link rel="preconnect" href="https://p.typekit.net" >
+
+    {% block seo %}
+        {{ external('@webroot/static/favicon/markup.html')|striptags('<link><meta>')|raw }}
+        {% hook "seo" %}
+    {% endblock %}
+
+    {% set regex = '{bot|crawler|spider|crawling|google|baidu|bing|msn|duckduckbot|teoma|slurp|yandex|konqueror|facebookexternalhit|ia_archiver}' %}
+    {% set agent = craft.app.request.headers.get('User-Agent') %}
+    {% set isCrawler = agent matches regex %}
+
+    {{ (codeBlocks|find('position', 'headTop').code ?? '')|raw }}
+
+    {% if craft.app.config.env != 'production' %}
+        <meta name="robots" content="noindex">
+    {% endif %}
+
+    {% if craft.app.config.env == 'staging' %}
+        <script>
+            window.markerConfig = {
+                destination: "{{ env('MARKERIO_DESTINATION') }}"
+            };
+        </script>
+        <script>
+            !function(e,r,t){if(e.__Marker)return;e.__Marker={};var n=r.createElement("script");n.async=1,n.src="https://edge.marker.io/latest/shim.js";var s=r.getElementsByTagName("script")[0];s.parentNode.insertBefore(n,s)}(window,document);
+        </script>
+    {% endif %}
+
+    <script>
+        (function(global) {
+            global.$app = global.$app || {};
+            global.$app.isCrawler = {{ isCrawler ? 'true' : 'false' }};
+            global.$app.isAdmin = {{ currentUser and currentUser.admin ? 'true' : 'false' }};
+            global.$app.csrfTokenName = '{{ craft.app.config.general.csrfTokenName|raw }}';
+            global.$app.csrfTokenValue = '{{ craft.app.request.csrfToken|raw }}';
+            global.$app.devMode = {{ devMode }}
+        })(window);
+    </script>
+
+    <link rel="stylesheet" href="https://use.typekit.net/rqc4ywg.css">
+    {{ entry('app') }}
+    {{ entry('utilities') }}
+
+    {{ (codeBlocks|find('position', 'headBottom').code ?? '')|raw }}
+</head>
+<body id="app" class="transition" style="padding-bottom: var(--appbar-height);">
+    {# delay-100 delay-200 delay-300 delay-400 delay-500 delay-600 delay-700 delay-800 delay-900 delay-1000 #}
+
+    {{ (codeBlocks|find('position', 'bodyTop').code ?? '')|raw }}
+
+    <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute; left:-100%; width:0; height:0;">
+        <symbol preserveAspectRatio="xMaxYMax meet" viewBox="0 0 512 512" id="svg-arrow-circle-right">
+            <path fill="currentcolor" d="M8 256c0 137 111 248 248 248s248-111 248-248S393 8 256 8 8 119 8 256zm448 0c0 110.5-89.5 200-200 200S56 366.5 56 256 145.5 56 256 56s200 89.5 200 200zM266.9 126.1l121.4 121.4c4.7 4.7 4.7 12.3 0 17L266.9 385.9c-4.7 4.7-12.3 4.7-17 0l-19.6-19.6c-4.8-4.8-4.7-12.5.2-17.2l70.3-67.1H140c-6.6 0-12-5.4-12-12v-28c0-6.6 5.4-12 12-12h160.8l-70.3-67.1c-4.9-4.7-5-12.4-.2-17.2l19.6-19.6c4.7-4.7 12.3-4.7 17 0z"/>
+        </symbol>
+    </svg>
+
+    <a href="#maincontent" id="skip-to-content">Skip to Main Content</a>
+
+    <header>
+        <div class="relative z-10" data-navigation>
+            {% block navigation %}
+            {% endblock %}
+        </div>
+        {% block header %}
+        {% endblock %}
+    </header>
+
+    <main id="maincontent">
+        {% block main %}
+        {% endblock %}
+        {% block cta %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        {% block footer %}
+        {% endblock %}
+    </footer>
+
+    {{ (codeBlocks|find('position', 'bodyBottom').code ?? '')|raw }}
+</body>
+</html>

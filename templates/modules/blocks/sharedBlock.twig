@@ -1,6 +1,0 @@
-{% set parent = block %}
-
-{% set blocks = parent.sharedBlock.one().blocks.level(1).all() %}
-{% for block in blocks %}
-  {% include ['modules/blocks/' ~ block.type, 'modules/blocks/noBlock.twig'] with { block: block, parent: parent } %}
-{% endfor %}

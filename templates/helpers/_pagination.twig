@@ -1,0 +1,47 @@
+{% set spread = spread ?? 2 %}
+{% set min = 1 < pagination.currentPage - spread
+    ? pagination.currentPage - spread
+    : 1 %}
+{% set max = pagination.totalPages < pagination.currentPage + spread
+    ? pagination.totalPages
+    : pagination.currentPage + spread %}
+
+{% if pagination.totalPages > 1 %}
+    <div class="text-center">
+        <ul class="pagination">
+            {% if (pagination.currentPage > 1) %}
+                <li class="pagination-item">
+                    <a href="{{ entry.url }}" class="pagination-link" title="first">
+                        {{ svg(external('@webroot/icons/fontawesome/solid/arrow-left.svg'))|attr({
+                            class: 'absolute transform inset-center w-6 h-6 fill-current'
+                        }) }}
+                    </a>
+                </li>
+            {% endif %}
+            {% for i in range(min, max) %}
+                {% if pagination.currentPage == i %}
+                    <li class="pagination-item">
+                        <span class="pagination-text">
+                            {{ i }}
+                        </span>
+                    </li>
+                {% else %}
+                    <li class="pagination-item">
+                        <a href="{{ i == 1 ? entry.url : entry.url ~ '/page/' ~ i }}" class="pagination-link">
+                            {{ i }}
+                        </a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+            {% if (pagination.currentPage < pagination.totalPages) %}
+                <li class="pagination-item">
+                    <a href="{{ entry.url ~ '/page/' ~ pagination.totalPages }}" class="pagination-link" title="Last">
+                        {{ svg(external('@webroot/icons/fontawesome/solid/arrow-right.svg'))|attr({
+                            class: 'absolute transform inset-center w-6 h-6 fill-current'
+                        }) }}
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+{% endif %}

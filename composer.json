@@ -3,13 +3,22 @@
     "description": "Craft CMS",
     "type": "project",
     "require": {
-        "craftcms/cms": "^3.4.0",
-        "craftcms/redactor": "^2.6",
+        "craftcms/cms": "@stable",
+        "craftcms/redactor": "@stable",
+        "craftcms/aws-s3": "@stable",
+        "hillholliday/craft-user-manual": "@stable",
+        "nystudio107/craft-seomatic": "@stable",
+        "sebastianlenz/linkfield": "@stable",
+        "spicyweb/craft-neo": "@stable",
+        "verbb/icon-picker": "@stable",
+        "verbb/smith": "@stable",
+        "wrav/oembed": "@stable",
+        "fortrabbit/craft-copy": "@dev",
         "vlucas/phpdotenv": "^2.4.0"
     },
     "autoload": {
         "psr-4": {
-            "modules\\": "modules/"
+            "Modules\\": "modules/"
         }
     },
     "config": {
@@ -24,7 +33,6 @@
             "@php -r \"unlink('composer.json');\"",
             "@php -r \"rename('composer.json.default', 'composer.json');\"",
             "@composer dump-autoload -o",
-            "npm install",
             "@php craft setup/welcome"
         ]
     }

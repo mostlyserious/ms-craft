@@ -4,16 +4,14 @@
         "build": "webpack --mode=production"
     },
     "devDependencies": {
-        "brightpack": "ssh://git@github.com:mostlyserious/brightpack.git#4.4.0",
+        "brightpack": "ssh://git@github.com:mostlyserious/brightpack.git#4.5.3",
         "color": "^3.1.2",
         "eslint": "^7.2.0",
         "eslint-config-airbnb-base": "^14.2.0",
         "eslint-plugin-html": "^6.0.2",
         "eslint-plugin-svelte3": "^2.7.3",
         "eslint-plugin-vue": "^6.2.2",
-        "tailwindcss": "^1.4.6"
+        "tailwindcss": "^1.8.0"
     },
-    "dependencies": {
-
-    }
+    "dependencies": {}
 }
