@@ -13,6 +13,7 @@
         "verbb/icon-picker": "@stable",
         "verbb/smith": "@stable",
         "wrav/oembed": "@stable",
+        "putyourlightson/craft-sendgrid": "@stable",
         "fortrabbit/craft-copy": "@dev",
         "vlucas/phpdotenv": "^2.4.0"
     },

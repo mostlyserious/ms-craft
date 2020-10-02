@@ -3,8 +3,7 @@
 Powered by Craft CMS
 
 ## Software requirements
-- node 8
-- npm 6
+- node >= 12
 - php >= 7.2
 - mysql 5.7
 - composer
@@ -14,8 +13,9 @@ Powered by Craft CMS
 - Copy `.env.example` to `.env`
 
 - Install php dependencies
-
-        $ composer install
+```
+$ composer install
+```
 
 - Create mysql database and import a SQL dump
     - You can get a SQL dump from prod by logging into the admin and going to Utilities > Backup Database
@@ -23,13 +23,16 @@ Powered by Craft CMS
 - Fill in the database credentials in the `.env` file
 
 - Install frontend dependencies
-
-        $ npm i
+```
+$ npm i
+```
 
 - Build frontend dependencies
-
-        $ npm run build
+```
+$ npm run build
+```
 
 - Startup a php server by using craft's serve command
-
-        $ ./craft serve
+```
+$ ./craft serve
+```
