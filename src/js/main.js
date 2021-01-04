@@ -5,7 +5,25 @@
         document.addEventListener('DOMContentLoaded', ready);
     }
 })(() => {
-    console.log('Ready.');
+    const modules = {
+        '[data-src], [data-srcset], [data-background]': () => import('./modules/lazy-load' /* webpackChunkName: 'lazy-load' */),
+        '[data-property]': () => import('./modules/property' /* webpackChunkName: 'property' */),
+        '[data-toggle]': () => import('./modules/toggle' /* webpackChunkName: 'toggle' */),
+        '[x-svelte]': () => import('./svelte' /* webpackChunkName: 'svelte' */)
+    };
 
-    Array.prototype.forEach.call(document.querySelectorAll('[target=_blank]'), el => el.setAttribute('rel', 'noreferrer noopener'));
+    Object.keys(modules).forEach(selector => {
+        const request = modules[selector];
+
+        (els => {
+            if (els && els.length) {
+                request().then(({ default: module }) => module(els));
+            }
+        })(document.querySelectorAll(selector));
+    });
+
+    Array.prototype.forEach.call(
+        document.querySelectorAll('[target=_blank]'),
+        el => el.setAttribute('rel', 'noreferrer noopener')
+    );
 });

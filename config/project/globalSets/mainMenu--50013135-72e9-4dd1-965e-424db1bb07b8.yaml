@@ -1,0 +1,18 @@
+fieldLayouts:
+  8755c60f-c1ce-4477-bd62-4a44d340f65e:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 6e98616b-f275-44b8-850c-59d0bb424c74
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+handle: mainMenu
+name: 'Main Menu'

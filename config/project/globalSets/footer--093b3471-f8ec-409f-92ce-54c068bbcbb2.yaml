@@ -1,0 +1,27 @@
+fieldLayouts:
+  9a2b1340-8d36-428c-b8c1-6a81ddb7bb07:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 301bc2d6-cfb4-4804-955b-40eb41aee9fb
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 50
+          -
+            fieldUid: 0ef1ad7d-525e-46a5-bff9-8510cc570cfc
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 50
+        name: Content
+        sortOrder: 1
+handle: footer
+name: Footer

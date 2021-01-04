@@ -1,5 +1,11 @@
 @charset "UTF-8";
 
+@import "components/button";
+@import "components/container";
+@import "components/navbar";
+@import "components/video";
+@import "components/wysiwyg";
+
 @custom-selector :--headings h1, h2, h3, h4, h5, h6;
 
 html {
@@ -33,6 +39,7 @@ body {
 }
 
 .appearance-none {
+    -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
 }

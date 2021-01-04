@@ -1,9 +1,9 @@
 {% extends 'layouts/_main' %}
 
 {% block header %}
-    {% include 'modules/blocks/_header' with {
+    {% include 'modules/_header' ignore missing with {
         block: entry.header|first
-    } ignore missing %}
+    } %}
 {% endblock %}
 
 {% block main %}

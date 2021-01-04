@@ -1,0 +1,13 @@
+contentColumnType: boolean
+fieldGroup: 38b79782-e200-468f-9633-323021ffa8ca
+handle: isFlipped
+instructions: ''
+name: Flip
+searchable: false
+settings:
+  default: false
+  offLabel: null
+  onLabel: null
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Lightswitch

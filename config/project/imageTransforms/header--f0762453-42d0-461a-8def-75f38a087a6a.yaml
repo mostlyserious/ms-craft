@@ -1,0 +1,9 @@
+format: null
+handle: header
+height: 800
+interlace: none
+mode: crop
+name: Header
+position: center-center
+quality: null
+width: 2000

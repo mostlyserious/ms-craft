@@ -1,0 +1,14 @@
+contentColumnType: string
+fieldGroup: 38b79782-e200-468f-9633-323021ffa8ca
+handle: buttons
+instructions: ''
+name: Buttons
+searchable: false
+settings:
+  contentTable: '{{%matrixcontent_buttons}}'
+  maxBlocks: '2'
+  minBlocks: ''
+  propagationMethod: all
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

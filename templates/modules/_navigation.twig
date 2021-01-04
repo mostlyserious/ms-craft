@@ -1,0 +1,32 @@
+{% include 'modules/_mobileMenu' %}
+
+<div class="navbar bg-gray-800">
+    <div class="navbar-container bg-inherit">
+        <div id="navbar-inner" class="navbar-inner">
+            <a class="navbar-logo" href="{{ siteUrl('/') }}" title="Home page">
+                <img width="160" src="{{ asset('img/logo.svg') }}" alt="{{ systemName }}">
+            </a>
+            <nav id="main-menu" class="navbar-nav">
+                {% for menuItem in mainMenu.menu.all %}
+                    {% if not menuItem.details.isEmpty %}
+                        <span class="navbar-item">
+                            {{ menuItem.details.link({
+                                class: 'navbar-link'
+                            }) }}
+                        </span>
+                    {% endif %}
+                {% endfor %}
+            </nav>
+            <button type="button"
+                class="navbar-toggle w-5 h-4 m-4 mr-0"
+                aria-controls="mobile-menu"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+                data-toggle="#navbar-inner">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </div>
+</div>

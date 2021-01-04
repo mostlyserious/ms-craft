@@ -1,0 +1,14 @@
+enableVersioning: true
+handle: cmsGuide
+name: 'CMS Guide'
+propagationMethod: all
+siteSettings:
+  1721cab1-b289-4a13-9143-1a55e53f453d:
+    enabledByDefault: true
+    hasUrls: true
+    template: pages/_cmsGuide
+    uriFormat: '{parent.uri}/{slug}'
+structure:
+  maxLevels: null
+  uid: 3c5e7d86-fee6-4a9e-8b42-3bf3027ef4b2
+type: structure

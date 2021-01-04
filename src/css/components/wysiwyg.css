@@ -1,0 +1,74 @@
+.wysiwyg {
+    &.wysiwyg-user {
+        & :--headings {
+            @apply font-sans font-normal;
+        }
+
+        & h2 { @apply text-4xl; }
+        & h3 { @apply text-3xl; }
+        & h4 { @apply text-2xl; }
+
+        & a:not(.button) {
+            @apply text-blue-500;
+
+            &:hover,
+            &:focus {
+                @apply underline;
+            }
+        }
+    }
+
+    &.wysiwyg-invert {
+        @apply text-white;
+
+        & a:not(.button) {
+            @apply filter brightness-30;
+
+            &:hover,
+            &:focus {
+                @apply text-white brightness-100;
+            }
+        }
+    }
+
+    & :--headings {
+        &:not(:last-child) {
+            margin-bottom: 0.5em;
+        }
+    }
+
+    & p,
+    & ul,
+    & ol,
+    & figure,
+    & address {
+        &:not(:last-child) {
+            @apply mb-8;
+        }
+    }
+
+    & strong {
+        @apply font-bold;
+    }
+
+    & ul,
+    & ol {
+        @apply leading-loose;
+    }
+
+    & ul {
+        @apply pl-4 list-disc;
+    }
+
+    & ol {
+        @apply pl-4 list-decimal text-left;
+    }
+
+    & figcaption {
+        @apply mt-4 text-sm text-center;
+    }
+
+    /* & hr {
+        @apply border-t-1 border-gray-300 my-4 !important;
+    } */
+}

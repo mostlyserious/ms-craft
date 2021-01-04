@@ -3,19 +3,22 @@
     "description": "Craft CMS",
     "type": "project",
     "require": {
-        "craftcms/cms": "@stable",
-        "craftcms/redactor": "@stable",
-        "craftcms/aws-s3": "@stable",
-        "hillholliday/craft-user-manual": "@stable",
-        "nystudio107/craft-seomatic": "@stable",
-        "sebastianlenz/linkfield": "@stable",
-        "spicyweb/craft-neo": "@stable",
-        "verbb/icon-picker": "@stable",
-        "verbb/smith": "@stable",
-        "wrav/oembed": "@stable",
-        "putyourlightson/craft-sendgrid": "@stable",
-        "fortrabbit/craft-copy": "@dev",
-        "vlucas/phpdotenv": "^2.4.0"
+        "craftcms/cms": "3.5.17.1",
+        "craftcms/redactor": "2.8.5",
+        "craftcms/aws-s3": "1.2.11",
+        "hillholliday/craft-user-manual": "2.0.5",
+        "nystudio107/craft-seomatic": "3.3.29",
+        "sebastianlenz/linkfield": "1.0.24",
+        "spicyweb/craft-neo": "2.8.16",
+        "verbb/icon-picker": "1.1.10",
+        "verbb/smith": "1.1.10",
+        "putyourlightson/craft-sendgrid": "1.2.2",
+        "fortrabbit/craft-copy": "1.0.1",
+        "vlucas/phpdotenv": "^2.4.0",
+        "superbig/craft3-imgix": "2.0.5",
+        "verbb/super-table": "2.6.5",
+        "percipioglobal/craft-colour-swatches": "1.4.1.1",
+        "mikestecker/craft-videoembedder": "1.1.4"
     },
     "autoload": {
         "psr-4": {
@@ -25,7 +28,7 @@
     "config": {
         "optimize-autoloader": true,
         "platform": {
-            "php": "7.2"
+            "php": "7.4"
         }
     },
     "scripts": {

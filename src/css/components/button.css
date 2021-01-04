@@ -1,0 +1,42 @@
+.button {
+    @apply py-2 leading-6 border-4 border-transparent whitespace-no-wrap transition-colors duration-100;
+    @apply relative inline-block px-6 font-bold text-gray-600 text-center uppercase rounded-full;
+
+    &:hover,
+    &:focus {
+        @apply text-black;
+    }
+
+    &:focus {
+        @apply outline-none;
+    }
+}
+
+.button-primary {
+    @apply text-white bg-blue-500 border-blue-500;
+
+    &:hover,
+    &:focus {
+        @apply text-white;
+        border-color: color-mod(theme("colors.blue.500") shade(20%));
+        background-color: color-mod(theme("colors.blue.500") shade(20%));
+    }
+}
+
+.button-white {
+    @apply text-black bg-white border-white;
+
+    &:hover,
+    &:focus {
+        @apply text-white bg-gray-800 border-gray-800;
+    }
+
+    &.button-outline {
+        @apply text-white bg-transparent;
+
+        &:hover,
+        &:focus {
+            @apply text-gray-800 bg-white border-white;
+        }
+    }
+}

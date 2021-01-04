@@ -1,10 +1,7 @@
 {% for block in entry.blocks.level(1).all %}
-    {% set background = attribute({
-        white: 'bg-white',
-        gray: 'bg-gray-200',
-        grayTexture: 'bg-gray-200',
-        navy: 'bg-brand-navy'
-    }, block.background.value ?? block.imageContentBackground.value ?? 'white') %}
+    {% set background = block.background
+        ? block.background.color|first
+        : { color: '#FFF', class: 'bg-white' } %}
 
     {% include 'modules/blocks/_' ~ block.type.handle ignore missing %}
 {% endfor %}

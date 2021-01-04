@@ -1,0 +1,13 @@
+{% set embed = craft.videoEmbedder.getEmbedUrl(block.embed) %}
+
+{% if embed|length %}
+    <section class="relative {{ background.class }}">
+        <div class="py-8 md:py-16">
+            <div class="container container-sm">
+                <div class="video">
+                    <iframe src="{{ embed }}?rel=0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" frameborder="0"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endif %}
