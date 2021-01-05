@@ -11,7 +11,7 @@ siteGroups:
     name: 'MS Craft'
 sites:
   06b4d470-302c-492f-a11a-b0062f294d1f:
-    baseUrl: $DEFAULT_SITE_URL
+    baseUrl: $PRIMARY_SITE_URL
     handle: default
     hasUrls: true
     language: en-US
