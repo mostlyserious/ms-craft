@@ -1,0 +1,14 @@
+contentColumnType: string
+fieldGroup: ec7644f6-7285-429f-9185-28284f2532a4
+handle: codeBlocks
+instructions: ''
+name: 'Code Blocks'
+searchable: false
+settings:
+  contentTable: '{{%matrixcontent_codeblocks}}'
+  maxBlocks: ''
+  minBlocks: ''
+  propagationMethod: all
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

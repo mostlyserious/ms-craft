@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5cf7744a5a7fb4d7f10c8238446b9da7",
+    "content-hash": "7c3dafd5026df7b12ae3c1bb6b3ef0e2",
     "packages": [
         {
             "name": "albertofem/rsync-lib",
@@ -51,11 +51,11 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.171.10",
+            "version": "3.171.11",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/ba12cbba6b7ae8f2aab741e5ac47e8bb30d3eac7",
-                "reference": "ba12cbba6b7ae8f2aab741e5ac47e8bb30d3eac7",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/eeebac8f6efd141af09c44dbd9cca4f1d327ef21",
+                "reference": "eeebac8f6efd141af09c44dbd9cca4f1d327ef21",
                 "shasum": ""
             },
             "require": {
@@ -127,7 +127,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-12-31T19:13:37+00:00"
+            "time": "2021-01-04T19:13:09+00:00"
         },
         {
             "name": "cakephp/core",
@@ -1325,16 +1325,11 @@
         },
         {
             "name": "fortrabbit/craft-copy",
-            "version": "1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/fortrabbit/craft-copy.git",
-                "reference": "8e5f21e56aa22828795f336c6ef1fde650c5f54c"
-            },
+            "version": "1.0.2",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fortrabbit/craft-copy/zipball/8e5f21e56aa22828795f336c6ef1fde650c5f54c",
-                "reference": "8e5f21e56aa22828795f336c6ef1fde650c5f54c",
+                "url": "https://api.github.com/repos/fortrabbit/craft-copy/zipball/72b8e2c4f27864d026d09d700f7928b5551ed9c4",
+                "reference": "72b8e2c4f27864d026d09d700f7928b5551ed9c4",
                 "shasum": ""
             },
             "require": {
@@ -1344,15 +1339,10 @@
                 "craftcms/plugin-installer": "^1.5.6",
                 "fortrabbit/craft-auto-migrate": "^2.2.0",
                 "ostark/yii2-artisan-bridge": "^1.3.1",
-                "php": "^7.2.0",
+                "php": "^7.2.0 | ^8.0",
                 "symfony/process": "^4.2 | ^5.0",
                 "symfony/yaml": "^4.2 | ^5.0",
                 "vlucas/phpdotenv": "^2.5.1 | ^3.4.0"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.0",
-                "phpstan/phpstan": "^0.12",
-                "squizlabs/php_codesniffer": "^3.0"
             },
             "bin": [
                 "bin/craft-copy-import-db.php",
@@ -1371,7 +1361,6 @@
                     "fortrabbit\\Copy\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1383,13 +1372,17 @@
             ],
             "description": "Tooling for Craft on fortrabbit",
             "keywords": [
-                "Craft",
+                "craft",
                 "craftcms",
                 "deployment",
                 "git",
                 "rsync"
             ],
-            "time": "2020-11-10T12:53:26+00:00"
+            "support": {
+                "docs": "https://github.com/fortrabbit/craft-copy/blob/master/README.md",
+                "issues": "https://github.com/fortrabbit/craft-copy/issues"
+            },
+            "time": "2021-01-05T12:01:20+00:00"
         },
         {
             "name": "glenscott/url-normalizer",
@@ -1835,11 +1828,11 @@
         },
         {
             "name": "laminas/laminas-feed",
-            "version": "2.13.0",
+            "version": "2.13.1",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laminas/laminas-feed/zipball/fb89aac1984222227f37792dd193d34829a0762f",
-                "reference": "fb89aac1984222227f37792dd193d34829a0762f",
+                "url": "https://api.github.com/repos/laminas/laminas-feed/zipball/45d36702d09afd5d8ca01192ecd3b5afaf37126b",
+                "reference": "45d36702d09afd5d8ca01192ecd3b5afaf37126b",
                 "shasum": ""
             },
             "require": {
@@ -1898,7 +1891,7 @@
                     "type": "community_bridge"
                 }
             ],
-            "time": "2020-11-18T21:02:52+00:00"
+            "time": "2021-01-04T19:20:24+00:00"
         },
         {
             "name": "laminas/laminas-stdlib",
@@ -5292,11 +5285,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v2.14.1",
+            "version": "v2.14.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/twigphp/Twig.git",
+                "reference": "8bc568d460d88b25c00c046256ec14a787ea60d9"
+            },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/5eb9ac5dfdd20c3f59495c22841adc5da980d312",
-                "reference": "5eb9ac5dfdd20c3f59495c22841adc5da980d312",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/8bc568d460d88b25c00c046256ec14a787ea60d9",
+                "reference": "8bc568d460d88b25c00c046256ec14a787ea60d9",
                 "shasum": ""
             },
             "require": {
@@ -5358,7 +5356,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-10-27T19:25:29+00:00"
+            "time": "2021-01-05T15:34:33+00:00"
         },
         {
             "name": "verbb/base",
@@ -5524,6 +5522,7 @@
                     "verbb\\supertable\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -5535,19 +5534,18 @@
             ],
             "description": "Super-charge your Craft workflow with Super Table. Use it to group fields together or build complex Matrix-in-Matrix solutions.",
             "keywords": [
+                "Craft",
                 "cms",
-                "craft",
                 "craft-plugin",
                 "craftcms",
                 "super table"
             ],
-            "support": {
-                "email": "support@verbb.io",
-                "issues": "https://github.com/verbb/super-table/issues?state=open",
-                "source": "https://github.com/verbb/super-table",
-                "docs": "https://github.com/verbb/super-table",
-                "rss": "https://github.com/verbb/super-table/commits/v2.atom"
-            },
+            "funding": [
+                {
+                    "url": "https://github.com/verbb",
+                    "type": "github"
+                }
+            ],
             "time": "2020-12-16T01:37:53+00:00"
         },
         {

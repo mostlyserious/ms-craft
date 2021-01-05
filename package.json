@@ -1,7 +1,8 @@
 {
     "scripts": {
         "dev": "webpack --mode=development",
-        "build": "webpack --mode=production"
+        "build": "webpack --mode=production",
+        "bootstrap": "bootstrap/script.sh"
     },
     "devDependencies": {
         "brightpack": "ssh://git@github.com:mostlyserious/brightpack.git#4.5.3",
@@ -11,7 +12,6 @@
         "eslint-plugin-html": "^6.0.2",
         "eslint-plugin-svelte3": "^2.7.3",
         "eslint-plugin-vue": "^6.2.2",
-        "tailwindcss": "^1.8.0"
-    },
-    "dependencies": {}
+        "tailwindcss": "^1.9.0"
+    }
 }

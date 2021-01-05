@@ -1,0 +1,20 @@
+#!/usr/bin/env sh
+
+rm -r config/project
+rm config/project.yaml
+
+cp -r bootstrap/project config/project
+cp bootstrap/project.yaml config/project.yaml
+
+php craft clear-caches/all
+
+echo ""
+
+while true; do
+    read -p "Remove bootstrap directory? (yes|no): " yn
+    case $yn in
+        [Yy]* ) rm -r bootstrap; break;;
+        [Nn]* ) exit;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done

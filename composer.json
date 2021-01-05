@@ -13,7 +13,7 @@
         "verbb/icon-picker": "1.1.10",
         "verbb/smith": "1.1.10",
         "putyourlightson/craft-sendgrid": "1.2.2",
-        "fortrabbit/craft-copy": "1.0.1",
+        "fortrabbit/craft-copy": "1.0.2",
         "vlucas/phpdotenv": "^2.4.0",
         "superbig/craft3-imgix": "2.0.5",
         "verbb/super-table": "2.6.5",

@@ -1,0 +1,106 @@
+field: 9a2e6d73-49cc-4aa9-89da-29c29cc4a000
+fieldLayouts:
+  0f14c67c-907d-4066-ac23-d8335ea6f606:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 9fad34b4-ec00-4f1c-851e-7f96f31d86cf
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: f9c5d4a4-e78f-476b-bdb0-b2bdb6204568
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+fields:
+  9fad34b4-ec00-4f1c-851e-7f96f31d86cf:
+    contentColumnType: string
+    fieldGroup: null
+    handle: position
+    instructions: ''
+    name: Position
+    searchable: false
+    settings:
+      optgroups: true
+      options:
+        -
+          __assoc__:
+            -
+              - label
+              - 'Head Top'
+            -
+              - value
+              - headTop
+            -
+              - default
+              - '1'
+        -
+          __assoc__:
+            -
+              - label
+              - 'Head Bottom'
+            -
+              - value
+              - headBottom
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - 'Body Top'
+            -
+              - value
+              - bodyTop
+            -
+              - default
+              - ''
+        -
+          __assoc__:
+            -
+              - label
+              - 'Body Bottom'
+            -
+              - value
+              - bodyBottom
+            -
+              - default
+              - ''
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\Dropdown
+  f9c5d4a4-e78f-476b-bdb0-b2bdb6204568:
+    contentColumnType: text
+    fieldGroup: null
+    handle: code
+    instructions: ''
+    name: Code
+    searchable: false
+    settings:
+      byteLimit: null
+      charLimit: null
+      code: '1'
+      columnType: null
+      initialRows: '7'
+      multiline: '1'
+      placeholder: ''
+      uiMode: normal
+    translationKeyFormat: null
+    translationMethod: none
+    type: craft\fields\PlainText
+handle: block
+name: Block
+sortOrder: 1

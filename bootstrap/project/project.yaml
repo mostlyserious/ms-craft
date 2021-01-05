@@ -1,0 +1,78 @@
+dateModified: 1609867976
+email:
+  fromEmail: cornelius@mostlyserious.io
+  fromName: 'MS Craft'
+  transportType: craft\mail\transportadapters\Sendmail
+plugins:
+  aws-s3:
+    edition: standard
+    enabled: true
+    schemaVersion: '1.2'
+  colour-swatches:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.4.1.1
+  copy:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  icon-picker:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.1
+  imgix:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.0.0
+  neo:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.8.16
+  redactor:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.3.0
+  sendgrid:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  seomatic:
+    edition: standard
+    enabled: true
+    schemaVersion: 3.0.9
+  smith:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  super-table:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.2.1
+  typedlinkfield:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  usermanual:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.0.1
+    settings:
+      pluginNameOverride: 'CMS Guide'
+      section: '2'
+      templateOverride: ''
+  video-embedder:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+system:
+  edition: pro
+  live: true
+  name: 'MS Craft'
+  schemaVersion: 3.5.13
+  timeZone: America/Los_Angeles
+users:
+  allowPublicRegistration: false
+  defaultGroup: null
+  photoSubpath: null
+  photoVolumeUid: null
+  requireEmailVerification: true

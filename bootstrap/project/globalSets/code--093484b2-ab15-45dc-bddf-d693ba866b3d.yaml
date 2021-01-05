@@ -1,0 +1,18 @@
+fieldLayouts:
+  740d34d6-4e4b-4dcd-89f5-efe801ca4955:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 9a2e6d73-49cc-4aa9-89da-29c29cc4a000
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+handle: code
+name: Code
