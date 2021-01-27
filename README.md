@@ -3,10 +3,10 @@
 Powered by Craft CMS
 
 ## Software requirements
-- node >= 12
-- php >= 7.2
-- mysql 5.7
-- composer
+- node >= 12.0
+- php >= 7.3
+- mysql >= 5.7
+- composer >= 2.0
 
 ## Setup instructions
 
