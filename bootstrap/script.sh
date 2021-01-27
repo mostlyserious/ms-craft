@@ -9,6 +9,8 @@ cp bootstrap/project.yaml config/project.yaml
 php craft clear-caches/all
 
 echo ""
+echo "Your project YAML files have been bootstrapped.\nTo finish applying these updates, navigate to the projects admin and select Utilities > Project Config > Reapply Everything > Use YAML."
+echo ""
 
 while true; do
     read -p "Remove bootstrap directory? (yes|no): " yn
