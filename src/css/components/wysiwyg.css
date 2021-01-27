@@ -1,74 +1,76 @@
-.wysiwyg {
-    &.wysiwyg-user {
+@layer components {
+    .wysiwyg {
+        &.wysiwyg-user {
+            & :--headings {
+                @apply font-sans font-normal;
+            }
+
+            & h2 { @apply text-4xl; }
+            & h3 { @apply text-3xl; }
+            & h4 { @apply text-2xl; }
+
+            & a:not(.button) {
+                @apply text-blue-500;
+
+                &:hover,
+                &:focus {
+                    @apply underline;
+                }
+            }
+        }
+
+        &.wysiwyg-invert {
+            @apply text-white;
+
+            & a:not(.button) {
+                @apply filter brightness-30;
+
+                &:hover,
+                &:focus {
+                    @apply text-white brightness-100;
+                }
+            }
+        }
+
         & :--headings {
-            @apply font-sans font-normal;
-        }
-
-        & h2 { @apply text-4xl; }
-        & h3 { @apply text-3xl; }
-        & h4 { @apply text-2xl; }
-
-        & a:not(.button) {
-            @apply text-blue-500;
-
-            &:hover,
-            &:focus {
-                @apply underline;
+            &:not(:last-child) {
+                margin-bottom: 0.5em;
             }
         }
-    }
 
-    &.wysiwyg-invert {
-        @apply text-white;
-
-        & a:not(.button) {
-            @apply filter brightness-30;
-
-            &:hover,
-            &:focus {
-                @apply text-white brightness-100;
+        & p,
+        & ul,
+        & ol,
+        & figure,
+        & address {
+            &:not(:last-child) {
+                @apply mb-8;
             }
         }
-    }
 
-    & :--headings {
-        &:not(:last-child) {
-            margin-bottom: 0.5em;
+        & strong {
+            @apply font-bold;
         }
-    }
 
-    & p,
-    & ul,
-    & ol,
-    & figure,
-    & address {
-        &:not(:last-child) {
-            @apply mb-8;
+        & ul,
+        & ol {
+            @apply leading-loose;
         }
-    }
 
-    & strong {
-        @apply font-bold;
-    }
+        & ul {
+            @apply pl-4 list-disc;
+        }
 
-    & ul,
-    & ol {
-        @apply leading-loose;
-    }
+        & ol {
+            @apply pl-4 list-decimal text-left;
+        }
 
-    & ul {
-        @apply pl-4 list-disc;
-    }
+        & figcaption {
+            @apply mt-4 text-sm text-center;
+        }
 
-    & ol {
-        @apply pl-4 list-decimal text-left;
+        /* & hr {
+            @apply border-t-1 border-gray-300 my-4 !important;
+        } */
     }
-
-    & figcaption {
-        @apply mt-4 text-sm text-center;
-    }
-
-    /* & hr {
-        @apply border-t-1 border-gray-300 my-4 !important;
-    } */
 }

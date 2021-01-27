@@ -6,6 +6,7 @@
     }
 })(() => {
     const modules = {
+        '.intro': () => import('./modules/intro' /* webpackChunkName: 'intro' */),
         '[data-src], [data-srcset], [data-background]': () => import('./modules/lazy-load' /* webpackChunkName: 'lazy-load' */),
         '[data-property]': () => import('./modules/property' /* webpackChunkName: 'property' */),
         '[data-toggle]': () => import('./modules/toggle' /* webpackChunkName: 'toggle' */),

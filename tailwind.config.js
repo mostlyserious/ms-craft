@@ -1,14 +1,13 @@
 const glob = require('tiny-glob/sync');
-const defaultConfig = require('tailwindcss/defaultConfig');
+const colors = require('tailwindcss/colors');
 const blend = require('brightpack/tailwindcss/blend');
 const inset = require('brightpack/tailwindcss/inset');
 const isActive = require('brightpack/tailwindcss/is-active');
 const filter = require('brightpack/tailwindcss/filter');
-const fractions = require('brightpack/tailwindcss/fractions');
 const viewportSizes = require('brightpack/tailwindcss/viewport-sizes');
 
 module.exports = {
-    important: 'body',
+    // important: 'body',
     purge: {
         content: [
             glob('templates/**/*.{twig,html}'),
@@ -18,83 +17,60 @@ module.exports = {
     theme: {
         timestamp: Date.now(),
         screens: {
-            'ie': { raw: '(-ms-high-contrast: none), (-ms-high-contrast: active)' },
-            'prefers-motion': { raw: 'not (prefers-reduced-motion)' },
-            'reduced-motion': { raw: '(prefers-reduced-motion)' },
+            // 'prefers-motion': { raw: 'not (prefers-reduced-motion)' },
+            // 'reduced-motion': { raw: '(prefers-reduced-motion)' },
             '2xs': '380px',
             'xs': '460px',
             'sm': '640px',
             'md': '768px',
             'lg': '1024px',
-            'xl': '1280px',
-            '2xl': '1440px'
+            'xl': '1280px'
+        },
+        colors: {
+            transparent: 'transparent',
+            current: 'currentcolor',
+            inherit: 'inherit',
+            black: '#000',
+            white: '#FFF',
+            gray: colors.gray,
+            blue: colors.blue,
+            brand: {
+                orange: '#F45D1F'
+            }
         },
         extend: {
-            colors: {
-                inherit: 'inherit',
-                brand: {
-                    orange: '#F45D1F'
-                }
-            },
             fontFamily: {
 
             },
             fontSize: {
-                '8xl': '8rem',
-                '7xl': '6rem',
-                '6xl': '4rem',
-                '5xl': '3rem',
-                '4xl': '2.4rem',
-                '3xl': '1.9rem',
-                '2xl': '1.5rem',
-                'xl': '1.25rem',
-                'lg': '1.125rem',
-                'md': '1rem',
-                'sm': '0.875rem',
-                'xs': '0.75rem'
+                '7xl': [ '6rem', '1.1' ],
+                '6xl': [ '4rem', '1.2' ],
+                '5xl': [ '3rem', '1.2' ],
+                '4xl': [ '2.4rem', '1.3' ],
+                '3xl': [ '1.9rem', '1.3' ],
+                '2xl': [ '1.5rem', '1.4' ],
+                'xl': [ '1.25rem', '1.4' ],
+                'lg': [ '1.125rem', '1.5' ],
+                'md': [ '1rem', '1.5' ],
+                'sm': [ '0.875rem', '1.5' ],
+                'xs': [ '0.75rem', '1.5' ],
+                '2xs': [ '0.66rem', '1.6' ]
             },
             spacing: {
                 '7': '1.75rem',
                 '9': '2.25rem'
             },
-            padding: {
-                '1/2': '50%',
-                '1/3': '33.333333%',
-                '2/3': '66.666667%',
-                '1/4': '25%',
-                '2/4': '50%',
-                '3/4': '75%',
-                '1/5': '20%',
-                '2/5': '40%',
-                '3/5': '60%',
-                '4/5': '80%',
-                '1/6': '16.666667%',
-                '2/6': '33.333333%',
-                '3/6': '50%',
-                '4/6': '66.666667%',
-                '5/6': '83.333333%',
-                '1/12': '8.333333%',
-                '2/12': '16.666667%',
-                '3/12': '25%',
-                '4/12': '33.333333%',
-                '5/12': '41.666667%',
-                '6/12': '50%',
-                '7/12': '58.333333%',
-                '8/12': '66.666667%',
-                '9/12': '75%',
-                '10/12': '83.333333%',
-                '11/12': '91.666667%',
-                'full': '100%'
-            },
             width: {
+                '2px': '2px',
+                '3px': '3px',
                 '7': '1.75rem',
                 '9': '2.25rem',
                 '14': '3.5rem',
                 '80': '20rem'
             },
-            height: theme => theme('width'),
-            minHeight: theme => theme('height'),
-            maxHeight: theme => theme('height'),
+            // height: theme => theme('width'),
+            // minHeight: theme => theme('height'),
+            // maxHeight: theme => theme('height'),
             minWidth: {
                 '7xl': '84rem',
                 '8xl': '96rem'
@@ -105,8 +81,7 @@ module.exports = {
             },
             borderWidth: {
                 '1': '1px',
-                '3': '3px',
-                '6': '6px'
+                '3': '3px'
             },
             borderRadius: {
 
@@ -141,22 +116,22 @@ module.exports = {
         }
     },
     variants: {
-        display: [ ...defaultConfig.variants.display, 'is-active' ],
-        backgroundColor: [ ...defaultConfig.variants.backgroundColor, 'is-active', 'group-hover', 'group-focus', 'hover-focus' ],
-        borderColor: [ ...defaultConfig.variants.borderColor, 'group-hover', 'group-focus', 'hover-focus' ],
-        borderWidth: [ ...defaultConfig.variants.borderWidth, 'focus' ],
-        opacity: [ ...defaultConfig.variants.opacity, 'group-hover', 'hover-focus' ],
-        textColor: [ ...defaultConfig.variants.textColor, 'group-hover', 'group-focus', 'hover-focus' ],
-        scale: [ ...defaultConfig.variants.scale, 'group-hover', 'group-focus', 'hover-focus' ],
-        translate: [ ...defaultConfig.variants.translate, 'group-hover', 'group-focus', 'hover-focus' ],
-        visibility: [ ...defaultConfig.variants.visibility, 'is-active' ]
+        extend: {
+            display: [ 'is-active' ],
+            backgroundColor: [ 'is-active', 'hover-focus', 'group-hover-focus' ],
+            borderColor: [ 'hover-focus', 'group-hover-focus' ],
+            opacity: [ 'group-hover', 'hover-focus' ],
+            textColor: [ 'hover-focus', 'group-hover-focus' ],
+            scale: [ 'hover-focus', 'group-hover-focus' ],
+            translate: [ 'hover-focus', 'group-hover-focus' ],
+            visibility: [ 'is-active' ]
+        }
     },
     plugins: [
         blend,
         inset,
         filter,
         isActive,
-        fractions,
         viewportSizes,
         ({ addVariant, e }) => {
             addVariant('hover-focus', ({ modifySelectors, separator }) => {
@@ -167,13 +142,17 @@ module.exports = {
                     `;
                 });
             });
+            addVariant('group-hover-focus', ({ modifySelectors, separator }) => {
+                modifySelectors(({ className }) => {
+                    return `
+                        .group:hover .${e(`group-hover-focus${separator}${className}`)},
+                        .group:focus .${e(`group-hover-focus${separator}${className}`)}
+                    `;
+                });
+            });
         }
     ],
     corePlugins: {
         container: false
-    },
-    future: {
-        removeDeprecatedGapUtilities: true,
-        purgeLayersByDefault: true
     }
 };

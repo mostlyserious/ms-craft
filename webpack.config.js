@@ -6,8 +6,8 @@ const brightpack = require('brightpack');
 const dest = 'web/static';
 const publicPath = '/static/';
 const watch = [
+    'modules/**/*.{twig,html,php}',
     'templates/**/*.{twig,html}',
-    'modules/**/*.{twig,html}',
     'config/**/*.php'
 ];
 
@@ -18,12 +18,12 @@ module.exports = brightpack({ dest, publicPath, watch }, config => {
 
     });
 
+    brightpack.editLoader(config, 'svelte-loader', (use, rule) => {
+        use.options.emitCss = false;
+    });
+
     config.entry = {
         app: [
-            // Include for IE11 support.
-            // 'custom-event-polyfill',
-            // 'core-js/modules/es.promise',
-            // 'core-js/modules/es.array.iterator',
             path.resolve('src/js/main.js'),
             path.resolve('src/css/main.css'),
             ...assets.map(p => path.resolve(p))

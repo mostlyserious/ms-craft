@@ -1,23 +1,25 @@
-@responsive {
-    .container {
-        @apply max-w-5xl w-full px-6 mx-auto;
-    }
+@layer components {
+    @responsive {
+        .container {
+            @apply max-w-5xl w-full px-6 mx-auto;
+        }
 
-    .container-sm {
-        @apply max-w-4xl !important;
-    }
+        .container-sm {
+            @apply max-w-4xl !important;
+        }
 
-    .container-lg {
-        @apply max-w-6xl !important;
-    }
+        .container-lg {
+            @apply max-w-6xl !important;
+        }
 
-    .container-offset-right {
-        margin-right: calc(calc(100vw - theme("maxWidth.5xl")) / 2);
-        @apply pr-6;
-    }
+        .container-offset-right {
+            margin-right: calc(calc(100vw - theme("maxWidth.5xl")) / 2);
+            @apply pr-6;
+        }
 
-    .container-offset-left {
-        margin-left: calc(calc(100vw - theme("maxWidth.5xl")) / 2);
-        @apply pl-6;
+        .container-offset-left {
+            margin-left: calc(calc(100vw - theme("maxWidth.5xl")) / 2);
+            @apply pl-6;
+        }
     }
 }

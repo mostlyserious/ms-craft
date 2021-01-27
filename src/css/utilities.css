@@ -1,7 +1,17 @@
 @charset "UTF-8";
 
-@import "tailwindcss/tailwind";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
     x-timestamp: theme("timestamp");
+}
+
+@layer utilities {
+    .appearance-none {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
 }

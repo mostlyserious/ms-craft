@@ -8,38 +8,36 @@
 
 @custom-selector :--headings h1, h2, h3, h4, h5, h6;
 
-html {
-    @apply antialiased bg-white;
-    font-size: 16px;
-    text-rendering: geometricPrecision;
+@layer base {
+    html {
+        @apply antialiased bg-white;
+        font-size: 16px;
+        text-rendering: geometricPrecision;
 
-    @screen sm {
-        font-size: 18px;
+        @screen sm {
+            font-size: 18px;
+        }
+    }
+
+    body {
+        @apply bg-white text-gray-900;
+
+        & :--headings {
+
+        }
+
+        & img {
+            @apply select-none;
+        }
+
+        & a {
+            @apply font-bold;
+        }
     }
 }
 
-body {
-    @apply bg-white text-gray-900;
-
-    & :--headings {
-
+@layer components {
+    #skip-to-content:not(:focus) {
+        @apply sr-only;
     }
-
-    & img {
-        @apply select-none;
-    }
-
-    & a {
-        @apply font-bold;
-    }
-}
-
-#skip-to-content:not(:focus) {
-    @apply sr-only;
-}
-
-.appearance-none {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
 }

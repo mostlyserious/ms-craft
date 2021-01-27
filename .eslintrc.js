@@ -1,7 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const __home = process.env.HOME || process.env.HOMEPATH || process.env.USERPROFILE;
-const extend = path.resolve(__home, '.eslintrc.json');
+const extend = path.resolve('node_modules/brightpack/eslintrc.json');
 
 module.exports = {
     parserOptions: {
