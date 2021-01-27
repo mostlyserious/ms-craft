@@ -7,7 +7,7 @@
 /node_modules
 /web/cpresources
 /web/assets
-/storage/**
+/storage/*
 !/storage/rebrand
 !/storage/.gitkeep
 /config/license.key
