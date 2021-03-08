@@ -1,6 +1,11 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
+    # # Forward HTTP to HTTPS
+    # RewriteCond %{HTTP:X-Forwarded-Port} !=443
+    # RewriteRule (.*) https://%{HTTP_HOST}/$1 [R=301,L]
+    # Header always set Strict-Transport-Security "max-age=31536000"
+
     # Send would-be 404 requests to Craft
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
