@@ -1,9 +1,9 @@
 const glob = require('tiny-glob/sync');
-const colors = require('tailwindcss/colors');
 const blend = require('brightpack/tailwindcss/blend');
 const inset = require('brightpack/tailwindcss/inset');
-const isActive = require('brightpack/tailwindcss/is-active');
 const filter = require('brightpack/tailwindcss/filter');
+const isActive = require('brightpack/tailwindcss/is-active');
+const colors = require('@tailwindcss/postcss7-compat/colors');
 const viewportSizes = require('brightpack/tailwindcss/viewport-sizes');
 
 module.exports = {

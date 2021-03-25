@@ -1,0 +1,61 @@
+{
+    "masterPicture": "./icon.svg",
+    "design": {
+        "desktopBrowser": {},
+        "ios": {
+            "pictureAspect": "backgroundAndMargin",
+            "backgroundColor": "#ffffff",
+            "margin": "30%",
+            "assets": {
+                "ios6AndPriorIcons": false,
+                "ios7AndLaterIcons": false,
+                "precomposedIcons": false,
+                "declareOnlyDefaultIcon": true
+            }
+        },
+        "androidChrome": {
+            "pictureAspect": "shadow",
+            "themeColor": "#222222",
+            "manifest": {
+                "name": "DMP",
+                "display": "browser",
+                "orientation": "notSet",
+                "onConflict": "override",
+                "declared": true
+            },
+            "assets": {
+                "legacyIcon": false,
+                "lowResolutionIcons": false
+            }
+        },
+        "windows": {
+            "masterPicture": "./icon-flat.svg",
+            "pictureAspect": "whiteSilhouette",
+            "backgroundColor": "#222222",
+            "onConflict": "override",
+            "assets": {
+                "windows80Ie10Tile": false,
+                "windows10Ie11EdgeTiles": {
+                    "small": false,
+                    "medium": true,
+                    "big": false,
+                    "rectangle": false
+                }
+            }
+        },
+        "safariPinnedTab": {
+            "masterPicture": "./icon-flat.svg",
+            "pictureAspect": "silhouette",
+            "themeColor": "#222222"
+        }
+    },
+    "versioning": false,
+    "settings": {
+        "compression": 5,
+        "scalingAlgorithm": "Lanczos",
+        "errorOnImageTooSmall": false,
+        "readmeFile": false,
+        "htmlCodeFile": true,
+        "usePathAsIs": true
+    }
+}
