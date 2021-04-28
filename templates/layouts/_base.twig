@@ -37,6 +37,8 @@
     {% endif %}
 
     <script>
+        window.customElements.define('x-svelte', class extends HTMLElement {});
+
         (function(global) {
             global.$app = global.$app || {};
             global.$app.isCrawler = {{ isCrawler ? 'true' : 'false' }};
@@ -49,7 +51,6 @@
 
     <link rel="stylesheet" href="https://use.typekit.net/rqc4ywg.css">
     {{ entry('app') }}
-    {{ entry('utilities') }}
 
     {{ (codeBlocks|find('position', 'headBottom').code ?? '')|raw }}
 </head>

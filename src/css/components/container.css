@@ -13,12 +13,12 @@
         }
 
         .container-offset-right {
-            margin-right: calc(calc(100vw - theme("maxWidth.5xl")) / 2);
+            margin-right: max(0px, calc(calc(100vw - theme("maxWidth.5xl")) / 2));
             @apply pr-6;
         }
 
         .container-offset-left {
-            margin-left: calc(calc(100vw - theme("maxWidth.5xl")) / 2);
+            margin-left: max(0px, calc(calc(100vw - theme("maxWidth.5xl")) / 2));
             @apply pl-6;
         }
     }

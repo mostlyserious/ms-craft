@@ -20,35 +20,37 @@
 }
 
 @responsive {
-    .intro-slide-left {
-        transform: translateX(calc(5% + 25px));
-    }
+    @screen prefers-motion {
+        .intro-slide-left {
+            transform: translateX(calc(5% + 25px));
+        }
 
-    .intro-slide-right {
-        transform: translateX(calc(-5% - 25px));
-    }
+        .intro-slide-right {
+            transform: translateX(calc(-5% - 25px));
+        }
 
-    .intro-slide-up {
-        transform: translateY(calc(5% + 25px));
-    }
+        .intro-slide-up {
+            transform: translateY(calc(5% + 25px));
+        }
 
-    .intro-slide-down {
-        transform: translateY(calc(-5% - 25px));
-    }
+        .intro-slide-down {
+            transform: translateY(calc(-5% - 25px));
+        }
 
-    .intro-wipe-left {
-        clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
-    }
+        .intro-wipe-left {
+            clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+        }
 
-    .intro-wipe-right {
-        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
-    }
+        .intro-wipe-right {
+            clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+        }
 
-    .intro-wipe-up {
-        clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
-    }
+        .intro-wipe-up {
+            clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+        }
 
-    .intro-wipe-down {
-        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        .intro-wipe-down {
+            clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        }
     }
 }

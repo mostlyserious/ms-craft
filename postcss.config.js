@@ -1,6 +1,6 @@
 const plugins = {
     'postcss-import': {},
-    '@tailwindcss/postcss7-compat': {},
+    'tailwindcss': {},
     'postcss-functions': {
         functions: {
             'svg-uri': value => {

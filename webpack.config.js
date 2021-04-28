@@ -18,8 +18,16 @@ module.exports = brightpack({ dest, publicPath, watch }, config => {
 
     });
 
-    brightpack.editLoader(config, 'svelte-loader', (use, rule) => {
-        use.options.emitCss = false;
+    brightpack.editLoader(config, 'file-loader', (use, rule) => {
+        if (`${rule.exclude}` === '/\\/(favicon|font)s?\\//') {
+            rule.exclude = /\/(favicon|font|icon)s?\//;
+        }
+    });
+
+    config.module.rules.push({
+        test: /\.svg$/,
+        include: /\/icons?\//,
+        type: 'asset/source'
     });
 
     config.entry = {
@@ -27,9 +35,6 @@ module.exports = brightpack({ dest, publicPath, watch }, config => {
             path.resolve('src/js/main.js'),
             path.resolve('src/css/main.css'),
             ...assets.map(p => path.resolve(p))
-        ],
-        utilities: [
-            path.resolve('src/css/utilities.css')
         ]
     };
 
@@ -39,6 +44,15 @@ module.exports = brightpack({ dest, publicPath, watch }, config => {
     //         : 'favicon/[name]',
     //     config: path.resolve('src/favicon/config.json')
     // }));
+
+    config.cache = {
+        type: 'filesystem',
+        name: global.inProduction ? 'prod' : 'dev',
+        cacheDirectory: path.resolve(__dirname, '.cache/webpack'),
+        buildDependencies: {
+            config: [ __filename ]
+        }
+    };
 
     if (global.inProduction) {
 

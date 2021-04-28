@@ -18,10 +18,7 @@
 
     .navbar-nav {
         @apply hidden;
-
-        @screen lg {
-            @apply flex items-center justify-end h-20;
-        }
+        @apply lg:flex lg:items-center lg:justify-end lg:h-20;
     }
 
     .navbar-item {
@@ -52,10 +49,7 @@
 
     .navbar-toggle {
         @apply relative z-40 block text-white cursor-pointer;
-
-        @screen lg {
-            @apply hidden;
-        }
+        @apply lg:hidden;
 
         & span {
             @apply absolute left-0 block w-full h-px border-t-1 border-b-1 border-current bg-current box-content pointer-events-none;

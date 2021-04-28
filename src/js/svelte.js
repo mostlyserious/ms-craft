@@ -4,7 +4,7 @@ export default els => {
     };
 
     els.forEach(target => {
-        const component = target.getAttribute('x-svelte');
+        const component = target.getAttribute('component');
         const request = components[component];
 
         if (request) {
@@ -14,9 +14,7 @@ export default els => {
                 target.innerHTML = '';
                 new Component({
                     target,
-                    props: {
-                        slot, ...target.dataset
-                    }
+                    props: { slot, ...target.dataset }
                 });
             });
         }

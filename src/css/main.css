@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+@import "utilities";
 @import "components/button";
 @import "components/container";
 @import "components/navbar";
@@ -33,10 +34,30 @@
         & a {
             @apply font-bold;
         }
+
+        & a:focus,
+        & button:focus {
+            @apply outline-none;
+        }
+
+        &.is-tabbing {
+            & .focusable:focus,
+            & [tabindex="0"]:focus {
+                @apply outline-none ring-2 ring-brand-orange rounded;
+            }
+        }
+
+        & x-svelte {
+            display: contents;
+        }
     }
 }
 
 @layer components {
+    #skip-to-content {
+        @apply absolute top-0 left-0 z-50 inline-block m-2 px-2 py-0.5 font-bold bg-white rounded;
+    }
+
     #skip-to-content:not(:focus) {
         @apply sr-only;
     }

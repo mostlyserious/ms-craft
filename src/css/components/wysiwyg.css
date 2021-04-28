@@ -19,19 +19,6 @@
             }
         }
 
-        &.wysiwyg-invert {
-            @apply text-white;
-
-            & a:not(.button) {
-                @apply filter brightness-30;
-
-                &:hover,
-                &:focus {
-                    @apply text-white brightness-100;
-                }
-            }
-        }
-
         & :--headings {
             &:not(:last-child) {
                 margin-bottom: 0.5em;

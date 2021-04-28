@@ -10,7 +10,7 @@
         '[data-src], [data-srcset], [data-background]': () => import('./modules/lazy-load' /* webpackChunkName: 'lazy-load' */),
         '[data-property]': () => import('./modules/property' /* webpackChunkName: 'property' */),
         '[data-toggle]': () => import('./modules/toggle' /* webpackChunkName: 'toggle' */),
-        '[x-svelte]': () => import('./svelte' /* webpackChunkName: 'svelte' */)
+        'x-svelte': () => import('./svelte' /* webpackChunkName: 'svelte' */)
     };
 
     Object.keys(modules).forEach(selector => {

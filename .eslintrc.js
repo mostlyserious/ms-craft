@@ -1,6 +1,4 @@
-const fs = require('fs');
 const path = require('path');
-const extend = path.resolve('node_modules/brightpack/eslintrc.json');
 
 module.exports = {
     parserOptions: {
@@ -14,7 +12,7 @@ module.exports = {
     },
     extends: [
         'plugin:vue/base',
-        fs.existsSync(extend) ? extend : 'airbnb-base'
+        path.resolve(__dirname, 'node_modules/brightpack/eslintrc.json')
     ].filter(Boolean),
     plugins: [
         'svelte3',

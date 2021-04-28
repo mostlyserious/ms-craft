@@ -1,24 +1,22 @@
 const glob = require('tiny-glob/sync');
-const blend = require('brightpack/tailwindcss/blend');
 const inset = require('brightpack/tailwindcss/inset');
-const filter = require('brightpack/tailwindcss/filter');
 const isActive = require('brightpack/tailwindcss/is-active');
-const colors = require('@tailwindcss/postcss7-compat/colors');
 const viewportSizes = require('brightpack/tailwindcss/viewport-sizes');
 
 module.exports = {
-    // important: 'body',
+    mode: 'jit',
     purge: {
         content: [
+            glob('src/js/**/*.{js,vue,svelte}'),
             glob('templates/**/*.{twig,html}'),
-            glob('src/js/**/*.{js,vue,svelte}')
+            glob('config/*.php')
         ].flat()
     },
     theme: {
         timestamp: Date.now(),
         screens: {
-            // 'prefers-motion': { raw: 'not (prefers-reduced-motion)' },
-            // 'reduced-motion': { raw: '(prefers-reduced-motion)' },
+            'prefers-motion': { raw: 'not (prefers-reduced-motion)' },
+            'reduced-motion': { raw: '(prefers-reduced-motion)' },
             '2xs': '380px',
             'xs': '460px',
             'sm': '640px',
@@ -26,19 +24,13 @@ module.exports = {
             'lg': '1024px',
             'xl': '1280px'
         },
-        colors: {
-            transparent: 'transparent',
-            current: 'currentcolor',
-            inherit: 'inherit',
-            black: '#000',
-            white: '#FFF',
-            gray: colors.gray,
-            blue: colors.blue,
-            brand: {
-                orange: '#F45D1F'
-            }
-        },
         extend: {
+            colors: {
+                inherit: 'inherit',
+                brand: {
+                    orange: '#F45D1F'
+                }
+            },
             fontFamily: {
 
             },
@@ -56,45 +48,17 @@ module.exports = {
                 'xs': [ '0.75rem', '1.5' ],
                 '2xs': [ '0.66rem', '1.6' ]
             },
-            spacing: {
-                '7': '1.75rem',
-                '9': '2.25rem'
-            },
             width: {
-                '2px': '2px',
-                '3px': '3px',
-                '7': '1.75rem',
-                '9': '2.25rem',
-                '14': '3.5rem',
-                '80': '20rem'
+                'min-content': 'min-content',
+                'max-content': 'max-content'
             },
-            // height: theme => theme('width'),
-            // minHeight: theme => theme('height'),
-            // maxHeight: theme => theme('height'),
-            minWidth: {
-                '7xl': '84rem',
-                '8xl': '96rem'
-            },
-            maxWidth: {
-                '7xl': '84rem',
-                '8xl': '96rem'
-            },
+            minHeight: theme => theme('height'),
+            maxHeight: theme => theme('height'),
+            minWidth: theme => theme('width'),
+            maxWidth: theme => theme('width'),
             borderWidth: {
                 '1': '1px',
                 '3': '3px'
-            },
-            borderRadius: {
-
-            },
-            opacity: {
-                '10': 0.1,
-                '20': 0.2,
-                '30': 0.3,
-                '40': 0.4,
-                '60': 0.6,
-                '70': 0.7,
-                '80': 0.8,
-                '90': 0.9
             },
             transitionDelay: {
                 '400': '400ms',
@@ -115,22 +79,8 @@ module.exports = {
             }
         }
     },
-    variants: {
-        extend: {
-            display: [ 'is-active' ],
-            backgroundColor: [ 'is-active', 'hover-focus', 'group-hover-focus' ],
-            borderColor: [ 'hover-focus', 'group-hover-focus' ],
-            opacity: [ 'group-hover', 'hover-focus' ],
-            textColor: [ 'hover-focus', 'group-hover-focus' ],
-            scale: [ 'hover-focus', 'group-hover-focus' ],
-            translate: [ 'hover-focus', 'group-hover-focus' ],
-            visibility: [ 'is-active' ]
-        }
-    },
     plugins: [
-        blend,
         inset,
-        filter,
         isActive,
         viewportSizes,
         ({ addVariant, e }) => {
