@@ -3,7 +3,7 @@
     "description": "Craft CMS",
     "type": "project",
     "require": {
-        "craftcms/cms": "3.5.17.1",
+        "craftcms/cms": "3.6.7",
         "craftcms/redactor": "2.8.5",
         "craftcms/aws-s3": "1.2.11",
         "hillholliday/craft-user-manual": "2.0.5",
