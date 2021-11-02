@@ -19,7 +19,6 @@ return [
         'preventUserEnumeration' => true,
         'sendPoweredByHeader' => false,
         'securityKey' => getenv('SECURITY_KEY'),
-        'useProjectConfigFile' => true,
         'pageTrigger' => 'page/',
         'maxUploadFileSize' => ConfigHelper::sizeInBytes('128M'),
         'errorTemplatePrefix' => '_',
