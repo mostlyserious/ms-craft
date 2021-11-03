@@ -23,6 +23,7 @@ return [
         'maxUploadFileSize' => ConfigHelper::sizeInBytes('128M'),
         'errorTemplatePrefix' => '_',
         'enableGql' => false,
+        'defaultSearchTermOptions' => array('subLeft' => true, 'subRight' => true),
         'timezone' => 'America/Chicago'
     ],
 
