@@ -2,7 +2,7 @@ baseUrl: $PRIMARY_SITE_URL
 handle: default
 hasUrls: true
 language: en-US
-name: 'MS Craft'
+name: $PRIMARY_SITE_NAME
 primary: true
-siteGroup: 59ef51ff-1227-47c4-958b-a1605a3586d0 # MS Craft
+siteGroup: 6efd6774-6d19-4539-8a9c-1b5921f658c5 # MS Craft
 sortOrder: 1

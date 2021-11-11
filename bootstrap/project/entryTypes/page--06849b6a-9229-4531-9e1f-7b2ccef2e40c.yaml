@@ -27,7 +27,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: be7373cf-5af8-4a9c-92bd-11ab39541795
+            fieldUid: be7373cf-5af8-4a9c-92bd-11ab39541795 # Header
             instructions: null
             label: null
             required: false
@@ -36,7 +36,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 995cc5a8-988f-47f0-ac78-76d6b68f6ac6
+            fieldUid: 995cc5a8-988f-47f0-ac78-76d6b68f6ac6 # Blocks
             instructions: null
             label: null
             required: false
@@ -49,7 +49,7 @@ fieldLayouts:
 handle: page
 hasTitleField: true
 name: Pages
-section: 1f4732b0-84b4-4302-9a0f-687b30fdd6a0
+section: 1f4732b0-84b4-4302-9a0f-687b30fdd6a0 # Pages
 sortOrder: 1
 titleFormat: null
 titleTranslationKeyFormat: null

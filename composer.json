@@ -12,11 +12,12 @@
         "percipioglobal/craft-colour-swatches": "1.4.2",
         "putyourlightson/craft-sendgrid": "1.2.3",
         "sebastianlenz/linkfield": "1.0.25",
+        "spicyweb/craft-embedded-assets": "2.9.0",
         "spicyweb/craft-neo": "2.11.17",
         "superbig/craft3-imgix": "2.1.0",
         "verbb/icon-picker": "1.1.12",
         "verbb/smith": "1.1.14",
-        "verbb/super-table": "2.6.8",
+        "verbb/super-table": "^2.6",
         "vlucas/phpdotenv": "^2.4.0"
     },
     "autoload": {

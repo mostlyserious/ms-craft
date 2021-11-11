@@ -1,12 +1,12 @@
-childBlocks: ''
-field: 995cc5a8-988f-47f0-ac78-76d6b68f6ac6
+childBlocks: null
+field: 995cc5a8-988f-47f0-ac78-76d6b68f6ac6 # Blocks
 fieldLayouts:
   b6c6baa5-185b-4749-9ba4-780a9aae3531:
     tabs:
       -
         elements:
           -
-            fieldUid: aca3b467-9b53-4288-91a9-eda4802a7623
+            fieldUid: aca3b467-9b53-4288-91a9-eda4802a7623 # Heading
             instructions: null
             label: null
             required: false
@@ -15,7 +15,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: fef5e771-2ab6-464f-b943-624452c0a52c
+            fieldUid: fef5e771-2ab6-464f-b943-624452c0a52c # Body
             instructions: null
             label: null
             required: false
@@ -24,7 +24,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 14bc7956-d13d-4317-8a7c-56b2bf6dca14
+            fieldUid: 14bc7956-d13d-4317-8a7c-56b2bf6dca14 # Button
             instructions: null
             label: null
             required: false
@@ -33,7 +33,7 @@ fieldLayouts:
             warning: null
             width: 50
           -
-            fieldUid: 406273f7-b865-4c09-869c-5dd130b80c62
+            fieldUid: 406273f7-b865-4c09-869c-5dd130b80c62 # Featured Image
             instructions: null
             label: null
             required: false
@@ -42,7 +42,7 @@ fieldLayouts:
             warning: null
             width: 50
           -
-            fieldUid: e4a11e84-cba4-4478-8b0a-e57b0a240c99
+            fieldUid: e4a11e84-cba4-4478-8b0a-e57b0a240c99 # Flip
             instructions: null
             label: null
             required: false
@@ -51,7 +51,7 @@ fieldLayouts:
             warning: null
             width: 25
           -
-            fieldUid: 68fdf34e-a8b6-47ae-b3b7-4bc8fb135e54
+            fieldUid: 68fdf34e-a8b6-47ae-b3b7-4bc8fb135e54 # Background
             instructions: null
             label: null
             required: false

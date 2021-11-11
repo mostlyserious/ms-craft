@@ -4,7 +4,7 @@ fieldLayouts:
       -
         elements:
           -
-            fieldUid: 17eb1569-4de9-43de-9fc2-ae39a4845d60
+            fieldUid: 17eb1569-4de9-43de-9fc2-ae39a4845d60 # Background Image
             instructions: null
             label: null
             required: false

@@ -1,11 +1,11 @@
-field: 6e98616b-f275-44b8-850c-59d0bb424c74
+field: 6e98616b-f275-44b8-850c-59d0bb424c74 # Menu
 fieldLayouts:
   0d8eaeed-d5ca-4cc3-8ef4-0c162d9f7afb:
     tabs:
       -
         elements:
           -
-            fieldUid: bdaf0b53-486b-46c0-9216-faf3ecbbd941
+            fieldUid: bdaf0b53-486b-46c0-9216-faf3ecbbd941 # Details
             instructions: null
             label: null
             required: false
@@ -16,7 +16,7 @@ fieldLayouts:
         name: Content
         sortOrder: 1
 fields:
-  bdaf0b53-486b-46c0-9216-faf3ecbbd941:
+  bdaf0b53-486b-46c0-9216-faf3ecbbd941: # Details
     contentColumnType: text
     fieldGroup: null
     handle: details
