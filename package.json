@@ -1,4 +1,10 @@
 {
+    "name": "mscraft",
+    "description": "A Craft CMS starter used for new sites built by the Mostly Serious team.",
+    "version": "1.0.0",
+    "private": true,
+    "license": "UNLICENSED",
+    "author": "Mostly Serious",
     "scripts": {
         "dev": "webpack --mode=development --watch",
         "build": "webpack --mode=production",

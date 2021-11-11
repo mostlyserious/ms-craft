@@ -14,19 +14,24 @@ return [
     '*' => [
         'defaultWeekStartDay' => 1,
         'omitScriptNameInUrls' => true,
+        'resourceBasePath' => dirname(__DIR__) . '/web/cpresources',
         'cpTrigger' => 'admin',
+        'preventUserEnumeration' => true,
+        'sendPoweredByHeader' => false,
         'securityKey' => getenv('SECURITY_KEY'),
-        'useProjectConfigFile' => true,
         'pageTrigger' => 'page/',
         'maxUploadFileSize' => ConfigHelper::sizeInBytes('128M'),
         'errorTemplatePrefix' => '_',
-        'enableGql' => false
+        'enableGql' => false,
+        'timezone' => 'America/Chicago'
     ],
 
     'dev' => [
         'devMode' => true,
         'disallowRobots' => true,
-        'enableTemplateCaching' => false
+        'enableTemplateCaching' => false,
+        'backupOnUpdate' => false,
+        'userSessionDuration' => false
     ],
 
     'staging' => [
