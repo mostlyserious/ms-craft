@@ -10,7 +10,7 @@ const test = suite('Accessibility');
 let driver,
     axe;
 
-test('Home', analyze('https://ms-craft.vlt'));
+test('Home', analyze('https://ms-craft.test'));
 // test('Module Listing', analyze('https://ms-craft.test/module-listing'));
 
 test.before(async () => {
@@ -31,13 +31,15 @@ test.after(async () => {
 
 test.run();
 
-function analyze(url) {
+function analyze(url, except = []) {
     return async () => {
+        axe.disableRules(except);
+
         await driver.get(url);
         const results = await axe.analyze();
 
         if (results.violations.length) {
-            report(results);
+            report(results, except);
         }
 
         assert.is(results.violations.length, 0);

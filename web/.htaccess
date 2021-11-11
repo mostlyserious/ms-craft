@@ -9,7 +9,7 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_URI} !^/(favicon\.ico|apple-touch-icon.*\.png)$ [NC]
 RewriteRule (.+) index.php?p=$1 [QSA,L]
 
-<filesMatch ".(css|js|svg|jpg|jpeg|png|gif|ico)$">
+<filesMatch ".(css|js|svg|jpg|jpeg|png|gif|ico|woff2?|mp4|m4v)$">
     Header set Cache-Control "max-age=31536000, public"
 </filesMatch>
 

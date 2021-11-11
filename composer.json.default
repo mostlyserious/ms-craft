@@ -14,8 +14,7 @@
         "vlucas/phpdotenv": "^2.4.0",
         "superbig/craft3-imgix": "2.0.5",
         "verbb/super-table": "2.6.5",
-        "percipioglobal/craft-colour-swatches": "1.4.1.1",
-        "mikestecker/craft-videoembedder": "1.1.4"
+        "percipioglobal/craft-colour-swatches": "1.4.1.1"
     },
     "autoload": {
         "psr-4": {
@@ -24,10 +23,7 @@
     },
     "config": {
         "sort-packages": true,
-        "optimize-autoloader": true,
-        "platform": {
-            "php": "7.2"
-        }
+        "optimize-autoloader": true
     },
     "scripts": {
         "post-create-project-cmd": [
