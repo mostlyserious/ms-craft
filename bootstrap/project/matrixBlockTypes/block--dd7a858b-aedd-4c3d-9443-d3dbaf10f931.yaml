@@ -34,39 +34,6 @@ fieldLayouts:
         name: Content
         sortOrder: 1
 fields:
-  45e98e00-01d3-4272-aa08-0b1227d51b81:
-    contentColumnType: string
-    fieldGroup: null
-    handle: backgroundImage
-    instructions: ''
-    name: 'Background Image'
-    searchable: false
-    settings:
-      allowSelfRelations: false
-      allowUploads: true
-      allowedKinds:
-        - image
-      defaultUploadLocationSource: 'volume:c7803b14-f9ca-4ea2-8adb-77d4730289de'
-      defaultUploadLocationSubpath: ''
-      limit: '1'
-      localizeRelations: false
-      previewMode: full
-      restrictFiles: '1'
-      selectionLabel: 'Select Background Image'
-      showSiteMenu: true
-      showUnpermittedFiles: false
-      showUnpermittedVolumes: false
-      singleUploadLocationSource: 'volume:c7803b14-f9ca-4ea2-8adb-77d4730289de'
-      singleUploadLocationSubpath: ''
-      source: null
-      sources: '*'
-      targetSiteId: null
-      useSingleFolder: false
-      validateRelatedElements: false
-      viewMode: large
-    translationKeyFormat: null
-    translationMethod: site
-    type: craft\fields\Assets
   8c2efa0e-94d5-4d7d-86fc-b0af9e8d6f2c:
     contentColumnType: text
     fieldGroup: null
@@ -95,6 +62,39 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\redactor\Field
+  45e98e00-01d3-4272-aa08-0b1227d51b81:
+    contentColumnType: string
+    fieldGroup: null
+    handle: backgroundImage
+    instructions: ''
+    name: 'Background Image'
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      allowUploads: true
+      allowedKinds:
+        - image
+      defaultUploadLocationSource: 'volume:c7803b14-f9ca-4ea2-8adb-77d4730289de' # Public
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: false
+      previewMode: full
+      restrictFiles: '1'
+      selectionLabel: 'Select Background Image'
+      showSiteMenu: true
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      singleUploadLocationSource: 'volume:c7803b14-f9ca-4ea2-8adb-77d4730289de' # Public
+      singleUploadLocationSubpath: ''
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: false
+      validateRelatedElements: false
+      viewMode: large
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
   f93ba9ca-aed6-465b-871c-a518711b649c:
     contentColumnType: string
     fieldGroup: null

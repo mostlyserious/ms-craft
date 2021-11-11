@@ -1,8 +1,15 @@
-dateModified: 1609867976
+dateModified: 1636654113
 email:
   fromEmail: cornelius@mostlyserious.io
   fromName: 'MS Craft'
   transportType: craft\mail\transportadapters\Sendmail
+meta:
+  __names__:
+    5be54c1c-ac69-43da-bb71-a1a6d019ce48: Defaults # Defaults
+    093b3471-f8ec-409f-92ce-54c068bbcbb2: Footer # Footer
+    093484b2-ab15-45dc-bddf-d693ba866b3d: Code # Code
+    50013135-72e9-4dd1-965e-424db1bb07b8: 'Main Menu' # Main Menu
+    c7803b14-f9ca-4ea2-8adb-77d4730289de: Public # Public
 plugins:
   aws-s3:
     edition: standard
@@ -11,7 +18,7 @@ plugins:
   colour-swatches:
     edition: standard
     enabled: true
-    schemaVersion: 1.4.1.1
+    schemaVersion: 1.4.2
   copy:
     edition: standard
     enabled: true
@@ -19,6 +26,7 @@ plugins:
   icon-picker:
     edition: standard
     enabled: true
+    licenseKey: PA7PZAR212KD4XNVFZQ58D9G
     schemaVersion: 1.0.1
   imgix:
     edition: standard
@@ -27,7 +35,8 @@ plugins:
   neo:
     edition: standard
     enabled: true
-    schemaVersion: 2.8.16
+    licenseKey: 2ORV5R1GMBTJ5LHGWY9ISYTT
+    schemaVersion: 2.11.6
   redactor:
     edition: standard
     enabled: true
@@ -39,7 +48,8 @@ plugins:
   seomatic:
     edition: standard
     enabled: true
-    schemaVersion: 3.0.9
+    licenseKey: L1S9YD0Z870ZPK9DYK82N25H
+    schemaVersion: 3.0.11
   smith:
     edition: standard
     enabled: true
@@ -68,7 +78,7 @@ system:
   edition: pro
   live: true
   name: 'MS Craft'
-  schemaVersion: 3.5.13
+  schemaVersion: 3.7.8
   timeZone: America/Los_Angeles
 users:
   allowPublicRegistration: false

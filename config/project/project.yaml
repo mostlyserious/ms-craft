@@ -1,13 +1,20 @@
-dateModified: 1613691097
+dateModified: 1636654500
 email:
   fromEmail: cornelius@mostlyserious.io
   fromName: 'MS Craft'
   transportType: craft\mail\transportadapters\Sendmail
+meta:
+  __names__:
+    3dc3f5a1-bcf9-4805-9a54-f5dda1ad45a9: 'MS Craft' # MS Craft
+    59ef51ff-1227-47c4-958b-a1605a3586d0: 'MS Craft' # MS Craft
+    1721cab1-b289-4a13-9143-1a55e53f453d: 'MS Craft' # MS Craft
+    71978aea-4e41-4d2e-ab1b-bd6d73a8d381: Common # Common
+    76330cb9-2bbd-4af8-808a-e9ce810f5f25: 'MS Craft' # MS Craft
 system:
   edition: solo
   live: true
   name: 'MS Craft'
-  schemaVersion: 3.5.13
+  schemaVersion: 3.7.8
   timeZone: America/Los_Angeles
 users:
   allowPublicRegistration: false
