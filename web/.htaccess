@@ -1,5 +1,11 @@
 RewriteEngine On
 
+# RewriteCond %{HTTP_HOST} ^ms-client-env.frb.io [NC]
+# RewriteRule ^(.*)$ https://example.com/$1 [L,R=301,NC]
+
+# RewriteCond %{HTTP_HOST} ^client-environment.mostlyserious.io [NC]
+# RewriteRule ^(.*)$ https://example.com/$1 [L,R=301,NC]
+
 # RewriteCond %{HTTP:X-Forwarded-Port} !=443
 # RewriteRule (.*) https://%{HTTP_HOST}/$1 [R=301,L]
 
