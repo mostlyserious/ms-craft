@@ -9,6 +9,7 @@
  */
 
 use craft\helpers\ConfigHelper;
+use craft\helpers\DateTimeHelper;
 
 return [
     '*' => [
@@ -23,7 +24,8 @@ return [
         'maxUploadFileSize' => ConfigHelper::sizeInBytes('128M'),
         'errorTemplatePrefix' => '_',
         'enableGql' => false,
-        'timezone' => 'America/Chicago'
+        'timezone' => 'America/Chicago',
+        'previewTokenDuration' => DateTimeHelper::SECONDS_MONTH
     ],
 
     'dev' => [
