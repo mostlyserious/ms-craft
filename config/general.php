@@ -24,7 +24,8 @@ return [
         'maxUploadFileSize' => ConfigHelper::sizeInBytes('128M'),
         'errorTemplatePrefix' => '_',
         'enableGql' => false,
-        'timezone' => 'America/Chicago',
+        'defaultSearchTermOptions' => array('subLeft' => true, 'subRight' => true),
+        'timezone' => 'America/Chicago'
         'previewTokenDuration' => DateTimeHelper::SECONDS_MONTH
     ],
 
