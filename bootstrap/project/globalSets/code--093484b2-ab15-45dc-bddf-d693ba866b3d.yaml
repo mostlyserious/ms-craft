@@ -4,7 +4,7 @@ fieldLayouts:
       -
         elements:
           -
-            fieldUid: 9a2e6d73-49cc-4aa9-89da-29c29cc4a000
+            fieldUid: 9a2e6d73-49cc-4aa9-89da-29c29cc4a000 # Code Blocks
             instructions: null
             label: null
             required: false
@@ -16,3 +16,4 @@ fieldLayouts:
         sortOrder: 1
 handle: code
 name: Code
+sortOrder: 1

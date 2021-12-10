@@ -9,6 +9,7 @@
  */
 
 use craft\helpers\ConfigHelper;
+use craft\helpers\DateTimeHelper;
 
 return [
     '*' => [
@@ -25,6 +26,7 @@ return [
         'enableGql' => false,
         'defaultSearchTermOptions' => array('subLeft' => true, 'subRight' => true),
         'timezone' => 'America/Chicago'
+        'previewTokenDuration' => DateTimeHelper::SECONDS_MONTH
     ],
 
     'dev' => [

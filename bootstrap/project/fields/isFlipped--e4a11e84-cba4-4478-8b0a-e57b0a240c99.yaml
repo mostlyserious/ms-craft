@@ -1,5 +1,5 @@
 contentColumnType: boolean
-fieldGroup: 38b79782-e200-468f-9633-323021ffa8ca
+fieldGroup: 38b79782-e200-468f-9633-323021ffa8ca # Common
 handle: isFlipped
 instructions: ''
 name: Flip

@@ -1,11 +1,11 @@
-field: be7373cf-5af8-4a9c-92bd-11ab39541795
+field: be7373cf-5af8-4a9c-92bd-11ab39541795 # Header
 fieldLayouts:
   4e3c7fbc-d76e-4650-8ad6-3a8d63fceddc:
     tabs:
       -
         elements:
           -
-            fieldUid: 8c2efa0e-94d5-4d7d-86fc-b0af9e8d6f2c
+            fieldUid: 8c2efa0e-94d5-4d7d-86fc-b0af9e8d6f2c # Heading
             instructions: null
             label: null
             required: false
@@ -14,7 +14,7 @@ fieldLayouts:
             warning: null
             width: 50
           -
-            fieldUid: 45e98e00-01d3-4272-aa08-0b1227d51b81
+            fieldUid: 45e98e00-01d3-4272-aa08-0b1227d51b81 # Background Image
             instructions: null
             label: null
             required: false
@@ -23,7 +23,7 @@ fieldLayouts:
             warning: null
             width: 50
           -
-            fieldUid: f93ba9ca-aed6-465b-871c-a518711b649c
+            fieldUid: f93ba9ca-aed6-465b-871c-a518711b649c # Buttons
             instructions: null
             label: null
             required: false
@@ -34,40 +34,7 @@ fieldLayouts:
         name: Content
         sortOrder: 1
 fields:
-  45e98e00-01d3-4272-aa08-0b1227d51b81:
-    contentColumnType: string
-    fieldGroup: null
-    handle: backgroundImage
-    instructions: ''
-    name: 'Background Image'
-    searchable: false
-    settings:
-      allowSelfRelations: false
-      allowUploads: true
-      allowedKinds:
-        - image
-      defaultUploadLocationSource: 'volume:c7803b14-f9ca-4ea2-8adb-77d4730289de'
-      defaultUploadLocationSubpath: ''
-      limit: '1'
-      localizeRelations: false
-      previewMode: full
-      restrictFiles: '1'
-      selectionLabel: 'Select Background Image'
-      showSiteMenu: true
-      showUnpermittedFiles: false
-      showUnpermittedVolumes: false
-      singleUploadLocationSource: 'volume:c7803b14-f9ca-4ea2-8adb-77d4730289de'
-      singleUploadLocationSubpath: ''
-      source: null
-      sources: '*'
-      targetSiteId: null
-      useSingleFolder: false
-      validateRelatedElements: false
-      viewMode: large
-    translationKeyFormat: null
-    translationMethod: site
-    type: craft\fields\Assets
-  8c2efa0e-94d5-4d7d-86fc-b0af9e8d6f2c:
+  8c2efa0e-94d5-4d7d-86fc-b0af9e8d6f2c: # Heading
     contentColumnType: text
     fieldGroup: null
     handle: heading
@@ -95,7 +62,40 @@ fields:
     translationKeyFormat: null
     translationMethod: none
     type: craft\redactor\Field
-  f93ba9ca-aed6-465b-871c-a518711b649c:
+  45e98e00-01d3-4272-aa08-0b1227d51b81: # Background Image
+    contentColumnType: string
+    fieldGroup: null
+    handle: backgroundImage
+    instructions: ''
+    name: 'Background Image'
+    searchable: false
+    settings:
+      allowSelfRelations: false
+      allowUploads: true
+      allowedKinds:
+        - image
+      defaultUploadLocationSource: 'volume:c7803b14-f9ca-4ea2-8adb-77d4730289de' # Public
+      defaultUploadLocationSubpath: ''
+      limit: '1'
+      localizeRelations: false
+      previewMode: full
+      restrictFiles: '1'
+      selectionLabel: 'Select Background Image'
+      showSiteMenu: true
+      showUnpermittedFiles: false
+      showUnpermittedVolumes: false
+      singleUploadLocationSource: 'volume:c7803b14-f9ca-4ea2-8adb-77d4730289de' # Public
+      singleUploadLocationSubpath: ''
+      source: null
+      sources: '*'
+      targetSiteId: null
+      useSingleFolder: false
+      validateRelatedElements: false
+      viewMode: large
+    translationKeyFormat: null
+    translationMethod: site
+    type: craft\fields\Assets
+  f93ba9ca-aed6-465b-871c-a518711b649c: # Buttons
     contentColumnType: string
     fieldGroup: null
     handle: buttons
@@ -106,7 +106,7 @@ fields:
       columns:
         __assoc__:
           -
-            - 7e56e437-1c93-46fe-8cdd-77c67ee0edf1
+            - 7e56e437-1c93-46fe-8cdd-77c67ee0edf1 # Details
             -
               __assoc__:
                 -

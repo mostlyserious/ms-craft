@@ -4,7 +4,7 @@ fieldLayouts:
       -
         elements:
           -
-            fieldUid: 301bc2d6-cfb4-4804-955b-40eb41aee9fb
+            fieldUid: 301bc2d6-cfb4-4804-955b-40eb41aee9fb # Privacy Policy
             instructions: null
             label: null
             required: false
@@ -13,7 +13,7 @@ fieldLayouts:
             warning: null
             width: 50
           -
-            fieldUid: 0ef1ad7d-525e-46a5-bff9-8510cc570cfc
+            fieldUid: 0ef1ad7d-525e-46a5-bff9-8510cc570cfc # Terms of Use
             instructions: null
             label: null
             required: false
@@ -25,3 +25,4 @@ fieldLayouts:
         sortOrder: 1
 handle: footer
 name: Footer
+sortOrder: 3

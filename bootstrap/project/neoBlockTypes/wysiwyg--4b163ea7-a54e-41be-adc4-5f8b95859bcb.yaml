@@ -1,12 +1,12 @@
-childBlocks: ''
-field: 995cc5a8-988f-47f0-ac78-76d6b68f6ac6
+childBlocks: null
+field: 995cc5a8-988f-47f0-ac78-76d6b68f6ac6 # Blocks
 fieldLayouts:
   9d0b6e37-4410-437a-bb73-508deb4894b0:
     tabs:
       -
         elements:
           -
-            fieldUid: 88e11325-3ef0-4ce5-ab38-637b810d3a04
+            fieldUid: 88e11325-3ef0-4ce5-ab38-637b810d3a04 # WYSIWYG
             instructions: null
             label: null
             required: false
@@ -15,7 +15,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: 68fdf34e-a8b6-47ae-b3b7-4bc8fb135e54
+            fieldUid: 68fdf34e-a8b6-47ae-b3b7-4bc8fb135e54 # Background
             instructions: null
             label: null
             required: false

@@ -1,5 +1,6 @@
+columnSuffix: null
 contentColumnType: text
-fieldGroup: 38b79782-e200-468f-9633-323021ffa8ca
+fieldGroup: 38b79782-e200-468f-9633-323021ffa8ca # Common
 handle: button
 instructions: ''
 name: Button
@@ -11,7 +12,7 @@ settings:
   autoNoReferrer: '1'
   defaultLinkName: entry
   defaultText: ''
-  enableAriaLabel: ''
+  enableAriaLabel: '1'
   enableTitle: ''
   typeSettings:
     __assoc__:
@@ -44,7 +45,7 @@ settings:
               - '*'
             -
               - allowCustomQuery
-              - ''
+              - '1'
       -
         - site
         -

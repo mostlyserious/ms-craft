@@ -1,5 +1,6 @@
+columnSuffix: null
 contentColumnType: string
-fieldGroup: 38b79782-e200-468f-9633-323021ffa8ca
+fieldGroup: 38b79782-e200-468f-9633-323021ffa8ca # Common
 handle: buttons
 instructions: ''
 name: Buttons
@@ -8,6 +9,7 @@ settings:
   contentTable: '{{%matrixcontent_buttons}}'
   maxBlocks: '2'
   minBlocks: ''
+  propagationKeyFormat: null
   propagationMethod: all
 translationKeyFormat: null
 translationMethod: site

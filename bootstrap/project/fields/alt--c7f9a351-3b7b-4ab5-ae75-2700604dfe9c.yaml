@@ -1,0 +1,19 @@
+columnSuffix: msivvqkb
+contentColumnType: text
+fieldGroup: 38b79782-e200-468f-9633-323021ffa8ca # Common
+handle: alt
+instructions: ''
+name: Alt
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: ''
+  columnType: null
+  initialRows: '4'
+  multiline: ''
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

@@ -3,7 +3,7 @@ handle: cmsGuide
 name: 'CMS Guide'
 propagationMethod: all
 siteSettings:
-  1721cab1-b289-4a13-9143-1a55e53f453d:
+  1721cab1-b289-4a13-9143-1a55e53f453d: # $PRIMARY_SITE_NAME
     enabledByDefault: true
     hasUrls: true
     template: pages/_cmsGuide
