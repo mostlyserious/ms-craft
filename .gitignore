@@ -5,7 +5,8 @@
 /vendor
 /.DS_Store
 /node_modules
-/web/cpresources
+/web/cpresources/*
+!/web/cpresources/.gitkeep
 /web/assets
 /storage/*
 !/storage/rebrand
