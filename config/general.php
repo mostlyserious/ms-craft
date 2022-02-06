@@ -32,8 +32,7 @@ return [
         'devMode' => true,
         'disallowRobots' => true,
         'enableTemplateCaching' => false,
-        'backupOnUpdate' => false,
-        'userSessionDuration' => false
+        'testToEmailAddress' => ['devops@mostlyserious.io' => 'Mostly Serious Engineers']
     ],
 
     'staging' => [

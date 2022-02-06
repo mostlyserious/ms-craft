@@ -1,4 +1,4 @@
-{% set codeBlocks = (globalCode ?? null) and (globalCode.codeBlocks ?? null) ? globalCode.codeBlocks.all : [] %}
+{% set codeBlocks = (code ?? null) and (code.codeBlocks ?? null) ? code.codeBlocks.all : [] %}
 <!DOCTYPE html>
 <html style="max-height: var(--viewport-height);" lang="en">
 <head>
@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <link rel="preconnect" href="https://assets.naacpspringfieldmo.org" >
-    <link rel="preconnect" href="https://use.typekit.net" >
-    <link rel="preconnect" href="https://p.typekit.net" >
+    {# <link rel="preconnect" href="https://source.imgix.net" > #}
+    {# <link rel="preconnect" href="https://use.typekit.net" > #}
+    {# <link rel="preconnect" href="https://p.typekit.net" > #}
 
     {% block seo %}
         {{ external('@webroot/static/favicon/markup.html')|striptags('<link><meta>')|raw }}
@@ -19,7 +19,7 @@
     {% set agent = craft.app.request.headers.get('User-Agent') %}
     {% set isCrawler = agent matches regex %}
 
-    {{ (codeBlocks|find('position', 'headTop').code ?? '')|raw }}
+    {{ codeBlocks|filter(c => c.position == 'headTop')|map(c => c.code)|join('\n\n')|raw }}
 
     {% if craft.app.config.general.disallowRobots %}
         <meta name="robots" content="noindex">
@@ -45,19 +45,20 @@
             global.$app.isAdmin = {{ currentUser and currentUser.admin ? 'true' : 'false' }};
             global.$app.csrfTokenName = '{{ craft.app.config.general.csrfTokenName|raw }}';
             global.$app.csrfTokenValue = '{{ craft.app.request.csrfToken|raw }}';
+            global.$app.cloudfrontUrl = '{{ getenv("AWS_CLOUDFRONT_URL") }}';
+            global.$app.imgixUrl = '{{ getenv("IMGIX_URL") }}';
             global.$app.devMode = {{ craft.app.config.general.devMode ? 'true' : 'false' }}
         })(window);
     </script>
 
-    <link rel="stylesheet" href="https://use.typekit.net/rqc4ywg.css">
+    {# <link rel="stylesheet" href="https://use.typekit.net/rqc4ywg.css"> #}
+
     {{ entry('app') }}
 
-    {{ (codeBlocks|find('position', 'headBottom').code ?? '')|raw }}
+    {{ codeBlocks|filter(c => c.position == 'headBottom')|map(c => c.code)|join('\n\n')|raw }}
 </head>
 <body id="app" class="transition" style="padding-bottom: var(--appbar-height);">
-    {# delay-100 delay-200 delay-300 delay-400 delay-500 delay-600 delay-700 delay-800 delay-900 delay-1000 #}
-
-    {{ (codeBlocks|find('position', 'bodyTop').code ?? '')|raw }}
+    {{ codeBlocks|filter(c => c.position == 'bodyTop')|map(c => c.code)|join('\n\n')|raw }}
 
     <a href="#maincontent" id="skip-to-content">Skip to Main Content</a>
 
@@ -80,6 +81,6 @@
         {% endblock %}
     </footer>
 
-    {{ (codeBlocks|find('position', 'bodyBottom').code ?? '')|raw }}
+    {{ codeBlocks|filter(c => c.position == 'bodyBottom')|map(c => c.code)|join('\n\n')|raw }}
 </body>
 </html>
