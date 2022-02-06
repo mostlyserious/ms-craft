@@ -52,7 +52,6 @@
     </script>
 
     {# <link rel="stylesheet" href="https://use.typekit.net/rqc4ywg.css"> #}
-
     {{ entry('app') }}
 
     {{ codeBlocks|filter(c => c.position == 'headBottom')|map(c => c.code)|join('\n\n')|raw }}
