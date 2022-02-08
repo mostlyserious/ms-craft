@@ -25,7 +25,7 @@ return [
         'errorTemplatePrefix' => '_',
         'enableGql' => false,
         'defaultSearchTermOptions' => array('subLeft' => true, 'subRight' => true),
-        'timezone' => 'America/Chicago'
+        'timezone' => 'America/Chicago',
         'previewTokenDuration' => DateTimeHelper::SECONDS_MONTH
     ],
 
