@@ -1,0 +1,88 @@
+{% macro image(asset, args = {}, attrs = {}) %}
+    {% set width = attrs.width|default('') %}
+    {% set height = attrs.height|default('') %}
+
+    {% set width = width ? width : args.width|default('') %}
+    {% set height = height ? height : args.height|default('') %}
+
+    {% set width = width|replace(',', '') %}
+    {% set height = height|replace(',', '') %}
+
+    {% set attrs = attrs|merge({
+        width: null,
+        height: null
+    })|filter(v => v) %}
+
+    {% if asset.id|default(null) %}
+        {% set args = args|merge({
+            'crop': asset.hasFocalPoint ? 'focalpoint' : (args.crop|default(null) ? args.crop : 'faces,center'),
+        }) %}
+
+        {% set args = args|filter(v => v) %}
+        {% set image = craft.imgix.transformImage(asset, args) %}
+        {% set image2x = craft.imgix.transformImage(asset, args|merge({
+            width: args.width is defined ? args.width * 2 : null,
+            height: args.height is defined ? args.height * 2 : null
+        })) %}
+
+        {% if not width and height %}
+            {% set width = (min(asset.height, height) * (asset.width / asset.height))|number_format %}
+        {% endif %}
+
+        {% if not height and width %}
+            {% set height = (min(asset.width, width) * (asset.height / asset.width))|number_format %}
+        {% endif %}
+
+        {% set width = width ? width : asset.width %}
+        {% set height = height ? height : asset.height %}
+
+        {{ tag('img', attrs|merge({
+            width: width|replace(',', ''),
+            height: height|replace(',', ''),
+            src: 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==',
+            srcset: [
+                "#{asset.extension == 'gif' ? image.url|split('?')|first : image.url}",
+                "#{asset.extension == 'gif' ? image.url|split('?')|first : image2x.url} 2x"
+            ]|join(', '),
+            alt: asset.alt|default(craft.app.config.general.devMode ? 'Unknown image content' : ''),
+            loading: 'lazy',
+        })) }}
+    {% elseif asset %}
+        {{ tag('img', attrs|merge({
+            width: width|replace(',', ''),
+            height: height|replace(',', ''),
+            src: "https://picsum.photos/seed/#{asset}/#{width}/#{height ?? width}",
+            alt: 'Placeholder Image',
+            loading: 'lazy',
+        })) }}
+    {% endif %}
+{% endmacro %}
+
+{% macro src(asset, args = {}) %}{% spaceless %}
+    {% set width = args.width|default('')|replace(',', '') %}
+    {% set height = args.height|default('')|replace(',', '') %}
+
+    {% if asset.id|default(null) %}
+        {% set args = args|merge({
+            'crop': asset.hasFocalPoint ? 'focalpoint' : (args.crop|default(null) ? args.crop : 'faces,center'),
+        }) %}
+
+        {% set args = args|filter(v => v) %}
+        {% set image = craft.imgix.transformImage(asset, args) %}
+
+        {% if not width and height %}
+            {% set width = (min(asset.height, height) * (asset.width / asset.height))|number_format %}
+        {% endif %}
+
+        {% if not height and width %}
+            {% set height = (min(asset.width, width) * (asset.height / asset.width))|number_format %}
+        {% endif %}
+
+        {% set width = width ? width : asset.width %}
+        {% set height = height ? height : asset.height %}
+
+        {{ "#{asset.extension == 'gif' ? image.url|split('?')|first : image.url}" }}
+    {% elseif asset %}
+        {{ "https://picsum.photos/seed/#{asset}/#{width}/#{height ?? width}" }}
+    {% endif %}
+{% endspaceless %}{% endmacro %}

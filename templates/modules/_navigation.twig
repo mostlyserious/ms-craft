@@ -1,10 +1,11 @@
 {% include 'modules/_mobileMenu' %}
 
 <div class="navbar bg-gray-800">
-    <div class="navbar-container bg-inherit">
+    <div class="navbar-container">
         <div id="navbar-inner" class="navbar-inner">
             <a class="navbar-logo" href="{{ siteUrl('/') }}" title="Home page">
-                <img width="160" src="{{ asset('img/logo.svg') }}" alt="{{ systemName }}">
+                {# <img width="160" src="{{ asset('img/logo.svg') }}" alt="{{ systemName }}"> #}
+                {{ systemName }}
             </a>
             <nav id="main-menu" class="navbar-nav">
                 {% for menuItem in mainMenu.menu.all %}
