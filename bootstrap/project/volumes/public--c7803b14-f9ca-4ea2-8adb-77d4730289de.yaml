@@ -27,7 +27,7 @@ fieldLayouts:
             warning: null
             width: 100
           -
-            fieldUid: c7f9a351-3b7b-4ab5-ae75-2700604dfe9c # Alt
+            fieldUid: c7f9a351-3b7b-4ab5-ae75-2700604dfe9c
             instructions: null
             label: null
             required: false

@@ -2,13 +2,13 @@
 
 return [
     'modules' => [
-        'app-module' => Modules\App::class,
+        'module' => Modules\App::class,
         'twighelpers' => [
             'class' => Modules\TwigHelpers\TwigHelpers::class
         ]
     ],
    'bootstrap' => [
-       'app-module',
+       'module',
        'twighelpers'
    ],
 ];

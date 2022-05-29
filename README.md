@@ -46,7 +46,7 @@ yarn build
 npm run build
 ```
 
-- Startup a php server by using Craft's `serve` command, or use a local `.test` domain with [Laravel Valet](https://laravel.com/docs/8.x/valet).
+- Startup a php server by using Craft's `serve` command, or use a local `.test` domain with [Laravel Valet](https://laravel.com/docs/9.x/valet).
 
 ```shell
 php craft serve

@@ -2,7 +2,7 @@
 
 {% block header %}
     {% include 'modules/_header' ignore missing with {
-        block: entry.header|first
+        block: entry.header.one
     } %}
 {% endblock %}
 

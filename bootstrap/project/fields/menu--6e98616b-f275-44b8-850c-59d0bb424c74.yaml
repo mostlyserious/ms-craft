@@ -1,3 +1,4 @@
+columnSuffix: null
 contentColumnType: string
 fieldGroup: ec7644f6-7285-429f-9185-28284f2532a4 # Global
 handle: menu
@@ -5,10 +6,12 @@ instructions: ''
 name: Menu
 searchable: false
 settings:
-  contentTable: '{{%matrixcontent_menu}}'
   maxBlocks: ''
+  maxLevels: ''
+  maxTopBlocks: ''
   minBlocks: ''
   propagationMethod: all
+  wasModified: true
 translationKeyFormat: null
 translationMethod: site
-type: craft\fields\Matrix
+type: benf\neo\Field

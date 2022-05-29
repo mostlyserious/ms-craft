@@ -1,0 +1,25 @@
+childBlocks: null
+field: 6e98616b-f275-44b8-850c-59d0bb424c74 # Menu
+fieldLayouts:
+  350b813a-b1e2-45df-98dc-ced00eb7e25c:
+    tabs:
+      -
+        elements:
+          -
+            fieldUid: 14bc7956-d13d-4317-8a7c-56b2bf6dca14 # Button
+            instructions: ''
+            label: __blank__
+            required: '1'
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+        name: Content
+        sortOrder: 1
+handle: menuItem
+maxBlocks: 0
+maxChildBlocks: 0
+maxSiblingBlocks: 0
+name: 'Menu Item'
+sortOrder: 1
+topLevel: true

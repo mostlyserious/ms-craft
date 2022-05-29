@@ -14,7 +14,7 @@ class App extends \yii\base\Module
 {
     public function init()
     {
-        Craft::setAlias('@Modules', __DIR__);
+        Craft::setAlias('@modules', __DIR__);
 
         if (Craft::$app->getRequest()->getIsConsoleRequest()) {
             $this->controllerNamespace = 'Modules\\Console\\Controllers';

@@ -3,7 +3,7 @@
 namespace Modules\TwigHelpers\TwigExtensions;
 
 use Craft;
-use Twig_SimpleFunction;
+use Twig\TwigFunction;
 use Twig\Extension\AbstractExtension;
 
 class BrightpackTwigExtensions extends AbstractExtension
@@ -22,13 +22,13 @@ class BrightpackTwigExtensions extends AbstractExtension
     public function getFunctions()
     {
         return [
-            new Twig_SimpleFunction('entry', [$this, 'entry'], [
+            new TwigFunction('entry', [$this, 'entry'], [
                 'is_safe' => ['html']
             ]),
-            new Twig_SimpleFunction('asset', [$this, 'asset'], [
+            new TwigFunction('asset', [$this, 'asset'], [
                 'is_safe' => ['html']
             ]),
-            new Twig_SimpleFunction('external', [$this, 'external'], [
+            new TwigFunction('external', [$this, 'external'], [
                 'is_safe' => ['html']
             ])
         ];

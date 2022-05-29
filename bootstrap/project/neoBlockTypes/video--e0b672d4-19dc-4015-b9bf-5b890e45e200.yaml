@@ -6,14 +6,14 @@ fieldLayouts:
       -
         elements:
           -
-            fieldUid: 59ee983a-f87a-4e40-8253-d0aad1fe6b72 # Embed
-            instructions: null
-            label: null
-            required: false
+            fieldUid: 12ccab30-5c28-433b-935f-ef54025155e4 # Featured Video
+            instructions: ''
+            label: ''
+            required: '1'
             tip: null
             type: craft\fieldlayoutelements\CustomField
             warning: null
-            width: 100
+            width: 50
           -
             fieldUid: 68fdf34e-a8b6-47ae-b3b7-4bc8fb135e54 # Background
             instructions: null
@@ -22,7 +22,7 @@ fieldLayouts:
             tip: null
             type: craft\fieldlayoutelements\CustomField
             warning: null
-            width: 100
+            width: 50
         name: Content
         sortOrder: 1
 handle: video

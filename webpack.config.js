@@ -18,18 +18,6 @@ module.exports = brightpack({ dest, publicPath, watch }, config => {
 
     });
 
-    brightpack.editLoader(config, 'file-loader', (use, rule) => {
-        if (`${rule.exclude}` === '/\\/(favicon|font)s?\\//') {
-            rule.exclude = /\/(favicon|font|icon)s?\//;
-        }
-    });
-
-    config.module.rules.push({
-        test: /\.svg$/,
-        include: /\/icons?\//,
-        type: 'asset/source'
-    });
-
     config.entry = {
         app: [
             path.resolve('src/js/main.js'),
@@ -47,10 +35,13 @@ module.exports = brightpack({ dest, publicPath, watch }, config => {
 
     config.cache = {
         type: 'filesystem',
-        name: global.inProduction ? 'prod' : 'dev',
         cacheDirectory: path.resolve(__dirname, '.cache/webpack'),
         buildDependencies: {
-            config: [ __filename ]
+            config: [
+                __filename,
+                path.resolve(__dirname, 'babel.config.js'),
+                path.resolve(__dirname, 'postcss.config.js')
+            ]
         }
     };
 

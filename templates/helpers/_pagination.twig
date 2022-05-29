@@ -12,7 +12,7 @@
             {% if (pagination.currentPage > 1) %}
                 <li class="pagination-item">
                     <a href="{{ entry.url }}" class="pagination-link" title="first">
-                        {{ svg(external('@webroot/icons/fontawesome/solid/arrow-left.svg'))|attr({
+                        {{ svg('@webroot/icons/fontawesome/solid/arrow-left.svg')|attr({
                             class: 'absolute transform inset-center w-6 h-6 fill-current'
                         }) }}
                     </a>
@@ -36,7 +36,7 @@
             {% if (pagination.currentPage < pagination.totalPages) %}
                 <li class="pagination-item">
                     <a href="{{ entry.url ~ '/page/' ~ pagination.totalPages }}" class="pagination-link" title="Last">
-                        {{ svg(external('@webroot/icons/fontawesome/solid/arrow-right.svg'))|attr({
+                        {{ svg('@webroot/icons/fontawesome/solid/arrow-right.svg')|attr({
                             class: 'absolute transform inset-center w-6 h-6 fill-current'
                         }) }}
                     </a>

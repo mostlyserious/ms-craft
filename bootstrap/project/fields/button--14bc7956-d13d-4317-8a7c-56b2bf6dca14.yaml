@@ -8,7 +8,13 @@ searchable: false
 settings:
   allowCustomText: '1'
   allowTarget: '1'
-  allowedLinkNames: '*'
+  allowedLinkNames:
+    1: asset
+    2: category
+    3: entry
+    7: email
+    8: tel
+    9: url
   autoNoReferrer: '1'
   defaultLinkName: entry
   defaultText: ''
@@ -35,7 +41,7 @@ settings:
               - '*'
             -
               - allowCustomQuery
-              - ''
+              - '1'
       -
         - entry
         -
@@ -62,7 +68,7 @@ settings:
               - '*'
             -
               - allowCustomQuery
-              - ''
+              - '1'
       -
         - custom
         -
@@ -99,7 +105,7 @@ settings:
           __assoc__:
             -
               - disableValidation
-              - ''
+              - '1'
             -
               - allowAliases
               - ''

@@ -8,9 +8,9 @@
             </a>
             <nav id="main-menu" class="navbar-nav">
                 {% for menuItem in mainMenu.menu.all %}
-                    {% if not menuItem.details.isEmpty %}
+                    {% if not menuItem.button.isEmpty %}
                         <span class="navbar-item">
-                            {{ menuItem.details.link({
+                            {{ menuItem.button.link({
                                 class: 'navbar-link'
                             }) }}
                         </span>

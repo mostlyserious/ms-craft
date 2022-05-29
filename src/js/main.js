@@ -7,7 +7,6 @@
 })(() => {
     const modules = {
         '.intro': () => import('./modules/intro' /* webpackChunkName: 'intro' */),
-        '[data-src], [data-srcset], [data-background]': () => import('./modules/lazy-load' /* webpackChunkName: 'lazy-load' */),
         '[data-property]': () => import('./modules/property' /* webpackChunkName: 'property' */),
         '[data-toggle]': () => import('./modules/toggle' /* webpackChunkName: 'toggle' */),
         'x-svelte': () => import('./svelte' /* webpackChunkName: 'svelte' */)
@@ -21,6 +20,16 @@
                 request().then(({ default: module }) => module(els));
             }
         })(document.querySelectorAll(selector));
+    });
+
+    addEventListener('keydown', event => {
+        if (event.code === 'Tab') {
+            document.body.classList.add('is-tabbing');
+        }
+    });
+
+    addEventListener('mousedown', () => {
+        document.body.classList.remove('is-tabbing');
     });
 
     Array.prototype.forEach.call(

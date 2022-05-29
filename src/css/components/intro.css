@@ -1,26 +1,26 @@
-.intro {
-    @apply opacity-0;
-}
-
-.intro-active {
-    @apply opacity-100 ease-out;
-    transition-duration: 800ms;
-    transition-property: transform, clip-path, opacity;
-
-    &[class*="intro-slide"] {
-        transition-duration: 800ms, 500ms, 400ms;
-        transform: translate(0) !important;
+@layer utilities {
+    .intro {
+        @apply opacity-0;
     }
 
-    &[class*="intro-wipe"]{
-        transition-duration: 800ms, 500ms, 400ms;
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%) !important;
-        /* top-left, top-right, bottom-right, bottom-left */
-    }
-}
+    .intro-active {
+        @apply opacity-100 ease-out;
+        transition-duration: 800ms;
+        transition-property: transform, clip-path, opacity;
 
-@responsive {
-    @screen prefers-motion {
+        &[class*="intro-slide"] {
+            transition-duration: 800ms, 500ms, 400ms;
+            transform: translate(0) !important;
+        }
+
+        &[class*="intro-wipe"]{
+            transition-duration: 800ms, 500ms, 400ms;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%) !important;
+            /* top-left, top-right, bottom-right, bottom-left */
+        }
+    }
+
+    @screen motion-safe {
         .intro-slide-left {
             transform: translateX(calc(5% + 25px));
         }

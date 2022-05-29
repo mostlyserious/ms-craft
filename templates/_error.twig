@@ -1,7 +1,10 @@
-{% extends 'layouts/_main' %}
-
 {% set entry = craft.entries
     .slug(craft.app.response.statusCode)
-    .section('page')
-    .status(null)
+    .section('error')
     .one %}
+
+{% if entry %}
+    {% include 'pages/_index' %}
+{% else %}
+    <p>{{ craft.app.response.statusCode }}</p>
+{% endif %}

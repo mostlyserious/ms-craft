@@ -1,5 +1,6 @@
 const plugins = {
     'postcss-import': {},
+    'tailwindcss/nesting': {},
     'tailwindcss': {},
     'postcss-functions': {
         functions: {
@@ -19,12 +20,12 @@ const plugins = {
         }
     },
     'postcss-preset-env': {
-        autoprefixer: global.inProduction ? {
+        autoprefixer: {
             flexbox: 'no-2009',
-            grid: 'no-autoplace'
-        } : false,
+            grid: false
+        },
         features: {
-            'color-mod-function': true,
+            'nesting-rules': false,
             'prefers-color-scheme-query': false
         },
         preserve: false,

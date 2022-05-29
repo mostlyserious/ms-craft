@@ -1,7 +1,7 @@
-dateModified: 1636655849
+dateModified: 1653827913
 email:
   fromEmail: $SYSTEM_EMAIL_ADDRESS
-  fromName: $PRIMARY_SITE_NAME
+  fromName: $SYSTEM_EMAIL_ADDRESS
   replyToEmail: null
   template: ''
   transportSettings:
@@ -12,22 +12,26 @@ meta:
     0ef1ad7d-525e-46a5-bff9-8510cc570cfc: 'Terms of Use' # Terms of Use
     1cf7995f-6f4d-4f3d-ae1b-725d7d2dacd0: 'Menu Item' # Menu Item
     1f4732b0-84b4-4302-9a0f-687b30fdd6a0: Pages # Pages
+    2a6ba873-385a-4eb8-ae76-ed9b27ccd189: 'Menu Item' # Menu Item
     3dc3f5a1-bcf9-4805-9a54-f5dda1ad45a9: $PRIMARY_SITE_NAME # $PRIMARY_SITE_NAME
     4b163ea7-a54e-41be-adc4-5f8b95859bcb: WYSIWYG # WYSIWYG
     04d5a0fa-7712-4c14-80b1-499740922557: 'CMS Guide' # CMS Guide
     5be54c1c-ac69-43da-bb71-a1a6d019ce48: Defaults # Defaults
+    6c184387-ba60-4935-8061-dd95b2f72809: SEO # SEO
     6e98616b-f275-44b8-850c-59d0bb424c74: Menu # Menu
     7d84fe28-4297-4ece-b556-a79a7e1056e9: 'Image & Content' # Image & Content
+    7e5aa3b3-4acb-4a94-8428-0a84ac9c32c7: 'Edit Header' # Edit Header
     7e56e437-1c93-46fe-8cdd-77c67ee0edf1: Details # Details
     8c2efa0e-94d5-4d7d-86fc-b0af9e8d6f2c: Heading # Heading
     9a2e6d73-49cc-4aa9-89da-29c29cc4a000: 'Code Blocks' # Code Blocks
+    9d256421-0632-483e-ab16-fe4449e04977: Home # Home
     9fad34b4-ec00-4f1c-851e-7f96f31d86cf: Position # Position
+    12ccab30-5c28-433b-935f-ef54025155e4: 'Featured Video' # Featured Video
     14bc7956-d13d-4317-8a7c-56b2bf6dca14: Button # Button
     17eb1569-4de9-43de-9fc2-ae39a4845d60: 'Background Image' # Background Image
     38b79782-e200-468f-9633-323021ffa8ca: Common # Common
     39e1484c-3c1a-4d64-a2e0-ff13cccb2890: 'Public Schema' # Public Schema
     45e98e00-01d3-4272-aa08-0b1227d51b81: 'Background Image' # Background Image
-    59ee983a-f87a-4e40-8253-d0aad1fe6b72: Embed # Embed
     68fdf34e-a8b6-47ae-b3b7-4bc8fb135e54: Background # Background
     78d3d90c-61e4-4555-b7a4-556ac5117ad2: Details # Details
     88e11325-3ef0-4ce5-ab38-637b810d3a04: WYSIWYG # WYSIWYG
@@ -36,8 +40,8 @@ meta:
     479b628a-5c5c-4ae8-a858-b5cd1b500c20: Button # Button
     995cc5a8-988f-47f0-ac78-76d6b68f6ac6: Blocks # Blocks
     1721cab1-b289-4a13-9143-1a55e53f453d: $PRIMARY_SITE_NAME # $PRIMARY_SITE_NAME
-    2422fbb8-cff2-4371-912c-b4d1db9556ef: 'CMS Guide' # CMS Guide
-    06849b6a-9229-4531-9e1f-7b2ccef2e40c: Pages # Pages
+    2422fbb8-cff2-4371-912c-b4d1db9556ef: Default # Default
+    06849b6a-9229-4531-9e1f-7b2ccef2e40c: Default # Default
     093484b2-ab15-45dc-bddf-d693ba866b3d: Code # Code
     406273f7-b865-4c09-869c-5dd130b80c62: 'Featured Image' # Featured Image
     4346141d-e3ba-4871-8847-46ab08819877: Excerpt # Excerpt
@@ -46,13 +50,14 @@ meta:
     aca3b467-9b53-4288-91a9-eda4802a7623: Heading # Heading
     bdaf0b53-486b-46c0-9216-faf3ecbbd941: Details # Details
     be7373cf-5af8-4a9c-92bd-11ab39541795: Header # Header
-    c7f9a351-3b7b-4ab5-ae75-2700604dfe9c: Alt # Alt
+    c5cdbc1b-1b04-45b2-a9d4-e9a17059a72d: Home # Home
     c7803b14-f9ca-4ea2-8adb-77d4730289de: Public # Public
+    d630234c-e5b7-4e5c-a00b-62c58a09595c: Errors # Errors
     dd7a858b-aedd-4c3d-9443-d3dbaf10f931: 'Edit Header' # Edit Header
     e0b672d4-19dc-4015-b9bf-5b890e45e200: Video # Video
     e4a11e84-cba4-4478-8b0a-e57b0a240c99: Flip # Flip
     e44aa8dd-32cb-4db9-89d2-544162e2627f: Block # Block
-    e1803e40-35bb-4351-b4e4-454dab916678: Buttons # Buttons
+    e131b9cd-1baa-4334-bf9b-5ef313dc8393: Default # Default
     ec7644f6-7285-429f-9185-28284f2532a4: Global # Global
     f0762453-42d0-461a-8def-75f38a087a6a: Header # Header
     f9c5d4a4-e78f-476b-bdb0-b2bdb6204568: Code # Code
@@ -78,7 +83,7 @@ plugins:
   icon-picker:
     edition: standard
     enabled: true
-    licenseKey: PA7PZAR212KD4XNVFZQ58D9G
+    licenseKey: ''
     schemaVersion: 1.0.1
   imgix:
     edition: standard
@@ -87,8 +92,8 @@ plugins:
   neo:
     edition: standard
     enabled: true
-    licenseKey: 2ORV5R1GMBTJ5LHGWY9ISYTT
-    schemaVersion: 2.11.6
+    licenseKey: ''
+    schemaVersion: 2.13.0
   redactor:
     edition: standard
     enabled: true
@@ -100,16 +105,12 @@ plugins:
   seomatic:
     edition: standard
     enabled: true
-    licenseKey: L1S9YD0Z870ZPK9DYK82N25H
+    licenseKey: ''
     schemaVersion: 3.0.11
   smith:
     edition: standard
     enabled: true
     schemaVersion: 1.0.0
-  super-table:
-    edition: standard
-    enabled: true
-    schemaVersion: 2.2.1
   typedlinkfield:
     edition: standard
     enabled: true
@@ -119,15 +120,16 @@ plugins:
     enabled: true
     schemaVersion: 2.0.1
     settings:
+      enabledSideBar: true
       pluginNameOverride: 'CMS Guide'
-      section: '2'
-      templateOverride: ''
+      section: '1'
+      templateOverride: _cmsGuide.twig
 system:
   edition: pro
   live: true
   name: $PRIMARY_SITE_NAME
   retryDuration: null
-  schemaVersion: 3.7.8
+  schemaVersion: 3.7.33
   timeZone: America/Los_Angeles
 users:
   allowPublicRegistration: false

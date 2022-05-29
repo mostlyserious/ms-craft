@@ -1,1 +1,0 @@
-(self.webpackChunk=self.webpackChunk||[]).push([[801],{921:(t,e,n)=>{"use strict";n.r(e),n.d(e,{default:()=>s});const s=t=>{const e={};t.forEach((t=>{const n=t.getAttribute("component"),s=e[n];s&&s().then((({default:e})=>{const n=t.innerHTML;t.innerHTML="",new e({target:t,props:{slot:n,...t.dataset}})}))}))}}}]);

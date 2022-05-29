@@ -2,17 +2,11 @@
     ? block.heading
     : entry.title %}
 
-{% set buttons = block
-    ? block.buttons|filter(b => (not b.details.isEmpty))
-    : [] %}
+{% set backgroundImage = block.backgroundImage.one|default(null) %}
 
-{% set backgroundImage = block and block.backgroundImage.one
-    ? block.backgroundImage.one
-    : defaults.backgroundImage.one %}
-
-{% set height = entry.slug == '__home__'
+{% set height = entry.section.handle == 'home'
     ? 'min-h-vh-80'
-    : 'min-h-vh-70' %}
+    : 'min-h-vh-60' %}
 
 <section class="relative" role="banner">
     <div class="relative flex flex-col bg-blue-700 bg-center bg-cover {{ height }}"
@@ -21,21 +15,15 @@
         {% endif %}>
         <div class="relative py-24 my-auto">
             <div class="container relative pt-12 text-white">
-                <div class="max-w-4xl">
+                <div class="max-w-4xl text-center">
                     <h1 class="inline-block text-6xl md:text-7xl font-bold uppercase">
                         {{ title|striptags('<strong><span><br>')|trim|raw }}
                     </h1>
-                    {% if buttons|length %}
+                    {% if not block.button.isEmpty|default(true) %}
                         <div class="mt-6 md:mt-10">
-                            <div class="flex flex-wrap -m-3">
-                                {% for button in buttons %}
-                                    <span class="p-3">
-                                        <a class="button button-white button-outline" {{ button.details.linkAttributes }}>
-                                            {{ button.details.text }}
-                                        </a>
-                                    </span>
-                                {% endfor %}
-                            </div>
+                            {{ block.button.link({
+                                class: 'button button-white'
+                            }) }}
                         </div>
                     {% endif %}
                 </div>

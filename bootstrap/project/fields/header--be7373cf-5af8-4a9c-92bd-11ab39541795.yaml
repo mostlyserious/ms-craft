@@ -1,3 +1,4 @@
+columnSuffix: null
 contentColumnType: string
 fieldGroup: abf8e78e-1b0c-422c-bbff-9c89770e9906 # Complex
 handle: header
@@ -5,10 +6,13 @@ instructions: ''
 name: Header
 searchable: true
 settings:
-  contentTable: '{{%matrixcontent_header}}'
-  maxBlocks: '1'
+  maxBlocks: ''
+  maxLevels: ''
+  maxTopBlocks: ''
   minBlocks: ''
+  propagationKeyFormat: null
   propagationMethod: all
+  wasModified: false
 translationKeyFormat: null
 translationMethod: site
-type: craft\fields\Matrix
+type: benf\neo\Field

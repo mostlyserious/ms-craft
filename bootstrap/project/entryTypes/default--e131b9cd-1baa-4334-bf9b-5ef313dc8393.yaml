@@ -1,5 +1,5 @@
 fieldLayouts:
-  cb920b2f-4f9a-40f9-9d8e-05d7a1b0d296:
+  96da12be-7bf3-4a48-bb9d-eea396438f5b:
     tabs:
       -
         elements:
@@ -26,12 +26,30 @@ fieldLayouts:
             type: craft\fieldlayoutelements\EntryTitleField
             warning: null
             width: 100
+          -
+            fieldUid: be7373cf-5af8-4a9c-92bd-11ab39541795 # Header
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
+          -
+            fieldUid: 995cc5a8-988f-47f0-ac78-76d6b68f6ac6 # Blocks
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            warning: null
+            width: 100
         name: Content
         sortOrder: 1
-handle: cmsGuide
+handle: default
 hasTitleField: true
-name: 'CMS Guide'
-section: 04d5a0fa-7712-4c14-80b1-499740922557 # CMS Guide
+name: Default
+section: d630234c-e5b7-4e5c-a00b-62c58a09595c # Errors
 sortOrder: 1
 titleFormat: null
 titleTranslationKeyFormat: null

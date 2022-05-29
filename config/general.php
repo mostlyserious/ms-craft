@@ -26,7 +26,10 @@ return [
         'enableGql' => false,
         'defaultSearchTermOptions' => array('subLeft' => true, 'subRight' => true),
         'timezone' => 'America/Chicago',
-        'previewTokenDuration' => DateTimeHelper::SECONDS_MONTH
+        'previewTokenDuration' => DateTimeHelper::SECONDS_MONTH,
+        'aliases' => [
+            '@web' => getenv('PRIMARY_SITE_URL')
+        ]
     ],
 
     'dev' => [

@@ -1,4 +1,4 @@
 <?php
 
-echo shell_exec('php craft migrate/all');
-echo shell_exec('php craft project-config/apply');
+echo shell_exec('php craft migrate/all --interactive=0');
+echo shell_exec('php craft project-config/apply --interactive=0');

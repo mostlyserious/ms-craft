@@ -2,16 +2,11 @@
 
 namespace Modules\TwigHelpers\TwigExtensions;
 
-use Craft;
-use Twig\Extension\AbstractExtension;
-use Twig\Extension\GlobalsInterface;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
-use craft\elements\Category;
-use craft\elements\Entry;
-use craft\helpers\Db;
 use craft\helpers\StringHelper;
-use yii\web\NotFoundHttpException;
+use Twig\Extension\GlobalsInterface;
+use Twig\Extension\AbstractExtension;
 
 class TwigHelpersTwigExtension extends AbstractExtension implements GlobalsInterface
 {

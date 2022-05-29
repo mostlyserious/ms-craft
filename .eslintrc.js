@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
     parserOptions: {
-        parser: 'babel-eslint',
+        parser: '@babel/eslint-parser',
         sourceType: 'module',
         allowImportExportEverywhere: true,
         ecmaVersion: 8,

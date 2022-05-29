@@ -1,3 +1,4 @@
+columnSuffix: null
 contentColumnType: text
 fieldGroup: ec7644f6-7285-429f-9185-28284f2532a4 # Global
 handle: privacyPolicy
@@ -7,7 +8,10 @@ searchable: false
 settings:
   allowCustomText: '1'
   allowTarget: '1'
-  allowedLinkNames: '*'
+  allowedLinkNames:
+    1: asset
+    3: entry
+    9: url
   autoNoReferrer: '1'
   defaultLinkName: entry
   defaultText: ''
@@ -98,7 +102,7 @@ settings:
           __assoc__:
             -
               - disableValidation
-              - ''
+              - '1'
             -
               - allowAliases
               - ''

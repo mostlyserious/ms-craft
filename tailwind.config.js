@@ -1,22 +1,21 @@
 const glob = require('tiny-glob/sync');
+const plugin = require('tailwindcss/plugin');
 const inset = require('brightpack/tailwindcss/inset');
+const clamp = require('brightpack/tailwindcss/clamp');
+const viewport = require('brightpack/tailwindcss/viewport');
 const isActive = require('brightpack/tailwindcss/is-active');
-const viewportSizes = require('brightpack/tailwindcss/viewport-sizes');
+const textStroke = require('brightpack/tailwindcss/text-stroke');
+// const xallarap = require('brightpack/tailwindcss/xallarap');
 
 module.exports = {
-    mode: 'jit',
-    purge: {
-        content: [
-            glob('src/js/**/*.{js,vue,svelte}'),
-            glob('templates/**/*.{twig,html}'),
-            glob('config/*.php')
-        ].flat()
-    },
+    content: [
+        glob('src/js/**/*.{js,vue,svelte}'),
+        glob('templates/**/*.{twig,html}'),
+        glob('config/*.php')
+    ].flat(),
     theme: {
         timestamp: Date.now(),
         screens: {
-            'prefers-motion': { raw: 'not (prefers-reduced-motion)' },
-            'reduced-motion': { raw: '(prefers-reduced-motion)' },
             '2xs': '380px',
             'xs': '460px',
             'sm': '640px',
@@ -54,9 +53,10 @@ module.exports = {
             },
             minHeight: theme => theme('height'),
             maxHeight: theme => theme('height'),
-            minWidth: theme => theme('width'),
-            maxWidth: theme => theme('width'),
+            minWidth: theme => ({ ...theme('width'), '8xl': '88rem', '9xl': '92rem' }),
+            maxWidth: theme => ({ ...theme('width'), '8xl': '88rem', '9xl': '92rem' }),
             borderWidth: {
+                '0.5': '0.5px',
                 '1': '1px',
                 '3': '3px'
             },
@@ -81,26 +81,50 @@ module.exports = {
     },
     plugins: [
         inset,
+        clamp,
+        viewport,
         isActive,
-        viewportSizes,
-        ({ addVariant, e }) => {
-            addVariant('hover-focus', ({ modifySelectors, separator }) => {
-                modifySelectors(({ className }) => {
-                    return `
-                        .${e(`hover-focus${separator}${className}`)}:hover,
-                        .${e(`hover-focus${separator}${className}`)}:focus
-                    `;
-                });
+        textStroke,
+        plugin(({ matchUtilities, addComponents, addUtilities, theme }) => {
+            addUtilities({
+                '.appearance-none': {
+                    '-webkit-appearance': 'none',
+                    '-moz-appearance': 'none'
+                },
+                '.has-active': {
+                    '@apply opacity-0 pointer-events-none': false,
+                    '@apply is-active:opacity-100 is-active:pointer-events-auto': false
+                }
             });
-            addVariant('group-hover-focus', ({ modifySelectors, separator }) => {
-                modifySelectors(({ className }) => {
-                    return `
-                        .group:hover .${e(`group-hover-focus${separator}${className}`)},
-                        .group:focus .${e(`group-hover-focus${separator}${className}`)}
-                    `;
-                });
+
+            addComponents({
+                '.container': {
+                    '@apply max-w-5xl w-full px-6 mx-auto': false
+                },
+                '.container-sm': {
+                    '@apply max-w-4xl !important': false
+                },
+                '.container-lg': {
+                    '@apply max-w-6xl !important': false
+                },
+                '.container-offset-right': {
+                    'margin-right': `max(0px, calc(calc(100vw - ${theme('maxWidth.5xl')}) / 2))`,
+                    '@apply pr-6': false
+                },
+                '.container-offset-left': {
+                    'margin-left': `max(0px, calc(calc(100vw - ${theme('maxWidth.5xl')}) / 2))`,
+                    '@apply pl-6': false
+                },
+                '.container-lg-offset-right': {
+                    'margin-right': `max(0px, calc(calc(100vw - ${theme('maxWidth.6xl')}) / 2))`,
+                    '@apply pr-6': false
+                },
+                '.container-lg-offset-left': {
+                    'margin-left': `max(0px, calc(calc(100vw - ${theme('maxWidth.6xl')}) / 2))`,
+                    '@apply pl-6': false
+                }
             });
-        }
+        }),
     ],
     corePlugins: {
         container: false
