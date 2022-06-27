@@ -18,7 +18,6 @@ return [
         'resourceBasePath' => dirname(__DIR__) . '/web/cpresources',
         'cpTrigger' => 'admin',
         'preventUserEnumeration' => true,
-        // 'sendPoweredByHeader' => false,
         'securityKey' => getenv('SECURITY_KEY'),
         'pageTrigger' => 'page/',
         'maxUploadFileSize' => ConfigHelper::sizeInBytes('128M'),
@@ -36,7 +35,9 @@ return [
         'devMode' => true,
         'disallowRobots' => true,
         'enableTemplateCaching' => false,
-        'testToEmailAddress' => ['devops@mostlyserious.io' => 'Mostly Serious Engineers']
+        'testToEmailAddress' => [
+            getenv('SYSTEM_EMAIL_ADDRESS') => getenv('SYSTEM_EMAIL_NAME')
+        ]
     ],
 
     'staging' => [
