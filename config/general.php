@@ -18,7 +18,7 @@ return [
         'resourceBasePath' => dirname(__DIR__) . '/web/cpresources',
         'cpTrigger' => 'admin',
         'preventUserEnumeration' => true,
-        'sendPoweredByHeader' => false,
+        // 'sendPoweredByHeader' => false,
         'securityKey' => getenv('SECURITY_KEY'),
         'pageTrigger' => 'page/',
         'maxUploadFileSize' => ConfigHelper::sizeInBytes('128M'),
