@@ -1,5 +1,9 @@
 {% extends 'layouts/_main' %}
 
+{% if entry.section.handle|default(null) == 'moduleListing' and not currentUser %}
+    {% exit 404 %}
+{% endif %}
+
 {% block header %}
     {% include 'modules/_header' ignore missing with {
         block: entry.header.one

@@ -1,4 +1,4 @@
-dateModified: 1653827913
+dateModified: 1656360720
 email:
   fromEmail: $SYSTEM_EMAIL_ADDRESS
   fromName: $SYSTEM_EMAIL_ADDRESS
@@ -15,6 +15,7 @@ meta:
     2a6ba873-385a-4eb8-ae76-ed9b27ccd189: 'Menu Item' # Menu Item
     3dc3f5a1-bcf9-4805-9a54-f5dda1ad45a9: $PRIMARY_SITE_NAME # $PRIMARY_SITE_NAME
     4b163ea7-a54e-41be-adc4-5f8b95859bcb: WYSIWYG # WYSIWYG
+    4b728f98-2a0a-48e1-b07d-c8da68c84b37: 'Module Listing' # Module Listing
     04d5a0fa-7712-4c14-80b1-499740922557: 'CMS Guide' # CMS Guide
     5be54c1c-ac69-43da-bb71-a1a6d019ce48: Defaults # Defaults
     6c184387-ba60-4935-8061-dd95b2f72809: SEO # SEO
@@ -48,6 +49,7 @@ meta:
     50013135-72e9-4dd1-965e-424db1bb07b8: 'Main Menu' # Main Menu
     abf8e78e-1b0c-422c-bbff-9c89770e9906: Complex # Complex
     aca3b467-9b53-4288-91a9-eda4802a7623: Heading # Heading
+    b8699c81-02b6-46b7-8d48-b6a8a521454a: 'Module Listing' # Module Listing
     bdaf0b53-486b-46c0-9216-faf3ecbbd941: Details # Details
     be7373cf-5af8-4a9c-92bd-11ab39541795: Header # Header
     c5cdbc1b-1b04-45b2-a9d4-e9a17059a72d: Home # Home
@@ -83,7 +85,7 @@ plugins:
   icon-picker:
     edition: standard
     enabled: true
-    licenseKey: ''
+    licenseKey: BICOAUXJDR7HRYZ1DGB17ST2
     schemaVersion: 1.0.1
   imgix:
     edition: standard
@@ -92,7 +94,7 @@ plugins:
   neo:
     edition: standard
     enabled: true
-    licenseKey: ''
+    licenseKey: GCD4I1HRGWEQ8BGNOTRGP4HU
     schemaVersion: 2.13.0
   redactor:
     edition: standard
@@ -105,7 +107,7 @@ plugins:
   seomatic:
     edition: standard
     enabled: true
-    licenseKey: ''
+    licenseKey: FTNHIIQ80ZIJIN5TU2TUJ9P2
     schemaVersion: 3.0.11
   smith:
     edition: standard
