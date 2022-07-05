@@ -1,13 +1,23 @@
 RewriteEngine On
 
+# Redirect development domains after launch
 # RewriteCond %{HTTP_HOST} ^ms-client-env.frb.io [NC]
 # RewriteRule ^(.*)$ https://example.com/$1 [L,R=301,NC]
 
 # RewriteCond %{HTTP_HOST} ^client-environment.mostlyserious.io [NC]
 # RewriteRule ^(.*)$ https://example.com/$1 [L,R=301,NC]
 
+# Force SSL
 # RewriteCond %{HTTP:X-Forwarded-Port} !=443
 # RewriteRule (.*) https://%{HTTP_HOST}/$1 [R=301,L]
+
+# Permanently redirect trailing slash -> to no trailing slash
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+# Or do the opposite, and permanently redirect no trailing slash -> to slash
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteRule ^(.*[^/])$ /$1/ [L,R=301]
 
 # Send would-be 404 requests to Craft
 RewriteCond %{REQUEST_FILENAME} !-f
