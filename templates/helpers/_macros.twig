@@ -1,4 +1,7 @@
 {% macro image(asset, args = {}, attrs = {}) %}
+    {% set imgixUrl = getenv('IMGIX_URL') %}
+    {% set baseUrl = getenv('CLOUDFRONT_URL') %}
+
     {% set width = attrs.width|default('') %}
     {% set height = attrs.height|default('') %}
 
@@ -14,16 +17,31 @@
     })|filter(v => v) %}
 
     {% if asset.id|default(null) %}
+        {% set args = args|filter(v => v)|merge({
+            'fp-x': asset.focalPoint.x,
+            'fp-y': asset.focalPoint.y
+        }) %}
+
         {% set args = args|merge({
-            'crop': asset.hasFocalPoint ? 'focalpoint' : (args.crop|default(null) ? args.crop : 'faces,center'),
+            'crop': asset.hasFocalPoint
+                ? 'focalpoint'
+                : (args.crop|default(null)
+                    ? args.crop
+                    : 'faces,center'),
         }) %}
 
         {% set args = args|filter(v => v) %}
-        {% set image = craft.imgix.transformImage(asset, args) %}
-        {% set image2x = craft.imgix.transformImage(asset, args|merge({
-            width: args.width is defined ? args.width * 2 : null,
-            height: args.height is defined ? args.height * 2 : null
-        })) %}
+
+        {% set image = {
+            url: asset.url|replace(baseUrl, imgixUrl) ~ '?' ~ args|url_encode
+        } %}
+
+        {% set image2x = {
+            url: asset.url|replace(baseUrl, imgixUrl) ~ '?' ~ args|merge({
+                width: args.width is defined ? args.width * 2 : null,
+                height: args.height is defined ? args.height * 2 : null
+            })|url_encode
+        } %}
 
         {% if not width and height %}
             {% set width = (min(asset.height, height) * (asset.width / asset.height))|number_format %}
@@ -42,7 +60,7 @@
             src: 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==',
             srcset: [
                 "#{asset.extension == 'gif' ? image.url|split('?')|first : image.url}",
-                "#{asset.extension == 'gif' ? image.url|split('?')|first : image2x.url} 2x"
+                "#{asset.extension == 'gif' ? image2x.url|split('?')|first : image2x.url} 2x"
             ]|join(', '),
             alt: asset.alt|default(craft.app.config.general.devMode ? 'Unknown image content' : ''),
             loading: 'lazy',
@@ -59,16 +77,26 @@
 {% endmacro %}
 
 {% macro src(asset, args = {}) %}{% spaceless %}
+    {% set imgixUrl = getenv('IMGIX_URL') %}
+    {% set baseUrl = getenv('CLOUDFRONT_URL') %}
+
     {% set width = args.width|default('')|replace(',', '') %}
     {% set height = args.height|default('')|replace(',', '') %}
 
     {% if asset.id|default(null) %}
         {% set args = args|merge({
-            'crop': asset.hasFocalPoint ? 'focalpoint' : (args.crop|default(null) ? args.crop : 'faces,center'),
+            'crop': asset.hasFocalPoint
+                ? 'focalpoint' :
+                (args.crop|default(null)
+                    ? args.crop
+                    : 'faces,center'),
         }) %}
 
         {% set args = args|filter(v => v) %}
-        {% set image = craft.imgix.transformImage(asset, args) %}
+
+        {% set image = {
+            url: asset.url|replace(baseUrl, imgixUrl) ~ '?' ~ args|url_encode
+        } %}
 
         {% if not width and height %}
             {% set width = (min(asset.height, height) * (asset.width / asset.height))|number_format %}

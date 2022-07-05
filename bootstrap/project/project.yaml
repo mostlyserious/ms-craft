@@ -1,4 +1,4 @@
-dateModified: 1656360720
+dateModified: 1657059038
 email:
   fromEmail: $SYSTEM_EMAIL_ADDRESS
   fromName: $SYSTEM_EMAIL_ADDRESS
@@ -87,10 +87,6 @@ plugins:
     enabled: true
     licenseKey: BICOAUXJDR7HRYZ1DGB17ST2
     schemaVersion: 1.0.1
-  imgix:
-    edition: standard
-    enabled: true
-    schemaVersion: 2.0.0
   neo:
     edition: standard
     enabled: true
