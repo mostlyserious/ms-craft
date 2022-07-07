@@ -34,6 +34,6 @@
 
     Array.prototype.forEach.call(
         document.querySelectorAll('[target=_blank]'),
-        el => el.setAttribute('rel', 'noreferrer noopener')
+        el => el.setAttribute('rel', 'noopener')
     );
 });
