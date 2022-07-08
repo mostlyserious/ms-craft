@@ -2,7 +2,6 @@
 
 namespace Modules\TwigHelpers\TwigExtensions;
 
-use Craft;
 use Twig\TwigFunction;
 use Twig\Extension\AbstractExtension;
 

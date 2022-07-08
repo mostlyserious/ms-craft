@@ -124,7 +124,7 @@ module.exports = {
                     '@apply pl-6': false
                 }
             });
-        }),
+        })
     ],
     corePlugins: {
         container: false
