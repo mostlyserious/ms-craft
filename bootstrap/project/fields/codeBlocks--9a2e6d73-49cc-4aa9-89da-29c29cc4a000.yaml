@@ -1,13 +1,15 @@
+columnSuffix: null
 contentColumnType: string
 fieldGroup: ec7644f6-7285-429f-9185-28284f2532a4 # Global
 handle: codeBlocks
-instructions: ''
+instructions: null
 name: 'Code Blocks'
 searchable: false
 settings:
   contentTable: '{{%matrixcontent_codeblocks}}'
-  maxBlocks: ''
-  minBlocks: ''
+  maxBlocks: null
+  minBlocks: null
+  propagationKeyFormat: null
   propagationMethod: all
 translationKeyFormat: null
 translationMethod: site

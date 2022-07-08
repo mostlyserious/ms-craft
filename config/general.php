@@ -20,10 +20,10 @@ return [
         'preventUserEnumeration' => true,
         'securityKey' => getenv('SECURITY_KEY'),
         'pageTrigger' => 'page/',
-        'maxUploadFileSize' => ConfigHelper::sizeInBytes('128M'),
+        'maxUploadFileSize' => ConfigHelper::sizeInBytes('256M'),
         'errorTemplatePrefix' => '_',
         'enableGql' => false,
-        'defaultSearchTermOptions' => array('subLeft' => true, 'subRight' => true),
+        'defaultSearchTermOptions' => ['subLeft' => true, 'subRight' => true],
         'timezone' => 'America/Chicago',
         'previewTokenDuration' => DateTimeHelper::SECONDS_MONTH,
         'aliases' => [
@@ -42,7 +42,10 @@ return [
 
     'staging' => [
         'disallowRobots' => true,
-        'allowAdminChanges' => false
+        'allowAdminChanges' => false,
+        'testToEmailAddress' => [
+            'engineering-logs@mostlyserious.io' => 'Mostly Serious'
+        ]
     ],
 
     'production' => [

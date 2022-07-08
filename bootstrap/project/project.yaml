@@ -1,4 +1,4 @@
-dateModified: 1657059038
+dateModified: 1657296625
 email:
   fromEmail: $SYSTEM_EMAIL_ADDRESS
   fromName: $SYSTEM_EMAIL_ADDRESS
@@ -7,6 +7,14 @@ email:
   transportSettings:
     command: ''
   transportType: craft\mail\transportadapters\Sendmail
+fs:
+  public:
+    hasUrls: true
+    name: Public
+    settings:
+      path: '@webroot/assets'
+    type: craft\fs\Local
+    url: /assets/
 meta:
   __names__:
     0ef1ad7d-525e-46a5-bff9-8510cc570cfc: 'Terms of Use' # Terms of Use
@@ -69,11 +77,11 @@ plugins:
   aws-s3:
     edition: standard
     enabled: true
-    schemaVersion: '1.2'
+    schemaVersion: '2.0'
   colour-swatches:
     edition: standard
     enabled: true
-    schemaVersion: 1.4.2
+    schemaVersion: 1.4.3
   copy:
     edition: standard
     enabled: true
@@ -91,7 +99,7 @@ plugins:
     edition: standard
     enabled: true
     licenseKey: GCD4I1HRGWEQ8BGNOTRGP4HU
-    schemaVersion: 2.13.0
+    schemaVersion: 3.0.4
   redactor:
     edition: standard
     enabled: true
@@ -112,11 +120,11 @@ plugins:
   typedlinkfield:
     edition: standard
     enabled: true
-    schemaVersion: 1.0.0
+    schemaVersion: 2.0.0
   usermanual:
     edition: standard
     enabled: true
-    schemaVersion: 2.0.1
+    schemaVersion: 4.0.0
     settings:
       enabledSideBar: true
       pluginNameOverride: 'CMS Guide'
@@ -127,10 +135,11 @@ system:
   live: true
   name: $PRIMARY_SITE_NAME
   retryDuration: null
-  schemaVersion: 3.7.33
+  schemaVersion: 4.0.0.9
   timeZone: America/Los_Angeles
 users:
   allowPublicRegistration: false
+  deactivateByDefault: false
   defaultGroup: null
   photoSubpath: null
   photoVolumeUid: null

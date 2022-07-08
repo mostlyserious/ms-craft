@@ -2,7 +2,7 @@ columnSuffix: cbtsycyn
 contentColumnType: text
 fieldGroup: 38b79782-e200-468f-9633-323021ffa8ca # Common
 handle: seo
-instructions: ''
+instructions: null
 name: SEO
 searchable: true
 settings:

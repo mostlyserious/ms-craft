@@ -3,37 +3,45 @@ fieldLayouts:
   0f14c67c-907d-4066-ac23-d8335ea6f606:
     tabs:
       -
+        elementCondition: null
         elements:
           -
+            elementCondition: null
             fieldUid: 9fad34b4-ec00-4f1c-851e-7f96f31d86cf # Position
             instructions: null
             label: null
             required: true
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: 6eff1ae0-6639-409d-9ded-8cae61f352cc
+            userCondition: null
             warning: null
             width: 100
           -
+            elementCondition: null
             fieldUid: f9c5d4a4-e78f-476b-bdb0-b2bdb6204568 # Code
             instructions: null
             label: null
             required: true
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: ffd80f4d-f6e2-40c7-9e13-01f060cc983a
+            userCondition: null
             warning: null
             width: 100
         name: Content
-        sortOrder: 1
+        uid: 783eec03-3553-426d-9748-48913ad2389b
+        userCondition: null
 fields:
   9fad34b4-ec00-4f1c-851e-7f96f31d86cf: # Position
+    columnSuffix: null
     contentColumnType: string
     fieldGroup: null
     handle: position
-    instructions: ''
+    instructions: null
     name: Position
     searchable: false
     settings:
-      optgroups: true
       options:
         -
           __assoc__:
@@ -83,20 +91,21 @@ fields:
     translationMethod: none
     type: craft\fields\Dropdown
   f9c5d4a4-e78f-476b-bdb0-b2bdb6204568: # Code
+    columnSuffix: null
     contentColumnType: text
     fieldGroup: null
     handle: code
-    instructions: ''
+    instructions: null
     name: Code
     searchable: false
     settings:
       byteLimit: null
       charLimit: null
-      code: '1'
+      code: true
       columnType: null
-      initialRows: '7'
-      multiline: '1'
-      placeholder: ''
+      initialRows: 7
+      multiline: true
+      placeholder: null
       uiMode: normal
     translationKeyFormat: null
     translationMethod: none

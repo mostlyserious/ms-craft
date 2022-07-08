@@ -2,6 +2,7 @@
 
 namespace Modules\TwigHelpers\TwigExtensions;
 
+use Craft;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
 use craft\helpers\StringHelper;
@@ -15,7 +16,7 @@ class TwigHelpersTwigExtension extends AbstractExtension implements GlobalsInter
         return 'TwigHelpers';
     }
 
-    public function getGlobals()
+    public function getGlobals(): array
     {
         return [
 
@@ -34,6 +35,9 @@ class TwigHelpersTwigExtension extends AbstractExtension implements GlobalsInter
         return [
             new TwigFunction('uuid', [$this, 'getUuid']),
             new TwigFunction('env', [$this, 'env']),
+            new TwigFunction('external', [$this, 'external'], [
+                'is_safe' => ['html']
+            ])
         ];
     }
 
@@ -67,6 +71,15 @@ class TwigHelpersTwigExtension extends AbstractExtension implements GlobalsInter
                 return $item;
             }
         }
+    }
+
+    public function external($path)
+    {
+        if (is_readable(Craft::getAlias($path))) {
+            return file_get_contents(Craft::getAlias($path));
+        }
+
+        return '';
     }
 
     /**

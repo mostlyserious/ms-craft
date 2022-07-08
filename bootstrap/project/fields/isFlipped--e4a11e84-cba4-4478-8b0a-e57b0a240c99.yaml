@@ -1,7 +1,8 @@
+columnSuffix: null
 contentColumnType: boolean
 fieldGroup: 38b79782-e200-468f-9633-323021ffa8ca # Common
 handle: isFlipped
-instructions: ''
+instructions: null
 name: Flip
 searchable: false
 settings:

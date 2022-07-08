@@ -76,7 +76,7 @@
     {% endif %}
 {% endmacro %}
 
-{% macro src(asset, args = {}) %}{% spaceless %}
+{% macro src(asset, args = {}) %}{% apply spaceless %}
     {% set imgixUrl = getenv('IMGIX_URL') %}
     {% set baseUrl = getenv('CLOUDFRONT_URL') %}
 
@@ -113,4 +113,4 @@
     {% elseif asset %}
         {{ "https://picsum.photos/seed/#{asset}/#{width}/#{height ?? width}" }}
     {% endif %}
-{% endspaceless %}{% endmacro %}
+{% endapply %}{% endmacro %}

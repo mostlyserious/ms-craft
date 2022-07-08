@@ -6,7 +6,12 @@ rm config/project.yaml
 cp -r bootstrap/project config/project
 cp bootstrap/project.yaml config/project.yaml
 
-php craft clear-caches/all
+if command -v valet &> /dev/null
+then
+    valet php craft clear-caches/all
+else
+    php craft clear-caches/all
+fi
 
 echo ""
 echo "Your project YAML files have been bootstrapped.\nTo finish applying these updates, navigate to the projects admin and select Utilities > Project Config > Reapply Everything > Use YAML."
