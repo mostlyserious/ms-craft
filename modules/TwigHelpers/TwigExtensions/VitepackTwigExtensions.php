@@ -21,7 +21,7 @@ class VitepackTwigExtensions extends AbstractExtension
     public function getFunctions()
     {
         return [
-            new TwigFunction('vite', [$this, 'entry'], [
+            new TwigFunction('vite', [$this, 'vite'], [
                 'is_safe' => ['html']
             ]),
             new TwigFunction('asset', [$this, 'asset'], [
@@ -104,7 +104,7 @@ class VitepackTwigExtensions extends AbstractExtension
      * @param  null|mixed $entry
      * @return string
      */
-    public function asset($manifest_dir = 'web/static')
+    public function asset($input, $manifest_dir = 'web/static')
     {
         static $all;
 

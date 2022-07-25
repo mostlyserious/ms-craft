@@ -11,7 +11,7 @@
     {# <link rel="preconnect" href="https://p.typekit.net" > #}
 
     {% block head %}
-        {{ external('@webroot/static/favicon/markup.html')|striptags('<link><meta>')|raw }}
+        {{ external('@webroot/static/assets/markup.html')|striptags('<link><meta>')|raw }}
     {% endblock %}
 
     {% set regex = '{bot|crawler|spider|crawling|google|baidu|bing|msn|duckduckbot|teoma|slurp|yandex|konqueror|facebookexternalhit|ia_archiver}' %}
@@ -50,7 +50,7 @@
         })(window);
     </script>
 
-    {{ entry('app') }}
+    {{ vite() }}
 
     {{ codeBlocks|filter(c => c.position == 'headBottom')|map(c => c.code)|join('\n\n')|raw }}
 </head>

@@ -1,3 +1,7 @@
+import '../css/main.css';
+
+import.meta.glob('../{img,font,media}/**.*');
+
 (ready => {
     if (document.readyState !== 'loading') {
         ready();
@@ -6,10 +10,10 @@
     }
 })(() => {
     const modules = {
-        '.intro': () => import('./modules/intro' /* webpackChunkName: 'intro' */),
-        '[data-property]': () => import('./modules/property' /* webpackChunkName: 'property' */),
-        '[data-toggle]': () => import('./modules/toggle' /* webpackChunkName: 'toggle' */),
-        'x-svelte': () => import('./svelte' /* webpackChunkName: 'svelte' */)
+        '.intro': () => import('./modules/intro'),
+        '[data-property]': () => import('./modules/property'),
+        '[data-toggle]': () => import('./modules/toggle'),
+        'x-svelte': () => import('./svelte')
     };
 
     Object.keys(modules).forEach(selector => {

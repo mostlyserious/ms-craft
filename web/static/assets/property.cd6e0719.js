@@ -1,0 +1,1 @@
+const n=o=>{const e=()=>{const t=document.documentElement.style;t.setProperty("--viewport-height",`${innerHeight}px`),Array.prototype.forEach.call(o,r=>{const[s,p]=JSON.parse(r.dataset.property);t.setProperty(s,`${r[p]}px`)})};addEventListener("resize",e),addEventListener("load",e),setInterval(e,1e3)};export{n as default};

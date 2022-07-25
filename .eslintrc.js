@@ -12,7 +12,7 @@ module.exports = {
         }
     },
     extends: [
-        path.resolve(__dirname, 'node_modules/brightpack/eslintrc.json')
+        path.resolve(__dirname, 'node_modules/@mostlyserious/vitepack/eslintrc.json')
     ].filter(Boolean),
     plugins: [
         'svelte3',

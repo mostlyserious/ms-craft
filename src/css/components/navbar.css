@@ -52,7 +52,7 @@
         @apply lg:hidden;
 
         & span {
-            @apply absolute left-0 block w-full h-px border-t-1 border-b-1 border-current bg-current box-content pointer-events-none;
+            @apply absolute left-0 block w-full h-px border-t border-b border-current bg-current box-content pointer-events-none;
             transition: transform 250ms ease-in-out, opacity 150ms ease-in-out, fill 150ms ease-in-out;
             transform: translate3d(0, 0, 0) rotate(0);
             transform-origin: 100% 50%;

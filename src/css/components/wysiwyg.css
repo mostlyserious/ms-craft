@@ -55,9 +55,5 @@
         & figcaption {
             @apply mt-4 text-sm text-center;
         }
-
-        /* & hr {
-            @apply border-t-1 border-gray-300 my-4 !important;
-        } */
     }
 }

@@ -1,4 +1,4 @@
-{% macro image(asset, args = {}, attrs = {}) %}
+{% macro image(asset, args = {}, attrs = {}, lazy = true) %}
     {% set imgixUrl = getenv('IMGIX_URL') %}
     {% set baseUrl = getenv('CLOUDFRONT_URL') %}
 
@@ -54,6 +54,11 @@
         {% set width = width ? width : asset.width %}
         {% set height = height ? height : asset.height %}
 
+        {% if not lazy %}
+            {% header('Link: <%s>; as=image; rel=preload;'|format(asset.extension == 'gif' ? image.url|split('?')|first : image.url)) %}
+            {% header('Link: <%s>; as=image; rel=preload;'|format(asset.extension == 'gif' ? image2x.url|split('?')|first : image2x.url)) %}
+        {% endif %}
+
         {{ tag('img', attrs|merge({
             width: width|replace(',', ''),
             height: height|replace(',', ''),
@@ -63,7 +68,7 @@
                 "#{asset.extension == 'gif' ? image2x.url|split('?')|first : image2x.url} 2x"
             ]|join(', '),
             alt: asset.alt|default(craft.app.config.general.devMode ? 'Unknown image content' : ''),
-            loading: 'lazy',
+            loading: lazy ? 'lazy' : null,
         })) }}
     {% elseif asset %}
         {{ tag('img', attrs|merge({
@@ -76,7 +81,7 @@
     {% endif %}
 {% endmacro %}
 
-{% macro src(asset, args = {}) %}{% apply spaceless %}
+{% macro src(asset, args = {}, preload = false) %}{% apply spaceless %}
     {% set imgixUrl = getenv('IMGIX_URL') %}
     {% set baseUrl = getenv('CLOUDFRONT_URL') %}
 
@@ -109,8 +114,14 @@
         {% set width = width ? width : asset.width %}
         {% set height = height ? height : asset.height %}
 
+        {% if preload %}
+            {% header('Link: <%s>; as=image; rel=preload;'|format(asset.extension == 'gif' ? image.url|split('?')|first : image.url)) %}
+        {% endif %}
+
         {{ "#{asset.extension == 'gif' ? image.url|split('?')|first : image.url}" }}
     {% elseif asset %}
+        {% header('Link: <%s>; as=image; rel=preload;'|format("https://picsum.photos/seed/#{asset}/#{width}/#{height ?? width}")) %}
+
         {{ "https://picsum.photos/seed/#{asset}/#{width}/#{height ?? width}" }}
     {% endif %}
 {% endapply %}{% endmacro %}
