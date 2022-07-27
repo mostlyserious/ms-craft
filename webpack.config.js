@@ -1,7 +1,7 @@
 const path = require('path');
 const glob = require('tiny-glob/sync');
-const brightpack = require('brightpack');
-// const RealFaviconPlugin = require('brightpack/lib/real-favicon-plugin');
+const brightpack = require('@mostlyserious/brightpack');
+// const RealFaviconPlugin = require('@mostlyserious/brightpack/lib/real-favicon-plugin');
 
 const dest = 'web/static';
 const publicPath = '/static/';

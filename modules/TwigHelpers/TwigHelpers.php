@@ -16,7 +16,7 @@ class TwigHelpers extends Module
      */
     public function __construct($id, $parent = null, array $config = [])
     {
-        Craft::setAlias('@modules/twighelpers', $this->getBasePath());
+        Craft::setAlias('@Modules/TwigHelpers', $this->getBasePath());
 
         static::setInstance($this);
 
@@ -28,10 +28,7 @@ class TwigHelpers extends Module
         parent::init();
         self::$instance = $this;
 
-        // Add in our Twig extensions
         Craft::$app->view->registerTwigExtension(new TwigHelpersTwigExtension());
         Craft::$app->view->registerTwigExtension(new BrightpackTwigExtensions());
-
-        Craft::info('twighelpers module loaded', __METHOD__);
     }
 }

@@ -1,20 +1,17 @@
-const glob = require('tiny-glob/sync');
 const plugin = require('tailwindcss/plugin');
-const inset = require('brightpack/tailwindcss/inset');
-const clamp = require('brightpack/tailwindcss/clamp');
-const viewport = require('brightpack/tailwindcss/viewport');
-const isActive = require('brightpack/tailwindcss/is-active');
-const textStroke = require('brightpack/tailwindcss/text-stroke');
-// const xallarap = require('brightpack/tailwindcss/xallarap');
+const { inset } = require('@mostlyserious/tailwindcss-util');
+const { clamp } = require('@mostlyserious/tailwindcss-util');
+const { viewport } = require('@mostlyserious/tailwindcss-util');
+const { textStroke } = require('@mostlyserious/tailwindcss-util');
+const { stateVariant } = require('@mostlyserious/tailwindcss-util');
 
 module.exports = {
     content: [
-        glob('src/js/**/*.{js,vue,svelte}'),
-        glob('templates/**/*.{twig,html}'),
-        glob('config/*.php')
-    ].flat(),
+        'src/js/**/*.{js,vue,svelte}',
+        'templates/**/*.{twig,html}',
+        'config/*.php'
+    ],
     theme: {
-        timestamp: Date.now(),
         screens: {
             '2xs': '380px',
             'xs': '460px',
@@ -83,8 +80,8 @@ module.exports = {
         inset,
         clamp,
         viewport,
-        isActive,
         textStroke,
+        stateVariant('active'),
         plugin(({ matchUtilities, addComponents, addUtilities, theme }) => {
             addUtilities({
                 '.appearance-none': {

@@ -2,18 +2,17 @@
 
 namespace Modules\TwigHelpers\TwigExtensions;
 
-use Craft;
 use Twig\TwigFunction;
 use Twig\Extension\AbstractExtension;
 
-class BrightpackTwigExtensions extends AbstractExtension
+class VitepackTwigExtensions extends AbstractExtension
 {
     /**
      * @inheritdoc
      */
     public function getName()
     {
-        return 'Brightpack';
+        return 'Vitepack';
     }
 
     /**
@@ -22,7 +21,7 @@ class BrightpackTwigExtensions extends AbstractExtension
     public function getFunctions()
     {
         return [
-            new TwigFunction('entry', [$this, 'entry'], [
+            new TwigFunction('vite', [$this, 'vite'], [
                 'is_safe' => ['html']
             ]),
             new TwigFunction('asset', [$this, 'asset'], [
@@ -40,58 +39,61 @@ class BrightpackTwigExtensions extends AbstractExtension
      * @param  null|mixed $entry
      * @return string
      */
-    public function entry($entry = null, $markup = true, $manifest = 'web/static/entries.json')
+    public function vite($manifest_dir = 'web/static')
     {
-        static $all;
+    static $all;
 
-        $results = [];
-        $manifest_path = $this->join_path(CRAFT_BASE_PATH, $manifest);
+    $results = [];
+    $manifest_path = $this->joinPath(CRAFT_BASE_PATH, $manifest_dir, 'manifest.dev.json');
 
-        if (!is_file($manifest_path)) {
-            return $markup ? '' : [];
-        }
-
-        $all = $all ?: json_decode(file_get_contents($manifest_path), true);
-
-        if (!$entry) {
-            return $all;
-        }
-
-        if (!isset($all[$entry])) {
-            return [];
-        }
-
-        foreach ($all[$entry] as $i => $value) {
-            $ext = pathinfo($value, PATHINFO_EXTENSION);
-
-            switch ($ext) {
-                case 'js' :
-                    $result = $markup ? sprintf(
-                        '<script src="%s" %s async defer></script>',
-                        $value,
-                        is_array($markup) ? $this->attr($markup, ['media']) : ''
-                    ) : $value;
-                    break;
-
-                case 'css' :
-                    $result = $markup ? sprintf(
-                        '<link href="%s" rel="stylesheet" %s>',
-                        $value,
-                        is_array($markup) ? $this->attr($markup) : ''
-                    ) : $value;
-                    break;
-                default :
-                    $result = '';
-                    break;
-            }
-
-            $this->preload($value);
-
-            $results[] = $result;
-        }
-
-        return $markup ? implode(PHP_EOL, $results) : $results;
+    if (!is_file($manifest_path)) {
+        $manifest_path = $this->joinPath(CRAFT_BASE_PATH, $manifest_dir, 'manifest.json');
     }
+
+    if (!is_file($manifest_path)) {
+        return '';
+    }
+
+    $all = $all ?: json_decode(file_get_contents($manifest_path), true);
+
+    if (isset($all['url'])) {
+        foreach ($all['inputs'] as $input) {
+            $this->inputMarkup($input, $all['url'], $results);
+        }
+    }
+
+    $entries = array_filter($all, function ($entry) {
+        if (!isset($entry['src'])) {
+            return;
+        }
+
+        $ext = pathinfo($entry['src'], PATHINFO_EXTENSION);
+
+        return in_array($ext, ['css', 'js'])
+            && isset($entry['isEntry'])
+            && $entry['isEntry'];
+    });
+
+    foreach ($entries as $entry) {
+        $input = $entry['file'];
+
+        if (isset($entry['imports']) && count($entry['imports'])) {
+            foreach ($entry['imports'] as $import) {
+                $this->inputMarkup(str_ireplace('_', 'assets/', $import), '/static', $results);
+            }
+        }
+
+        if (isset($entry['css']) && count($entry['css'])) {
+            foreach ($entry['css'] as $import) {
+                $this->inputMarkup($import, '/static', $results);
+            }
+        }
+
+        $this->inputMarkup($input, '/static', $results);
+    }
+
+    return implode(PHP_EOL, $results);
+}
 
     /**
      * Returns versioned file(s) or the entire tag.
@@ -102,31 +104,65 @@ class BrightpackTwigExtensions extends AbstractExtension
      * @param  null|mixed $entry
      * @return string
      */
-    public function asset($entry = null, $markup = true, $manifest = 'web/static/assets.json')
+    public function asset($input, $manifest_dir = 'web/static')
     {
         static $all;
 
-        $manifest_path = $this->join_path(CRAFT_BASE_PATH, $manifest);
+        $manifest_path = $this->joinPath(CRAFT_BASE_PATH, $manifest_dir, 'manifest.dev.json');
 
         if (!is_file($manifest_path)) {
-            return $markup ? '' : [];
+            $manifest_path = $this->joinPath(CRAFT_BASE_PATH, $manifest_dir, 'manifest.json');
+        }
+
+        if (!is_file($manifest_path)) {
+            return '';
         }
 
         $all = $all ?: json_decode(file_get_contents($manifest_path), true);
 
-        if (!$entry) {
-            return $all;
+        $input = $this->joinPath('src', $input);
+
+        if (isset($all['url'], $all['inputs'][$input])) {
+            return $all['inputs'][$input];
         }
 
-        if (isset($all[$entry])) {
-            // if (pathinfo($all[$entry], PATHINFO_EXTENSION) !== 'html') {
-            //     $this->preload($all[$entry]);
-            // }
-
-            return $all[$entry];
+        if (isset($all[$input], $all[$input]['assets']) && count($all[$input]['assets'])) {
+            return $this->joinPath('/static', $all[$input]['assets'][0]);
         }
 
-        return null;
+        return '';
+    }
+
+    protected function inputMarkup($input, $base, &$results)
+    {
+        static $loaded = [];
+
+        if (isset($loaded[$input]) and $loaded[$input]) {
+            return;
+        }
+
+        $legacy = strpos($input, 'legacy') !== false;
+        $ext = pathinfo($input, PATHINFO_EXTENSION);
+
+        switch ($ext) {
+            case 'js':
+                $results[] = $legacy ? sprintf(
+                    '<script nomodule crossorigin src="%s" async defer></script>',
+                    $this->joinPath($base, $input)
+                ) : sprintf(
+                    '<script type="module" crossorigin src="%s" async defer></script>',
+                    $this->joinPath($base, $input)
+                );
+                break;
+            case 'css':
+                $results[] = sprintf(
+                    '<link href="%s" rel="stylesheet">',
+                    $this->joinPath($base, $input)
+                );
+                break;
+        }
+
+        $loaded[$input] = true;
     }
 
     protected function preload($resource)
@@ -175,7 +211,7 @@ class BrightpackTwigExtensions extends AbstractExtension
         return count($html) > 0 ? ' '.implode(' ', $html) : '';
     }
 
-    protected function join_path(...$paths)
+    protected function joinPath(...$paths)
     {
         return preg_replace_callback('/([^:])\/+/', function ($matches) {
             return $matches[1] . '/';
@@ -186,7 +222,7 @@ class BrightpackTwigExtensions extends AbstractExtension
     {
         $host = parse_url($path, PHP_URL_HOST);
 
-        return trim($host ? $path : $this->join_path(sprintf(
+        return trim($host ? $path : $this->joinPath(sprintf(
             '%s://%s',
             ($this->is_https() ? 'https' : 'http'),
             $this->request('SERVER_NAME')

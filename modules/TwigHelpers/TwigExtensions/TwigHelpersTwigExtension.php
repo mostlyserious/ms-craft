@@ -2,6 +2,8 @@
 
 namespace Modules\TwigHelpers\TwigExtensions;
 
+use Craft;
+use tidy;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
 use craft\helpers\StringHelper;
@@ -15,7 +17,7 @@ class TwigHelpersTwigExtension extends AbstractExtension implements GlobalsInter
         return 'TwigHelpers';
     }
 
-    public function getGlobals()
+    public function getGlobals(): array
     {
         return [
 
@@ -34,6 +36,12 @@ class TwigHelpersTwigExtension extends AbstractExtension implements GlobalsInter
         return [
             new TwigFunction('uuid', [$this, 'getUuid']),
             new TwigFunction('env', [$this, 'env']),
+            new TwigFunction('external', [$this, 'external'], [
+                'is_safe' => ['html']
+            ]),
+            new TwigFunction('tidy', [$this, 'tidy'], [
+                'is_safe' => ['html']
+            ])
         ];
     }
 
@@ -41,8 +49,25 @@ class TwigHelpersTwigExtension extends AbstractExtension implements GlobalsInter
     {
         return [
             new TwigFilter('propSort', [$this, 'propSort']),
-            new TwigFilter('find', [$this, 'find'])
+            new TwigFilter('find', [$this, 'find']),
+            new TwigFilter('tidy', [$this, 'tidy'])
         ];
+    }
+
+    public function tidy($html) {
+        $tidy = new tidy;
+
+        $tidy->parseString($html, [
+            'wrap' => 0,
+            'indent' => true,
+            'indent-spaces' => 4,
+            'output-xhtml' => false,
+            'show-body-only' => true
+        ], 'utf8');
+
+        $tidy->cleanRepair();
+
+        return "{$tidy}";
     }
 
     public function propSort($items, $prop)
@@ -67,6 +92,15 @@ class TwigHelpersTwigExtension extends AbstractExtension implements GlobalsInter
                 return $item;
             }
         }
+    }
+
+    public function external($path)
+    {
+        if (is_readable(Craft::getAlias($path))) {
+            return file_get_contents(Craft::getAlias($path));
+        }
+
+        return '';
     }
 
     /**

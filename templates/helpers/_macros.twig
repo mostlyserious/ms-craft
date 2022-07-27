@@ -1,6 +1,6 @@
-{% macro image(asset, args = {}, attrs = {}) %}
+{% macro image(asset, args = {}, attrs = {}, lazy = true) %}
     {% set imgixUrl = getenv('IMGIX_URL') %}
-    {% set baseUrl = getenv('CLOUDFRONT_URL') %}
+    {% set baseUrl = getenv('AWS_CLOUDFRONT_URL') %}
 
     {% set width = attrs.width|default('') %}
     {% set height = attrs.height|default('') %}
@@ -54,6 +54,10 @@
         {% set width = width ? width : asset.width %}
         {% set height = height ? height : asset.height %}
 
+        {% if not lazy %}
+            {% header('Link: <%s>; as=image; rel=preload;'|format(asset.extension == 'gif' ? image.url|split('?')|first : image.url)) %}
+        {% endif %}
+
         {{ tag('img', attrs|merge({
             width: width|replace(',', ''),
             height: height|replace(',', ''),
@@ -63,7 +67,7 @@
                 "#{asset.extension == 'gif' ? image2x.url|split('?')|first : image2x.url} 2x"
             ]|join(', '),
             alt: asset.alt|default(craft.app.config.general.devMode ? 'Unknown image content' : ''),
-            loading: 'lazy',
+            loading: lazy ? 'lazy' : null,
         })) }}
     {% elseif asset %}
         {{ tag('img', attrs|merge({
@@ -76,9 +80,9 @@
     {% endif %}
 {% endmacro %}
 
-{% macro src(asset, args = {}) %}{% spaceless %}
+{% macro src(asset, args = {}, preload = true) %}{% spaceless %}
     {% set imgixUrl = getenv('IMGIX_URL') %}
-    {% set baseUrl = getenv('CLOUDFRONT_URL') %}
+    {% set baseUrl = getenv('AWS_CLOUDFRONT_URL') %}
 
     {% set width = args.width|default('')|replace(',', '') %}
     {% set height = args.height|default('')|replace(',', '') %}
@@ -109,8 +113,16 @@
         {% set width = width ? width : asset.width %}
         {% set height = height ? height : asset.height %}
 
+        {% if preload %}
+            {% header('Link: <%s>; as=image; rel=preload;'|format(asset.extension == 'gif' ? image.url|split('?')|first : image.url)) %}
+        {% endif %}
+
         {{ "#{asset.extension == 'gif' ? image.url|split('?')|first : image.url}" }}
     {% elseif asset %}
+        {% if preload %}
+            {% header('Link: <%s>; as=image; rel=preload;'|format("https://picsum.photos/seed/#{asset}/#{width}/#{height ?? width}")) %}
+        {% endif %}
+
         {{ "https://picsum.photos/seed/#{asset}/#{width}/#{height ?? width}" }}
     {% endif %}
 {% endspaceless %}{% endmacro %}
