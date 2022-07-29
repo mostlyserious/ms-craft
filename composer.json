@@ -9,6 +9,7 @@
         "fortrabbit/craft-copy": "1.2.4",
         "hillholliday/craft-user-manual": "2.1.2",
         "nystudio107/craft-seomatic": "3.4.37",
+        "ostark/craft-async-queue": "2.3.0",
         "percipioglobal/craft-colour-swatches": "1.7.0",
         "putyourlightson/craft-sendgrid": "1.3.1",
         "sebastianlenz/linkfield": "1.0.25",

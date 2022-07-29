@@ -1,4 +1,4 @@
-dateModified: 1657059038
+dateModified: 1659119406
 email:
   fromEmail: $SYSTEM_EMAIL_ADDRESS
   fromName: $SYSTEM_EMAIL_ADDRESS
@@ -66,6 +66,10 @@ meta:
     f93ba9ca-aed6-465b-871c-a518711b649c: Buttons # Buttons
     fef5e771-2ab6-464f-b943-624452c0a52c: Body # Body
 plugins:
+  async-queue:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
   aws-s3:
     edition: standard
     enabled: true
