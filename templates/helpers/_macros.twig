@@ -88,6 +88,11 @@
     {% set height = args.height|default('')|replace(',', '') %}
 
     {% if asset.id|default(null) %}
+        {% set args = args|filter(v => v)|merge({
+            'fp-x': asset.focalPoint.x,
+            'fp-y': asset.focalPoint.y
+        }) %}
+
         {% set args = args|merge({
             'crop': asset.hasFocalPoint
                 ? 'focalpoint' :
