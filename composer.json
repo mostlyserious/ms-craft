@@ -2,6 +2,12 @@
     "name": "mostlyserious/ms-craft",
     "description": "Craft CMS",
     "type": "project",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git@github.com:mostlyserious/craft-block-audit.git"
+        }
+    ],
     "require": {
         "craftcms/aws-s3": "1.3.0",
         "craftcms/cms": "3.7.50",
