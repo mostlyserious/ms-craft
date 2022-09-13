@@ -1,11 +1,11 @@
 import { detach, insert, noop } from 'svelte/internal';
 
-export default els => {
-    const store = () => import('./store');
-    const components = {
-        // 'example-component': () => import('./components/ExampleComponent')
-    };
+const store = () => import('./store' /* webpackChunkName: 'store' */);
+const components = {
+    // 'example-component': () => import('./components/ExampleComponent.svelte' /* webpackChunkName: 'example-component' */)
+};
 
+export default els => {
     els.forEach(target => {
         const component = target.getAttribute('component');
         const request = components[component];
@@ -15,7 +15,7 @@ export default els => {
                 request(),
                 store()
             ]).then(([ { default: Component }, { default: store } ]) => {
-                const slotElements = target.querySelectorAll('template');
+                const slotElements = target.querySelectorAll(':scope > template');
                 const slots = {};
 
                 slotElements.forEach(el => {
@@ -55,12 +55,12 @@ function createSlots(templates) {
             return {
                 c: noop,
                 l: noop,
-                m: function mount(target, anchor) {
+                m: (target, anchor) => {
                     Array.prototype.forEach.call(nodes, node => {
                         insert(target, node, anchor);
                     });
                 },
-                d: function destroy(detaching) {
+                d: detaching => {
                     if (detaching) {
                         Array.prototype.forEach.call(nodes, node => {
                             detach(node);

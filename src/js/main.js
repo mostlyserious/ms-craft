@@ -1,4 +1,5 @@
 import '../css/main.css';
+import init from './init';
 
 import.meta.glob('../{img,font,media}/**.*');
 
@@ -9,22 +10,7 @@ import.meta.glob('../{img,font,media}/**.*');
         document.addEventListener('DOMContentLoaded', ready);
     }
 })(() => {
-    const modules = {
-        '.intro': () => import('./modules/intro'),
-        '[data-property]': () => import('./modules/property'),
-        '[data-toggle]': () => import('./modules/toggle'),
-        'x-svelte': () => import('./svelte')
-    };
-
-    Object.keys(modules).forEach(selector => {
-        const request = modules[selector];
-
-        (els => {
-            if (els && els.length) {
-                request().then(({ default: module }) => module(els));
-            }
-        })(document.querySelectorAll(selector));
-    });
+    init(document);
 
     addEventListener('keydown', event => {
         if (event.code === 'Tab') {
@@ -35,9 +21,4 @@ import.meta.glob('../{img,font,media}/**.*');
     addEventListener('mousedown', () => {
         document.body.classList.remove('is-tabbing');
     });
-
-    Array.prototype.forEach.call(
-        document.querySelectorAll('[target=_blank]'),
-        el => el.setAttribute('rel', 'noopener')
-    );
 });

@@ -12,7 +12,7 @@ module.exports = {
         'templates/**/*.{twig,html}',
         'modules/*.php',
         'config/*.php'
-    ].flat(),
+    ],
     theme: {
         screens: {
             '2xs': '380px',

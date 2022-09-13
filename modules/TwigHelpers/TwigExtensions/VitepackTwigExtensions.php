@@ -30,88 +30,79 @@ class VitepackTwigExtensions extends AbstractExtension
         ];
     }
 
-    /**
-     * Returns versioned file(s) or the entire tag.
-     *
-     * @param  string     $file
-     * @param  bool       $markup   (optional)
-     * @param  bool       $manifest (optional)
-     * @param  null|mixed $entry
-     * @return string
-     */
-    public function vite($manifest_dir = 'web/static')
-    {
-    static $all;
-
-    $results = [];
-    $manifest_path = $this->joinPath(CRAFT_BASE_PATH, $manifest_dir, 'manifest.dev.json');
-
-    if (!is_file($manifest_path)) {
-        $manifest_path = $this->joinPath(CRAFT_BASE_PATH, $manifest_dir, 'manifest.json');
-    }
-
-    if (!is_file($manifest_path)) {
-        return '';
-    }
-
-    $all = $all ?: json_decode(file_get_contents($manifest_path), true);
-
-    if (isset($all['url'])) {
-        foreach ($all['inputs'] as $input) {
-            $this->inputMarkup($input, $all['url'], $results);
-        }
-    }
-
-    $entries = array_filter($all, function ($entry) {
-        if (!isset($entry['src'])) {
-            return;
-        }
-
-        $ext = pathinfo($entry['src'], PATHINFO_EXTENSION);
-
-        return in_array($ext, ['css', 'js'])
-            && isset($entry['isEntry'])
-            && $entry['isEntry'];
-    });
-
-    foreach ($entries as $entry) {
-        $input = $entry['file'];
-
-        if (isset($entry['imports']) && count($entry['imports'])) {
-            foreach ($entry['imports'] as $import) {
-                $this->inputMarkup(str_ireplace('_', 'assets/', $import), '/static', $results);
-            }
-        }
-
-        if (isset($entry['css']) && count($entry['css'])) {
-            foreach ($entry['css'] as $import) {
-                $this->inputMarkup($import, '/static', $results);
-            }
-        }
-
-        $this->inputMarkup($input, '/static', $results);
-    }
-
-    return implode(PHP_EOL, $results);
-}
-
-    /**
-     * Returns versioned file(s) or the entire tag.
-     *
-     * @param  string     $file
-     * @param  bool       $markup   (optional)
-     * @param  bool       $manifest (optional)
-     * @param  null|mixed $entry
-     * @return string
-     */
-    public function asset($input, $manifest_dir = 'web/static')
+    public function vite($target = null, $args = [])
     {
         static $all;
 
-        $manifest_path = $this->joinPath(CRAFT_BASE_PATH, $manifest_dir, 'manifest.dev.json');
+        $results = [];
+        $base = isset($args['base']) ? $args['base'] : '/static/';
+        $outdir = isset($args['outdir']) ? $args['outdir'] : 'web/static';
+
+        $manifest_path = $this->joinPath(CRAFT_BASE_PATH, $outdir, 'manifest.dev.json');
 
         if (!is_file($manifest_path)) {
-            $manifest_path = $this->joinPath(CRAFT_BASE_PATH, $manifest_dir, 'manifest.json');
+            $manifest_path = $this->joinPath(CRAFT_BASE_PATH, $outdir, 'manifest.json');
+        }
+
+        if (!is_file($manifest_path)) {
+            return '';
+        }
+
+        $all = $all ?: json_decode(file_get_contents($manifest_path), true);
+
+        if (isset($all['url'])) {
+            foreach ($all['inputs'] as $input) {
+                if (!$target || $input === $target) {
+                    $this->inputMarkup($input, $all['url'], $results);
+                }
+            }
+        }
+
+        $entries = array_filter($all, function ($entry) use ($target) {
+            if (!isset($entry['src'])) {
+                return;
+            }
+
+            $ext = pathinfo($entry['src'], PATHINFO_EXTENSION);
+
+            return in_array($ext, ['css', 'js'])
+                && isset($entry['isEntry'])
+                && $entry['isEntry']
+                && (!$target || $entry['src'] === $target);
+        });
+
+        foreach ($entries as $entry) {
+            $input = $entry['file'];
+
+            if (isset($entry['imports']) && count($entry['imports'])) {
+                foreach ($entry['imports'] as $import) {
+                    $this->inputMarkup(str_ireplace('_', 'assets/', $import), $base, $results);
+                }
+            }
+
+            if (isset($entry['css']) && count($entry['css'])) {
+                foreach ($entry['css'] as $import) {
+                    $this->inputMarkup($import, $base, $results);
+                }
+            }
+
+            $this->inputMarkup($input, $base, $results);
+        }
+
+        return implode(PHP_EOL, $results);
+    }
+
+    public function asset($input, $args = [])
+    {
+        static $all;
+
+        $base = isset($args['base']) ? $args['base'] : '/static/';
+        $outdir = isset($args['outdir']) ? $args['outdir'] : 'web/static';
+
+        $manifest_path = $this->joinPath(CRAFT_BASE_PATH, $outdir, 'manifest.dev.json');
+
+        if (!is_file($manifest_path)) {
+            $manifest_path = $this->joinPath(CRAFT_BASE_PATH, $outdir, 'manifest.json');
         }
 
         if (!is_file($manifest_path)) {
@@ -123,11 +114,15 @@ class VitepackTwigExtensions extends AbstractExtension
         $input = $this->joinPath('src', $input);
 
         if (isset($all['url'], $all['inputs'][$input])) {
-            return $all['inputs'][$input];
+            return $this->joinPath($all['url'], $all['inputs'][$input]);
         }
 
         if (isset($all[$input], $all[$input]['assets']) && count($all[$input]['assets'])) {
-            return $this->joinPath('/static', $all[$input]['assets'][0]);
+            return $this->joinPath($base, $all[$input]['assets'][0]);
+        }
+
+        if (isset($all['url'])) {
+            return $this->joinPath($all['url'], $input);
         }
 
         return '';
