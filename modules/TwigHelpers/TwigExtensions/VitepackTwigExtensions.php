@@ -30,16 +30,18 @@ class VitepackTwigExtensions extends AbstractExtension
         ];
     }
 
-    public function vite($target = null)
+    public function vite($target = null, $args = [])
     {
         static $all;
 
         $results = [];
-        $manifest_dir = 'web/static';
-        $manifest_path = $this->joinPath(CRAFT_BASE_PATH, $manifest_dir, 'manifest.dev.json');
+        $base = isset($args['base']) ? $args['base'] : '/static/';
+        $outdir = isset($args['outdir']) ? $args['outdir'] : 'web/static';
+
+        $manifest_path = $this->joinPath(CRAFT_BASE_PATH, $outdir, 'manifest.dev.json');
 
         if (!is_file($manifest_path)) {
-            $manifest_path = $this->joinPath(CRAFT_BASE_PATH, $manifest_dir, 'manifest.json');
+            $manifest_path = $this->joinPath(CRAFT_BASE_PATH, $outdir, 'manifest.json');
         }
 
         if (!is_file($manifest_path)) {
@@ -74,31 +76,33 @@ class VitepackTwigExtensions extends AbstractExtension
 
             if (isset($entry['imports']) && count($entry['imports'])) {
                 foreach ($entry['imports'] as $import) {
-                    $this->inputMarkup(str_ireplace('_', 'assets/', $import), '/static', $results);
+                    $this->inputMarkup(str_ireplace('_', 'assets/', $import), $base, $results);
                 }
             }
 
             if (isset($entry['css']) && count($entry['css'])) {
                 foreach ($entry['css'] as $import) {
-                    $this->inputMarkup($import, '/static', $results);
+                    $this->inputMarkup($import, $base, $results);
                 }
             }
 
-            $this->inputMarkup($input, '/static', $results);
+            $this->inputMarkup($input, $base, $results);
         }
 
         return implode(PHP_EOL, $results);
     }
 
-    public function asset($input)
+    public function asset($input, $args = [])
     {
         static $all;
 
-        $manifest_dir = 'web/static';
-        $manifest_path = $this->joinPath(CRAFT_BASE_PATH, $manifest_dir, 'manifest.dev.json');
+        $base = isset($args['base']) ? $args['base'] : '/static/';
+        $outdir = isset($args['outdir']) ? $args['outdir'] : 'web/static';
+
+        $manifest_path = $this->joinPath(CRAFT_BASE_PATH, $outdir, 'manifest.dev.json');
 
         if (!is_file($manifest_path)) {
-            $manifest_path = $this->joinPath(CRAFT_BASE_PATH, $manifest_dir, 'manifest.json');
+            $manifest_path = $this->joinPath(CRAFT_BASE_PATH, $outdir, 'manifest.json');
         }
 
         if (!is_file($manifest_path)) {
@@ -110,11 +114,11 @@ class VitepackTwigExtensions extends AbstractExtension
         $input = $this->joinPath('src', $input);
 
         if (isset($all['url'], $all['inputs'][$input])) {
-            return $all['inputs'][$input];
+            return $this->joinPath($all['url'], $all['inputs'][$input]);
         }
 
         if (isset($all[$input], $all[$input]['assets']) && count($all[$input]['assets'])) {
-            return $this->joinPath('/static', $all[$input]['assets'][0]);
+            return $this->joinPath($base, $all[$input]['assets'][0]);
         }
 
         if (isset($all['url'])) {
