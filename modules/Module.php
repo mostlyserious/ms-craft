@@ -5,17 +5,17 @@ namespace Modules;
 use Craft;
 use craft\web\View;
 use yii\base\Event;
-use yii\base\Module;
 use craft\services\Assets;
 use craft\events\TemplateEvent;
 use craft\helpers\StringHelper;
+use yii\base\Module as BaseModule;
 use craft\events\ReplaceAssetEvent;
 
-class App extends Module
+class Module extends BaseModule
 {
     public function init()
     {
-        Craft::setAlias('@Modules', __DIR__);
+        Craft::setAlias('@modules', __DIR__);
 
         if (Craft::$app->getRequest()->getIsConsoleRequest()) {
             $this->controllerNamespace = 'Modules\\Console\\Controllers';

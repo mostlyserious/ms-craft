@@ -1,14 +1,12 @@
 <?php
 
-use Modules\App;
+use Modules\Module;
 use Modules\TwigHelpers\TwigHelpers;
 
 return [
     'modules' => [
-        'module' => App::class,
-        'twighelpers' => [
-            'class' => TwigHelpers::class
-        ]
+        'module' => Module::class,
+        'twighelpers' => TwigHelpers::class
     ],
    'bootstrap' => [
        'module',
