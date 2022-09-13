@@ -1,8 +1,8 @@
 import { detach, insert, noop } from 'svelte/internal';
 
-const store = () => import('./store' /* webpackChunkName: 'store' */);
+const store = () => import('./store');
 const components = {
-    // 'example-component': () => import('./components/ExampleComponent.svelte' /* webpackChunkName: 'example-component' */)
+    // 'example-component': () => import('./components/ExampleComponent')
 };
 
 export default els => {
