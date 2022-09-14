@@ -3,7 +3,6 @@
 namespace Modules\TwigHelpers\TwigExtensions;
 
 use Craft;
-use tidy;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
 use craft\helpers\StringHelper;
@@ -38,9 +37,6 @@ class TwigHelpersTwigExtension extends AbstractExtension implements GlobalsInter
             new TwigFunction('env', [$this, 'env']),
             new TwigFunction('external', [$this, 'external'], [
                 'is_safe' => ['html']
-            ]),
-            new TwigFunction('tidy', [$this, 'tidy'], [
-                'is_safe' => ['html']
             ])
         ];
     }
@@ -49,25 +45,8 @@ class TwigHelpersTwigExtension extends AbstractExtension implements GlobalsInter
     {
         return [
             new TwigFilter('propSort', [$this, 'propSort']),
-            new TwigFilter('find', [$this, 'find']),
-            new TwigFilter('tidy', [$this, 'tidy'])
+            new TwigFilter('find', [$this, 'find'])
         ];
-    }
-
-    public function tidy($html) {
-        $tidy = new tidy;
-
-        $tidy->parseString($html, [
-            'wrap' => 0,
-            'indent' => true,
-            'indent-spaces' => 4,
-            'output-xhtml' => false,
-            'show-body-only' => true
-        ], 'utf8');
-
-        $tidy->cleanRepair();
-
-        return "{$tidy}";
     }
 
     public function propSort($items, $prop)

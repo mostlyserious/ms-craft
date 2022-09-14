@@ -1,12 +1,14 @@
+columnSuffix: null
 contentColumnType: text
 fieldGroup: 38b79782-e200-468f-9633-323021ffa8ca # Common
 handle: background
-instructions: ''
+instructions: null
 name: Background
 searchable: false
 settings:
+  default: null
   palette: Default
-  useConfigFile: '1'
+  useConfigFile: true
 translationKeyFormat: null
 translationMethod: none
-type: percipioglobal\colourswatches\fields\ColourSwatches
+type: percipiolondon\colourswatches\fields\ColourSwatches

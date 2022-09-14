@@ -5,7 +5,6 @@
         init(app) {
             this.app = app;
         },
-
         start() {
             this.app.toolbar.addButton('button', {
                 title: 'Button',
@@ -13,11 +12,10 @@
                 api: 'plugin.buttons.addButton'
             });
         },
-
         addButton() {
             this.app.module.inline.format({
                 tag: 'a',
-                class: 'button button-primary',
+                class: 'button button-prose',
                 type: 'toggle'
             });
         }

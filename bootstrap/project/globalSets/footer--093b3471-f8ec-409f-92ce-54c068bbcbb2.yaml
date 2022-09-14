@@ -2,27 +2,35 @@ fieldLayouts:
   9a2b1340-8d36-428c-b8c1-6a81ddb7bb07:
     tabs:
       -
+        elementCondition: null
         elements:
           -
+            elementCondition: null
             fieldUid: 301bc2d6-cfb4-4804-955b-40eb41aee9fb # Privacy Policy
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: 3ddc3ab0-b932-48cf-8323-1c5dfcdf6dd6
+            userCondition: null
             warning: null
             width: 50
           -
+            elementCondition: null
             fieldUid: 0ef1ad7d-525e-46a5-bff9-8510cc570cfc # Terms of Use
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
+            uid: de432770-4bab-4385-8c26-d82d7e7017ff
+            userCondition: null
             warning: null
             width: 50
         name: Content
-        sortOrder: 1
+        uid: bce527dc-f247-426b-9871-eb66f36330ba
+        userCondition: null
 handle: footer
 name: Footer
 sortOrder: 3

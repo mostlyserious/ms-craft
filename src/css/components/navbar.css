@@ -12,7 +12,7 @@
     }
 
     .navbar-logo {
-        @apply relative z-50 mr-8 py-4 text-3xl text-white;
+        @apply relative z-50 mr-8 py-4 text-3xl;
         max-width: 33.3333%;
     }
 
@@ -28,31 +28,25 @@
             @apply ml-8;
 
             & .navbar-link {
-                @apply button button-primary;
-
-                &:hover,
-                &:focus {
-                    @apply text-white;
-                }
+                @apply button button-blue;
             }
         }
     }
 
     .navbar-link {
-        @apply block w-full px-4 py-2 text-sm text-white tracking-wide font-bold uppercase cursor-pointer whitespace-nowrap transition-colors duration-100;
+        @apply block w-full px-4 py-2 text-sm tracking-wide font-bold uppercase cursor-pointer whitespace-nowrap transition-colors duration-100;
 
-        &:hover,
-        &:focus {
+        &:hover {
             @apply text-blue-500;
         }
     }
 
     .navbar-toggle {
-        @apply relative z-40 block text-white cursor-pointer;
+        @apply relative z-40 block cursor-pointer;
         @apply lg:hidden;
 
         & span {
-            @apply absolute left-0 block w-full h-px border-t-1 border-b-1 border-current bg-current box-content pointer-events-none;
+            @apply absolute left-0 block w-full h-px border-t border-b border-current bg-current box-content pointer-events-none;
             transition: transform 250ms ease-in-out, opacity 150ms ease-in-out, fill 150ms ease-in-out;
             transform: translate3d(0, 0, 0) rotate(0);
             transform-origin: 100% 50%;

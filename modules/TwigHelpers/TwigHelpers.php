@@ -4,7 +4,7 @@ namespace Modules\TwigHelpers;
 
 use Craft;
 use yii\base\Module;
-use Modules\TwigHelpers\TwigExtensions\BrightpackTwigExtensions;
+use Modules\TwigHelpers\TwigExtensions\VitepackTwigExtensions;
 use Modules\TwigHelpers\TwigExtensions\TwigHelpersTwigExtension;
 
 class TwigHelpers extends Module
@@ -16,7 +16,7 @@ class TwigHelpers extends Module
      */
     public function __construct($id, $parent = null, array $config = [])
     {
-        Craft::setAlias('@Modules/TwigHelpers', $this->getBasePath());
+        Craft::setAlias('@modules/twighelpers', $this->getBasePath());
 
         static::setInstance($this);
 
@@ -29,6 +29,8 @@ class TwigHelpers extends Module
         self::$instance = $this;
 
         Craft::$app->view->registerTwigExtension(new TwigHelpersTwigExtension());
-        Craft::$app->view->registerTwigExtension(new BrightpackTwigExtensions());
+        Craft::$app->view->registerTwigExtension(new VitepackTwigExtensions());
+
+        Craft::info('twighelpers module loaded', __METHOD__);
     }
 }

@@ -1,31 +1,27 @@
-{% set title = block and block.heading|striptags('<br>')|trim
+{# Wrapped in <header> in _base.twig #}
+
+{% import 'helpers/_macros.twig' as macros %}
+
+{% set title = block and block.heading|striptags('<strong><span><em><br><a>')|trim
     ? block.heading
     : entry.title %}
 
-{% set backgroundImage = block.backgroundImage.one|default(null) %}
-
-{% set height = entry.section.handle == 'home'
-    ? 'min-h-vh-80'
-    : 'min-h-vh-60' %}
-
 <section class="relative" role="banner">
-    <div class="relative flex flex-col bg-blue-700 bg-center bg-cover {{ height }}"
-        {% if backgroundImage %}
-            style="background-image: url({{ backgroundImage.url('header') }})"
-        {% endif %}>
-        <div class="relative py-24 my-auto">
-            <div class="container relative pt-12 text-white">
-                <div class="max-w-4xl text-center">
-                    <h1 class="inline-block text-6xl md:text-7xl font-bold uppercase">
+    <div class="relative grid items-center bg-gradient-to-br from-zinc-900 to-zinc-700 bg-center bg-cover">
+        <div class="relative py-12 md:py-24">
+            <div class="container text-white">
+                <div class="grid gap-6 text-center">
+                    {% if block and block.label|trim %}
+                        <p class="text-lg text-indigo-300 tracking-wide font-bold uppercase">
+                            {{ block.label }}
+                        </p>
+                    {% endif %}
+                    <h1 class="inline-block text-4xl md:text-5xl font-semibold">
                         {{ title|striptags('<strong><span><br>')|trim|raw }}
                     </h1>
-                    {% if not block.button.isEmpty|default(true) %}
-                        <div class="mt-6 md:mt-10">
-                            {{ block.button.link({
-                                class: 'button button-white'
-                            }) }}
-                        </div>
-                    {% endif %}
+                    {{ macros.link(block.button|default(null), {
+                        class: 'button button-white'
+                    }, 'div')|attr({ class: 'pt-2' }) }}
                 </div>
             </div>
         </div>

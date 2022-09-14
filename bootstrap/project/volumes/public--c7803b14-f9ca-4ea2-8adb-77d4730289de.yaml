@@ -2,6 +2,7 @@ fieldLayouts:
   d941fabc-e515-47b9-ba73-4ffefd3c3542:
     tabs:
       -
+        elementCondition: null
         elements:
           -
             autocapitalize: true
@@ -9,6 +10,7 @@ fieldLayouts:
             autocorrect: true
             class: null
             disabled: false
+            elementCondition: null
             id: null
             instructions: null
             label: null
@@ -23,27 +25,42 @@ fieldLayouts:
             step: null
             tip: null
             title: null
-            type: craft\fieldlayoutelements\AssetTitleField
+            type: craft\fieldlayoutelements\assets\AssetTitleField
+            uid: 1f8f9bab-b231-4b45-9051-703efcab1a24
+            userCondition: null
             warning: null
             width: 100
           -
-            fieldUid: c7f9a351-3b7b-4ab5-ae75-2700604dfe9c
+            attribute: alt
+            class: null
+            cols: null
+            disabled: false
+            elementCondition: null
+            id: null
             instructions: null
             label: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: true
             required: false
+            rows: null
             tip: null
-            type: craft\fieldlayoutelements\CustomField
+            title: null
+            type: craft\fieldlayoutelements\assets\AltField
+            uid: 77b53149-f86e-49ef-89e7-1c12da951b0c
+            userCondition: null
             warning: null
             width: 100
         name: Content
-        sortOrder: 1
+        uid: 70e71e15-624a-4737-b55f-429abe1eddd6
+        userCondition: null
+fs: public
 handle: public
-hasUrls: true
 name: Public
-settings:
-  path: '@webroot/assets'
 sortOrder: 1
 titleTranslationKeyFormat: null
-titleTranslationMethod: null
-type: craft\volumes\Local
-url: /assets/
+titleTranslationMethod: site
+transformFs: ''
+transformSubpath: ''

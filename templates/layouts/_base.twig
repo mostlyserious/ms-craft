@@ -11,7 +11,7 @@
     {# <link rel="preconnect" href="https://p.typekit.net" > #}
 
     {% block head %}
-        {{ external('@webroot/static/favicon/markup.html')|striptags('<link><meta>')|raw }}
+        {{ external('@webroot/static/assets/markup.html')|striptags('<link><meta>')|raw }}
     {% endblock %}
 
     {% set regex = '{bot|crawler|spider|crawling|google|baidu|bing|msn|duckduckbot|teoma|slurp|yandex|konqueror|facebookexternalhit|ia_archiver}' %}
@@ -37,20 +37,18 @@
 
     <script>
         window.customElements.define('x-svelte', class extends HTMLElement {});
-
-        (function(global) {
-            global.$app = global.$app || {};
-            global.$app.isCrawler = {{ isCrawler ? 'true' : 'false' }};
-            global.$app.isAdmin = {{ currentUser and currentUser.admin ? 'true' : 'false' }};
-            global.$app.csrfTokenName = '{{ craft.app.config.general.csrfTokenName|raw }}';
-            global.$app.csrfTokenValue = '{{ craft.app.request.csrfToken|raw }}';
-            global.$app.cloudfrontUrl = '{{ getenv("AWS_CLOUDFRONT_URL") }}';
-            global.$app.imgixUrl = '{{ getenv("IMGIX_URL") }}';
-            global.$app.devMode = {{ craft.app.config.general.devMode ? 'true' : 'false' }};
-        })(window);
+        window.$app = {{ ({
+            isCrawler: isCrawler,
+            isAdmin: currentUser and currentUser.admin,
+            csrfTokenName: craft.app.config.general.csrfTokenName|raw,
+            csrfTokenValue: craft.app.request.csrfToken|raw,
+            cloudfrontUrl: getenv('AWS_CLOUDFRONT_URL'),
+            imgixUrl: getenv('IMGIX_URL'),
+            devMode: craft.app.config.general.devMode
+        })|json_encode(128)|raw }};
     </script>
 
-    {{ entry('app') }}
+    {{ vite() }}
 
     {{ codeBlocks|filter(c => c.position == 'headBottom')|map(c => c.code)|join('\n\n')|raw }}
 </head>

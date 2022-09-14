@@ -1,4 +1,5 @@
 <?php
+
 return [
     '*' => [
         'enabled' => false,
@@ -10,5 +11,5 @@ return [
     ],
     'production' => [
         'enabled' => true
-    ],
+    ]
 ];

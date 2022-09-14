@@ -1,8 +1,15 @@
+{% set regex = '/src="([^"]+)"/m' %}
+{% set replace = 'srcset="$1?auto=compress,format&width=848, $1?auto=compress,format&width=1696 2x"' %}
+
 <section class="relative {{ background.class }}">
     <div class="py-8 md:py-16">
         <div class="container container-sm">
-            <div class="wysiwyg wysiwyg-user">
-                {{ block.wysiwyg }}
+            <div class="prose">
+                {% apply replace(getenv('AWS_CLOUDFRONT_URL'), getenv('IMGIX_URL'))|raw %}
+                    {% apply replace(regex, replace)|raw %}
+                        {{ block.wysiwyg }}
+                    {% endapply %}
+                {% endapply %}
             </div>
         </div>
     </div>

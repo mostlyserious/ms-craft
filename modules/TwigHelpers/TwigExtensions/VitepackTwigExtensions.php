@@ -142,10 +142,10 @@ class VitepackTwigExtensions extends AbstractExtension
         switch ($ext) {
             case 'js':
                 $results[] = $legacy ? sprintf(
-                    '<script nomodule crossorigin src="%s" async defer></script>',
+                    '<script nomodule crossorigin src="%s" async></script>',
                     $this->joinPath($base, $input)
                 ) : sprintf(
-                    '<script type="module" crossorigin src="%s" async defer></script>',
+                    '<script type="module" crossorigin src="%s" defer></script>',
                     $this->joinPath($base, $input)
                 );
                 break;

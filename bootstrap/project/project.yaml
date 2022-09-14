@@ -1,4 +1,31 @@
-dateModified: 1659119406
+dateModified: 1663173060
+elementSources:
+  craft\elements\Entry:
+    -
+      disabled: false
+      key: '*'
+      tableAttributes:
+        - section
+        - postDate
+        - expiryDate
+        - author
+        - link
+      type: native
+    -
+      key: singles
+      type: native
+    -
+      key: 'section:1f4732b0-84b4-4302-9a0f-687b30fdd6a0' # Pages
+      type: native
+    -
+      heading: ''
+      type: heading
+    -
+      key: 'section:d630234c-e5b7-4e5c-a00b-62c58a09595c' # Errors
+      type: native
+    -
+      key: 'section:04d5a0fa-7712-4c14-80b1-499740922557' # CMS Guide
+      type: native
 email:
   fromEmail: $SYSTEM_EMAIL_ADDRESS
   fromName: $SYSTEM_EMAIL_ADDRESS
@@ -7,6 +34,14 @@ email:
   transportSettings:
     command: ''
   transportType: craft\mail\transportadapters\Sendmail
+fs:
+  public:
+    hasUrls: true
+    name: Public
+    settings:
+      path: '@webroot/assets'
+    type: craft\fs\Local
+    url: /assets/
 meta:
   __names__:
     0ef1ad7d-525e-46a5-bff9-8510cc570cfc: 'Terms of Use' # Terms of Use
@@ -66,18 +101,14 @@ meta:
     f93ba9ca-aed6-465b-871c-a518711b649c: Buttons # Buttons
     fef5e771-2ab6-464f-b943-624452c0a52c: Body # Body
 plugins:
-  async-queue:
-    edition: standard
-    enabled: true
-    schemaVersion: 1.0.0
   aws-s3:
     edition: standard
     enabled: true
-    schemaVersion: '1.2'
+    schemaVersion: '2.0'
   colour-swatches:
     edition: standard
     enabled: true
-    schemaVersion: 1.4.2
+    schemaVersion: 1.4.3
   copy:
     edition: standard
     enabled: true
@@ -95,7 +126,7 @@ plugins:
     edition: standard
     enabled: true
     licenseKey: GCD4I1HRGWEQ8BGNOTRGP4HU
-    schemaVersion: 2.13.0
+    schemaVersion: 3.0.4
   redactor:
     edition: standard
     enabled: true
@@ -116,11 +147,11 @@ plugins:
   typedlinkfield:
     edition: standard
     enabled: true
-    schemaVersion: 1.0.0
+    schemaVersion: 2.0.0
   usermanual:
     edition: standard
     enabled: true
-    schemaVersion: 2.0.1
+    schemaVersion: 4.0.0
     settings:
       enabledSideBar: true
       pluginNameOverride: 'CMS Guide'
@@ -131,10 +162,11 @@ system:
   live: true
   name: $PRIMARY_SITE_NAME
   retryDuration: null
-  schemaVersion: 3.7.33
+  schemaVersion: 4.0.0.9
   timeZone: America/Los_Angeles
 users:
   allowPublicRegistration: false
+  deactivateByDefault: false
   defaultGroup: null
   photoSubpath: null
   photoVolumeUid: null

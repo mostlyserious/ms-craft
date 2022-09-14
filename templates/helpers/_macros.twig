@@ -56,6 +56,7 @@
 
         {% if not lazy %}
             {% header('Link: <%s>; as=image; rel=preload;'|format(asset.extension == 'gif' ? image.url|split('?')|first : image.url)) %}
+            {% header('Link: <%s>; as=image; rel=preload;'|format(asset.extension == 'gif' ? image2x.url|split('?')|first : image2x.url)) %}
         {% endif %}
 
         {{ tag('img', attrs|merge({
@@ -80,7 +81,7 @@
     {% endif %}
 {% endmacro %}
 
-{% macro src(asset, args = {}, preload = true) %}{% spaceless %}
+{% macro src(asset, args = {}, preload = true) %}{% apply spaceless %}
     {% set imgixUrl = getenv('IMGIX_URL') %}
     {% set baseUrl = getenv('AWS_CLOUDFRONT_URL') %}
 
@@ -130,4 +131,14 @@
 
         {{ "https://picsum.photos/seed/#{asset}/#{width}/#{height ?? width}" }}
     {% endif %}
-{% endspaceless %}{% endmacro %}
+{% endapply %}{% endmacro %}
+
+{% macro link(button, args = {}, wrap = false) %}
+    {% if button and not button.isEmpty %}
+        {% if wrap %}
+            {{ tag(wrap, { html: button.link(args) }) }}
+        {% else %}
+            {{ button.link(args) }}
+        {% endif %}
+    {% endif %}
+{% endmacro %}

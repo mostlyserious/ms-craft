@@ -1,33 +1,36 @@
-{% include 'modules/_mobileMenu' %}
+{% import 'helpers/_macros.twig' as macros %}
 
-<div class="navbar bg-gray-800">
+<div class="navbar">
     <div class="navbar-container">
         <div id="navbar-inner" class="navbar-inner">
             <a class="navbar-logo" href="{{ siteUrl('/') }}" title="Home page">
-                {# <img width="160" src="{{ asset('img/logo.svg') }}" alt="{{ systemName }}"> #}
                 {{ systemName }}
+                {# <img width="200" height="35"
+                    src="{{ asset('img/logo.svg') }}"
+                    alt="{{ systemName }}"> #}
             </a>
-            <nav id="main-menu" class="navbar-nav">
-                {% for menuItem in mainMenu.menu.all %}
-                    {% if not menuItem.button.isEmpty %}
-                        <span class="navbar-item">
-                            {{ menuItem.button.link({
-                                class: 'navbar-link'
-                            }) }}
-                        </span>
-                    {% endif %}
-                {% endfor %}
+            <nav aria-label="Main menu">
+                <ul id="main-menu" class="navbar-nav pl-4">
+                    {% for menuItem in mainMenu.menu.all %}
+                        {{ macros.link(menuItem.button, {
+                            class: 'navbar-link'
+                        }, 'li')|attr({ class: 'navbar-item' }) }}
+                    {% endfor %}
+                </ul>
+                <button type="button"
+                    class="navbar-toggle w-5 h-4 my-4 ml-6 mr-0"
+                    aria-controls="mobile-menu"
+                    aria-expanded="false"
+                    aria-label="Open mobile menu"
+                    data-toggle="#mobile-menu"
+                    data-toggle-lock-scroll>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </nav>
-            <button type="button"
-                class="navbar-toggle w-5 h-4 m-4 mr-0"
-                aria-controls="mobile-menu"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-                data-toggle="#navbar-inner">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
         </div>
     </div>
 </div>
+
+{% include 'modules/_mobileMenu' %}

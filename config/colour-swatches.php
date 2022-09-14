@@ -10,7 +10,7 @@ return [
                     [
                         'color' => '#FFF',
                         'class' => 'bg-white'
-                    ],
+                    ]
                 ]
             ],
             [
@@ -20,7 +20,7 @@ return [
                     [
                         'color' => '#EDF2F7',
                         'class' => 'bg-gray-200'
-                    ],
+                    ]
                 ]
             ]
         ]
