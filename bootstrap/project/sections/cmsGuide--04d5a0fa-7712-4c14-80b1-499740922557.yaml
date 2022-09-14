@@ -7,7 +7,7 @@ siteSettings:
   1721cab1-b289-4a13-9143-1a55e53f453d: # $PRIMARY_SITE_NAME
     enabledByDefault: true
     hasUrls: true
-    template: pages/_cmsGuide
+    template: entries/_cmsGuide
     uriFormat: '{parent.uri}/{slug}'
 structure:
   maxLevels: null
