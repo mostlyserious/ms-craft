@@ -14,7 +14,7 @@ else
 fi
 
 echo ""
-echo "Your project YAML files have been bootstrapped.\nTo finish applying these updates, navigate to the projects admin and select Utilities > Project Config > Reapply Everything > Use YAML."
+echo "Your project YAML files have been bootstrapped.\nTo finish applying these updates run \`php craft project-config/apply\`"
 echo ""
 
 while true; do

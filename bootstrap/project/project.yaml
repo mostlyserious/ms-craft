@@ -126,7 +126,7 @@ plugins:
     edition: standard
     enabled: true
     licenseKey: GCD4I1HRGWEQ8BGNOTRGP4HU
-    schemaVersion: 3.0.4
+    schemaVersion: 3.3.0
   redactor:
     edition: standard
     enabled: true
