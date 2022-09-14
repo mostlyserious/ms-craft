@@ -15,7 +15,7 @@ class Module extends BaseModule
 {
     public function init()
     {
-        Craft::setAlias('@modules', __DIR__);
+        Craft::setAlias('@Modules', __DIR__);
 
         if (Craft::$app->getRequest()->getIsConsoleRequest()) {
             $this->controllerNamespace = 'Modules\\Console\\Controllers';

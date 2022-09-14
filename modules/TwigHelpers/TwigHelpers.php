@@ -16,7 +16,7 @@ class TwigHelpers extends Module
      */
     public function __construct($id, $parent = null, array $config = [])
     {
-        Craft::setAlias('@modules/twighelpers', $this->getBasePath());
+        Craft::setAlias('Modules/TwigHelpers', $this->getBasePath());
 
         static::setInstance($this);
 
