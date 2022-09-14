@@ -1,12 +1,4 @@
 <?php
-/**
- * General Configuration
- *
- * All of your system's general configuration settings go in here. You can see a
- * list of the available settings in vendor/craftcms/cms/src/config/GeneralConfig.php.
- *
- * @see \craft\config\GeneralConfig
- */
 
 use craft\helpers\ConfigHelper;
 use craft\helpers\DateTimeHelper;
@@ -43,7 +35,7 @@ return [
         'disallowRobots' => true,
         'allowAdminChanges' => false,
         'testToEmailAddress' => [
-            'engineering-logs@mostlyserious.io' => 'Mostly Serious'
+            getenv('SYSTEM_EMAIL_ADDRESS') => getenv('SYSTEM_EMAIL_NAME')
         ]
     ],
 

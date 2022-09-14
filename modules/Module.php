@@ -27,11 +27,11 @@ class Module extends BaseModule
             Event::on(
                 View::class,
                 View::EVENT_BEFORE_RENDER_TEMPLATE,
-                function (TemplateEvent $event) {
+                function () {
                     $view = Craft::$app->getView();
                     $view->registerCss('
-                        .button.button-primary { display: inline-block; padding: 0.5rem 1.5rem; margin-top: 0.5rem; margin-bottom: 0.5rem; border: 4px solid currentcolor; text-transform: uppercase; font-weight: bold; }
-                        .button.button-primary:hover { text-decoration: none; }
+                        .button.button-prose { display: inline-block; padding: 0.5rem 1.5rem; margin-top: 0.5rem; margin-bottom: 0.5rem; border: 4px solid currentcolor; text-transform: uppercase; font-weight: bold; }
+                        .button.button-prose:hover { text-decoration: none; }
                         .color-swatches { padding: 0 3px 3px 3px; }
                     ');
                 }

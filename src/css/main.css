@@ -9,14 +9,6 @@
 @custom-selector :--headings :is(h1, h2, h3, h4, h5, h6);
 
 @layer base {
-    :root {
-        --parallax-perspective: 100vh;
-        --parallax-control: 0;
-        --parallax-x: 0px;
-        --parallax-y: 0px;
-        --parallax-z: 0px;
-    }
-
     html {
         @apply antialiased bg-white;
         font-size: 16px;

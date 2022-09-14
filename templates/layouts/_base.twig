@@ -37,17 +37,15 @@
 
     <script>
         window.customElements.define('x-svelte', class extends HTMLElement {});
-
-        (function(global) {
-            global.$app = global.$app || {};
-            global.$app.isCrawler = {{ isCrawler ? 'true' : 'false' }};
-            global.$app.isAdmin = {{ currentUser and currentUser.admin ? 'true' : 'false' }};
-            global.$app.csrfTokenName = '{{ craft.app.config.general.csrfTokenName|raw }}';
-            global.$app.csrfTokenValue = '{{ craft.app.request.csrfToken|raw }}';
-            global.$app.cloudfrontUrl = '{{ getenv("AWS_CLOUDFRONT_URL") }}';
-            global.$app.imgixUrl = '{{ getenv("IMGIX_URL") }}';
-            global.$app.devMode = {{ craft.app.config.general.devMode ? 'true' : 'false' }};
-        })(window);
+        window.$app = {{ ({
+            isCrawler: isCrawler,
+            isAdmin: currentUser and currentUser.admin,
+            csrfTokenName: craft.app.config.general.csrfTokenName|raw,
+            csrfTokenValue: craft.app.request.csrfToken|raw,
+            cloudfrontUrl: getenv('AWS_CLOUDFRONT_URL'),
+            imgixUrl: getenv('IMGIX_URL'),
+            devMode: craft.app.config.general.devMode
+        })|json_encode(128)|raw }};
     </script>
 
     {{ vite() }}

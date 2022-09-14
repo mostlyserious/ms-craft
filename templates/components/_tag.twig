@@ -1,0 +1,14 @@
+{% set attributes = attributes|default({}) %}
+
+{% set html %}
+    {% block content %}
+    {% endblock %}
+{% endset %}
+
+{% if tag %}
+    {{ tag(tag, attributes|merge({
+        html: html
+    })) }}
+{% else %}
+    {{ html }}
+{% endif %}

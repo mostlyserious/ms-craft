@@ -10,7 +10,7 @@
       "_svelte.1beb1df2.js"
     ],
     "css": [
-      "assets/main.93622f66.css"
+      "assets/main.d26fcd0a.css"
     ]
   },
   "src/js/modules/intro.js": {
@@ -48,7 +48,7 @@
     ]
   },
   "src/js/main.css": {
-    "file": "assets/main.93622f66.css",
+    "file": "assets/main.d26fcd0a.css",
     "src": "src/js/main.css"
   }
 }

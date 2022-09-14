@@ -1,10 +1,5 @@
 {
-    "name": "mscraft",
-    "description": "A Craft CMS starter used for new sites built by the Mostly Serious team.",
-    "version": "1.0.0",
-    "private": true,
     "license": "UNLICENSED",
-    "author": "Mostly Serious",
     "scripts": {
         "dev": "vite",
         "build": "vite build",
@@ -12,16 +7,16 @@
         "test": "uvu tests"
     },
     "devDependencies": {
-        "@axe-core/webdriverjs": "^4.1.1",
-        "@mostlyserious/vitepack": "^1.1.0",
-        "@tailwindcss/typography": "^0.5.2",
-        "postcss": "^8.4.14",
+        "@axe-core/webdriverjs": "^4.4.4",
+        "@mostlyserious/vitepack": "^1.1.1",
+        "@tailwindcss/typography": "^0.5.7",
+        "postcss": "^8.4.16",
         "postcss-functions": "^4.0.2",
-        "postcss-import": "^14.1.0",
-        "postcss-preset-env": "^7.7.2",
-        "selenium-webdriver": "^4.0.0-beta.3",
-        "svelte": "^3.49.0",
-        "tailwindcss": "^3.1.4",
-        "uvu": "^0.5.1"
+        "postcss-import": "^15.0.0",
+        "postcss-preset-env": "^7.8.1",
+        "selenium-webdriver": "^4.4.0",
+        "svelte": "^3.50.1",
+        "tailwindcss": "^3.1.8",
+        "uvu": "^0.5.6"
     }
 }

@@ -11,5 +11,5 @@ return [
    'bootstrap' => [
        'module',
        'twighelpers'
-   ],
+   ]
 ];

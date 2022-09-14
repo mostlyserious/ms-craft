@@ -1,6 +1,6 @@
 {% macro image(asset, args = {}, attrs = {}, lazy = true) %}
     {% set imgixUrl = getenv('IMGIX_URL') %}
-    {% set baseUrl = getenv('CLOUDFRONT_URL') %}
+    {% set baseUrl = getenv('AWS_CLOUDFRONT_URL') %}
 
     {% set width = attrs.width|default('') %}
     {% set height = attrs.height|default('') %}
@@ -81,9 +81,9 @@
     {% endif %}
 {% endmacro %}
 
-{% macro src(asset, args = {}, preload = false) %}{% apply spaceless %}
+{% macro src(asset, args = {}, preload = true) %}{% apply spaceless %}
     {% set imgixUrl = getenv('IMGIX_URL') %}
-    {% set baseUrl = getenv('CLOUDFRONT_URL') %}
+    {% set baseUrl = getenv('AWS_CLOUDFRONT_URL') %}
 
     {% set width = args.width|default('')|replace(',', '') %}
     {% set height = args.height|default('')|replace(',', '') %}
@@ -120,8 +120,20 @@
 
         {{ "#{asset.extension == 'gif' ? image.url|split('?')|first : image.url}" }}
     {% elseif asset %}
-        {% header('Link: <%s>; as=image; rel=preload;'|format("https://picsum.photos/seed/#{asset}/#{width}/#{height ?? width}")) %}
+        {% if preload %}
+            {% header('Link: <%s>; as=image; rel=preload;'|format("https://picsum.photos/seed/#{asset}/#{width}/#{height ?? width}")) %}
+        {% endif %}
 
         {{ "https://picsum.photos/seed/#{asset}/#{width}/#{height ?? width}" }}
     {% endif %}
 {% endapply %}{% endmacro %}
+
+{% macro link(button, args = {}, wrap = false) %}
+    {% if button and not button.isEmpty %}
+        {% if wrap %}
+            {{ tag(wrap, { html: button.link(args) }) }}
+        {% else %}
+            {{ button.link(args) }}
+        {% endif %}
+    {% endif %}
+{% endmacro %}
