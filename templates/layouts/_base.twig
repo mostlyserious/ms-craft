@@ -20,6 +20,7 @@
     {% endif %}
 
     {% if getenv('GOOGLE_FONTS_URL') %}
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="style" href="{{getenv('GOOGLE_FONTS_URL')}}">
     <link rel="stylesheet" href="{{getenv('GOOGLE_FONTS_URL')}}" media="print" onload="this.media='all'">
