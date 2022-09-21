@@ -117,6 +117,10 @@ class VitepackTwigExtensions extends AbstractExtension
             return $this->joinPath($all['url'], $all['inputs'][$input]);
         }
 
+        if (isset($all[$input], $all[$input]['file'])) {
+            return $this->joinPath($base, $all[$input]['file']);
+        }
+
         if (isset($all[$input], $all[$input]['assets']) && count($all[$input]['assets'])) {
             return $this->joinPath($base, $all[$input]['assets'][0]);
         }
@@ -142,10 +146,10 @@ class VitepackTwigExtensions extends AbstractExtension
         switch ($ext) {
             case 'js':
                 $results[] = $legacy ? sprintf(
-                    '<script nomodule crossorigin src="%s" async></script>',
+                    '<script nomodule crossorigin src="%s" async defer></script>',
                     $this->joinPath($base, $input)
                 ) : sprintf(
-                    '<script type="module" crossorigin src="%s" defer></script>',
+                    '<script type="module" crossorigin src="%s" async defer></script>',
                     $this->joinPath($base, $input)
                 );
                 break;
@@ -193,7 +197,7 @@ class VitepackTwigExtensions extends AbstractExtension
                     }
                 } else {
                     if (!in_array($key, (array) $except)) {
-                        $pair = $key .'="'. $value .'"';
+                        $pair = $key . '="' . $value . '"';
                     }
                 }
             }
@@ -203,7 +207,7 @@ class VitepackTwigExtensions extends AbstractExtension
             }
         }
 
-        return count($html) > 0 ? ' '.implode(' ', $html) : '';
+        return count($html) > 0 ? ' ' . implode(' ', $html) : '';
     }
 
     protected function joinPath(...$paths)
