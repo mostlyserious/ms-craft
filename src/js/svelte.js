@@ -43,7 +43,7 @@ function createSlots(templates) {
     const slots = {};
 
     for (const name in templates) {
-        if (templates.hasOwnProperty(name)) {
+        if (Object.prototype.hasOwnProperty.call(templates, name)) {
             slots[name] = [ createSlot(templates[name]) ];
         }
     }

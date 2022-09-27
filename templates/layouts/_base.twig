@@ -6,9 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <link rel="preconnect" href="{{ getenv("IMGIX_URL") }}" >
-    {# <link rel="preconnect" href="https://use.typekit.net" > #}
-    {# <link rel="preconnect" href="https://p.typekit.net" > #}
+    {% if getenv('IMGIX_URL') %}
+    <link rel="preconnect" href="{{ getenv('IMGIX_URL') }}" crossorigin>
+    {% endif %}
+
+    {# Non-blocking Web Fonts - check to ensure display:swap is also used #}
+    {% if getenv('ADOBE_FONTS_URL') %}
+    <link rel="preconnect" href="https://use.typekit.net" crossorigin>
+    <link rel="preconnect" href="https://p.typekit.net" crossorigin>
+    <link rel="preload" href="{{getenv('ADOBE_FONTS_URL')}}" as="style">
+    <link rel="stylesheet" href="{{getenv('ADOBE_FONTS_URL')}}" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="{{getenv('ADOBE_FONTS_URL')}}"></noscript>
+    {% endif %}
+
+    {% if getenv('GOOGLE_FONTS_URL') %}
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="{{getenv('GOOGLE_FONTS_URL')}}">
+    <link rel="stylesheet" href="{{getenv('GOOGLE_FONTS_URL')}}" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="{{getenv('GOOGLE_FONTS_URL')}}"></noscript>
+    {% endif %}
 
     {% block head %}
         {{ external('@webroot/static/assets/markup.html')|striptags('<link><meta>')|raw }}
