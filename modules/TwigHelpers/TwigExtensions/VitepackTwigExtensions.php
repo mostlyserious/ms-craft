@@ -2,6 +2,7 @@
 
 namespace Modules\TwigHelpers\TwigExtensions;
 
+use Craft;
 use Twig\TwigFunction;
 use Twig\Extension\AbstractExtension;
 
@@ -25,6 +26,9 @@ class VitepackTwigExtensions extends AbstractExtension
                 'is_safe' => ['html']
             ]),
             new TwigFunction('asset', [$this, 'asset'], [
+                'is_safe' => ['html']
+            ]),
+            new TwigFunction('external', [$this, 'external'], [
                 'is_safe' => ['html']
             ])
         ];
@@ -117,12 +121,25 @@ class VitepackTwigExtensions extends AbstractExtension
             return $this->joinPath($all['url'], $all['inputs'][$input]);
         }
 
+        if (isset($all[$input], $all[$input]['file'])) {
+            return $this->joinPath($base, $all[$input]['file']);
+        }
+
         if (isset($all[$input], $all[$input]['assets']) && count($all[$input]['assets'])) {
             return $this->joinPath($base, $all[$input]['assets'][0]);
         }
 
         if (isset($all['url'])) {
             return $this->joinPath($all['url'], $input);
+        }
+
+        return '';
+    }
+
+    public function external($path)
+    {
+        if (is_readable(Craft::getAlias($path))) {
+            return file_get_contents(Craft::getAlias($path));
         }
 
         return '';

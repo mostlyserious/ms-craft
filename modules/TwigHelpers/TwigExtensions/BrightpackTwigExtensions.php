@@ -27,6 +27,9 @@ class BrightpackTwigExtensions extends AbstractExtension
             ]),
             new TwigFunction('asset', [$this, 'asset'], [
                 'is_safe' => ['html']
+            ]),
+            new TwigFunction('external', [$this, 'external'], [
+                'is_safe' => ['html']
             ])
         ];
     }
@@ -127,6 +130,15 @@ class BrightpackTwigExtensions extends AbstractExtension
         }
 
         return null;
+    }
+
+    public function external($path)
+    {
+        if (is_readable(Craft::getAlias($path))) {
+            return file_get_contents(Craft::getAlias($path));
+        }
+
+        return '';
     }
 
     protected function preload($resource)
