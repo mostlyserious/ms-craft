@@ -20,7 +20,7 @@ module.exports = {
     ],
     settings: {
         'html/indent': '+4',
-        'html/html-extensions': [ '.html', '.php' ],
+        'html/html-extensions': [ '.html', '.twig', '.php' ],
         'svelte3/ignore-styles': () => true
     },
     overrides: [

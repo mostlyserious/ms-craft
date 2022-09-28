@@ -7,24 +7,28 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     {% if getenv('IMGIX_URL') %}
-    <link rel="preconnect" href="{{ getenv('IMGIX_URL') }}" crossorigin>
+        <link rel="preconnect" href="{{ getenv('IMGIX_URL') }}" crossorigin>
     {% endif %}
 
     {# Non-blocking Web Fonts - check to ensure display:swap is also used #}
     {% if getenv('ADOBE_FONTS_URL') %}
-    <link rel="preconnect" href="https://use.typekit.net" crossorigin>
-    <link rel="preconnect" href="https://p.typekit.net" crossorigin>
-    <link rel="preload" href="{{getenv('ADOBE_FONTS_URL')}}" as="style">
-    <link rel="stylesheet" href="{{getenv('ADOBE_FONTS_URL')}}" media="print" onload="this.media='all'" />
-    <noscript><link rel="stylesheet" href="{{getenv('ADOBE_FONTS_URL')}}"></noscript>
+        <link rel="preconnect" href="https://use.typekit.net" crossorigin>
+        <link rel="preconnect" href="https://p.typekit.net" crossorigin>
+        <link rel="preload" href="{{ getenv('ADOBE_FONTS_URL') }}" as="style">
+        <link rel="stylesheet" href="{{ getenv('ADOBE_FONTS_URL') }}" media="print" onload="this.media = 'all'" />
+        <noscript>
+            <link rel="stylesheet" href="{{ getenv('ADOBE_FONTS_URL') }}">
+        </noscript>
     {% endif %}
 
     {% if getenv('GOOGLE_FONTS_URL') %}
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" as="style" href="{{getenv('GOOGLE_FONTS_URL')}}">
-    <link rel="stylesheet" href="{{getenv('GOOGLE_FONTS_URL')}}" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="{{getenv('GOOGLE_FONTS_URL')}}"></noscript>
+        <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="preload" as="style" href="{{ getenv('GOOGLE_FONTS_URL') }}">
+        <link rel="stylesheet" href="{{ getenv('GOOGLE_FONTS_URL') }}" media="print" onload="this.media = 'all'">
+        <noscript>
+            <link rel="stylesheet" href="{{ getenv('GOOGLE_FONTS_URL') }}">
+        </noscript>
     {% endif %}
 
     {% block head %}
@@ -41,14 +45,15 @@
         <meta name="robots" content="noindex">
     {% endif %}
 
-    {% if craft.app.config.env == 'staging' %}
+    {% if craft.app.config.env == 'staging' and getenv('MARKERIO_DESTINATION') %}
         <script>
             window.markerConfig = {
-                destination: "{{ env('MARKERIO_DESTINATION') }}"
+                destination: '{{ env("MARKERIO_DESTINATION") }}',
+                source: 'snippet'
             };
         </script>
         <script>
-            !function(e,r,t){if(e.__Marker)return;e.__Marker={};var n=r.createElement("script");n.async=1,n.src="https://edge.marker.io/latest/shim.js";var s=r.getElementsByTagName("script")[0];s.parentNode.insertBefore(n,s)}(window,document);
+            !function(e,r,a){if(!e.__Marker){e.__Marker={};var t=[],n={__cs:t};["show","hide","isVisible","capture","cancelCapture","unload","reload","isExtensionInstalled","setReporter","setCustomData","on","off"].forEach(function(e){n[e]=function(){var r=Array.prototype.slice.call(arguments);r.unshift(e),t.push(r)}}),e.Marker=n;var s=r.createElement("script");s.async=1,s.src="https://edge.marker.io/latest/shim.js";var i=r.getElementsByTagName("script")[0];i.parentNode.insertBefore(s,i)}}(window,document);
         </script>
     {% endif %}
 
