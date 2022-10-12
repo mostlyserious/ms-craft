@@ -67,7 +67,7 @@
                 "#{asset.extension == 'gif' ? image.url|split('?')|first : image.url}",
                 "#{asset.extension == 'gif' ? image2x.url|split('?')|first : image2x.url} 2x"
             ]|join(', '),
-            alt: asset.alt|default(craft.app.config.general.devMode ? 'Unknown image content' : ''),
+            alt: asset.alt|default(''),
             loading: lazy ? 'lazy' : null,
         })) }}
     {% elseif asset %}
@@ -75,7 +75,7 @@
             width: width|replace(',', ''),
             height: height|replace(',', ''),
             src: "https://picsum.photos/seed/#{asset}/#{width}/#{height ?? width}",
-            alt: 'Placeholder Image',
+            alt: '',
             loading: 'lazy',
         })) }}
     {% endif %}
