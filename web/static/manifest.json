@@ -1,13 +1,13 @@
 {
   "src/js/main.js": {
-    "file": "assets/main.ab39822c.js",
+    "file": "assets/main.80ffcbfa.js",
     "src": "src/js/main.js",
     "isEntry": true,
     "dynamicImports": [
       "src/js/modules/intro.js",
       "src/js/modules/property.js",
       "src/js/modules/toggle.js",
-      "_svelte.1beb1df2.js"
+      "_svelte.55aec5c8.js"
     ],
     "css": [
       "assets/main.90a1db35.css"
@@ -28,8 +28,8 @@
     "src": "src/js/modules/toggle.js",
     "isDynamicEntry": true
   },
-  "_svelte.1beb1df2.js": {
-    "file": "assets/svelte.1beb1df2.js",
+  "_svelte.55aec5c8.js": {
+    "file": "assets/svelte.55aec5c8.js",
     "isDynamicEntry": true,
     "imports": [
       "src/js/main.js"
@@ -39,11 +39,11 @@
     ]
   },
   "src/js/store.js": {
-    "file": "assets/store.14694e17.js",
+    "file": "assets/store.62d2822d.js",
     "src": "src/js/store.js",
     "isDynamicEntry": true,
     "imports": [
-      "_svelte.1beb1df2.js",
+      "_svelte.55aec5c8.js",
       "src/js/main.js"
     ]
   },

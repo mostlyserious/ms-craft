@@ -1,4 +1,4 @@
-dateModified: 1663173060
+dateModified: 1666192684
 elementSources:
   craft\elements\Entry:
     -
@@ -80,6 +80,7 @@ meta:
     06849b6a-9229-4531-9e1f-7b2ccef2e40c: Default # Default
     093484b2-ab15-45dc-bddf-d693ba866b3d: Code # Code
     406273f7-b865-4c09-869c-5dd130b80c62: 'Featured Image' # Featured Image
+    3512190e-891a-4d0b-8849-52dcc47d3fc6: Foobar # Foobar
     4346141d-e3ba-4871-8847-46ab08819877: Excerpt # Excerpt
     50013135-72e9-4dd1-965e-424db1bb07b8: 'Main Menu' # Main Menu
     abf8e78e-1b0c-422c-bbff-9c89770e9906: Complex # Complex
@@ -117,6 +118,10 @@ plugins:
     edition: standard
     enabled: true
     schemaVersion: 1.0.0
+  environment-label:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
   icon-picker:
     edition: standard
     enabled: true
@@ -132,6 +137,10 @@ plugins:
     enabled: true
     schemaVersion: 2.3.0
   sendgrid:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  sentry-sdk:
     edition: standard
     enabled: true
     schemaVersion: 1.0.0

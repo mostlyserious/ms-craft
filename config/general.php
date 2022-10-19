@@ -1,5 +1,6 @@
 <?php
 
+use craft\helpers\App;
 use craft\helpers\ConfigHelper;
 use craft\helpers\DateTimeHelper;
 
@@ -18,7 +19,7 @@ return [
         'timezone' => 'America/Chicago',
         'previewTokenDuration' => DateTimeHelper::SECONDS_MONTH,
         'aliases' => [
-            '@web' => getenv('PRIMARY_SITE_URL')
+            '@web' => App::env('PRIMARY_SITE_URL')
         ]
     ],
 
@@ -26,8 +27,10 @@ return [
         'devMode' => true,
         'disallowRobots' => true,
         'enableTemplateCaching' => false,
+        'backupOnUpdate' => false,
+        'userSessionDuration' => false,
         'testToEmailAddress' => [
-            getenv('SYSTEM_EMAIL_ADDRESS') => getenv('SYSTEM_EMAIL_NAME')
+            App::env('SYSTEM_EMAIL_ADDRESS') => App::env('SYSTEM_EMAIL_NAME')
         ]
     ],
 
@@ -35,7 +38,7 @@ return [
         'disallowRobots' => true,
         'allowAdminChanges' => false,
         'testToEmailAddress' => [
-            getenv('SYSTEM_EMAIL_ADDRESS') => getenv('SYSTEM_EMAIL_NAME')
+            App::env('SYSTEM_EMAIL_ADDRESS') => App::env('SYSTEM_EMAIL_NAME')
         ]
     ],
 

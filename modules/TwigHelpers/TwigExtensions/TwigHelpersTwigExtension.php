@@ -2,7 +2,6 @@
 
 namespace Modules\TwigHelpers\TwigExtensions;
 
-use Craft;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
 use craft\helpers\StringHelper;
@@ -76,10 +75,5 @@ class TwigHelpersTwigExtension extends AbstractExtension implements GlobalsInter
     public function getUuid()
     {
         return StringHelper::UUID();
-    }
-
-    public function env($key)
-    {
-        return getenv($key);
     }
 }

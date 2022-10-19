@@ -3,10 +3,11 @@
 namespace Modules;
 
 use Craft;
+use Exception;
 use craft\web\View;
 use yii\base\Event;
+use craft\helpers\App;
 use craft\services\Assets;
-use craft\events\TemplateEvent;
 use craft\helpers\StringHelper;
 use yii\base\Module as BaseModule;
 use craft\events\ReplaceAssetEvent;
@@ -35,13 +36,13 @@ class Module extends BaseModule
                         .color-swatches { padding: 0 3px 3px 3px; }
                     ');
 
-                    if (getenv('ENVIRONMENT') === 'staging' && getenv('MARKERIO_DESTINATION')) {
+                    if (App::env('ENVIRONMENT') === 'staging' && App::env('MARKERIO_DESTINATION')) {
                         $view->registerJs(sprintf('
                             window.markerConfig = {
                                 destination: "%s",
                                 source: "snippet"
                             };
-                        ', getenv('MARKERIO_DESTINATION')));
+                        ', App::env('MARKERIO_DESTINATION')));
 
                         $view->registerJs('!function(e,r,a){if(!e.__Marker){e.__Marker={};var t=[],n={__cs:t};["show","hide","isVisible","capture","cancelCapture","unload","reload","isExtensionInstalled","setReporter","setCustomData","on","off"].forEach(function(e){n[e]=function(){var r=Array.prototype.slice.call(arguments);r.unshift(e),t.push(r)}}),e.Marker=n;var s=r.createElement("script");s.async=1,s.src="https://edge.marker.io/latest/shim.js";var i=r.getElementsByTagName("script")[0];i.parentNode.insertBefore(s,i)}}(window,document);');
                     }

@@ -1,5 +1,6 @@
 childBlocks: null
-description: null
+description: ''
+enabled: true
 field: 995cc5a8-988f-47f0-ac78-76d6b68f6ac6 # Blocks
 fieldLayouts:
   9d0b6e37-4410-437a-bb73-508deb4894b0:
@@ -39,6 +40,9 @@ handle: wysiwyg
 maxBlocks: 0
 maxChildBlocks: 0
 maxSiblingBlocks: 0
+minBlocks: 0
+minChildBlocks: 0
+minSiblingBlocks: 0
 name: WYSIWYG
-sortOrder: 3
+sortOrder: 4
 topLevel: true

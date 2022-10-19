@@ -48,7 +48,7 @@
     {% if craft.app.config.env == 'staging' and getenv('MARKERIO_DESTINATION') %}
         <script>
             window.markerConfig = {
-                destination: '{{ env("MARKERIO_DESTINATION") }}',
+                destination: '{{ getenv("MARKERIO_DESTINATION") }}',
                 source: 'snippet'
             };
         </script>

@@ -1,5 +1,6 @@
 childBlocks: null
-description: null
+description: ''
+enabled: true
 field: 995cc5a8-988f-47f0-ac78-76d6b68f6ac6 # Blocks
 fieldLayouts:
   2d709171-c168-48c6-8e85-469f9d161eb8:
@@ -39,6 +40,9 @@ handle: video
 maxBlocks: 0
 maxChildBlocks: 0
 maxSiblingBlocks: 0
+minBlocks: 0
+minChildBlocks: 0
+minSiblingBlocks: 0
 name: Video
 sortOrder: 2
 topLevel: true

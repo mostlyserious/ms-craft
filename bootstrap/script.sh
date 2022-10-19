@@ -1,10 +1,10 @@
 #!/usr/bin/env sh
 
 rm -r config/project
-rm config/project.yaml
+# rm config/project.yaml
 
 cp -r bootstrap/project config/project
-cp bootstrap/project.yaml config/project.yaml
+# cp bootstrap/project.yaml config/project.yaml
 
 if command -v valet &> /dev/null
 then
