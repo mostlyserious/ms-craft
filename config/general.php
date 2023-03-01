@@ -30,7 +30,7 @@ return [
         'backupOnUpdate' => false,
         'userSessionDuration' => false,
         'testToEmailAddress' => [
-            App::env('SYSTEM_EMAIL_ADDRESS') => App::env('SYSTEM_EMAIL_NAME')
+            (App::env('TEST_EMAIL_ADDRESS') ?? App::env('SYSTEM_EMAIL_ADDRESS')) => App::env('SYSTEM_EMAIL_NAME')
         ]
     ],
 
