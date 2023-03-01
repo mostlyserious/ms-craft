@@ -17,10 +17,14 @@
     })|filter(v => v) %}
 
     {% if asset.id|default(null) %}
-        {% set args = args|filter(v => v)|merge({
-            'fp-x': asset.focalPoint.x,
-            'fp-y': asset.focalPoint.y
-        }) %}
+        {% set args = args|filter(v => v) %}
+
+        {% if asset.focalPoint %}
+            {% set args = args|merge({
+                'fp-x': asset.focalPoint.x,
+                'fp-y': asset.focalPoint.y
+            }) %}
+        {% endif %}
 
         {% set args = args|merge({
             'crop': asset.hasFocalPoint
@@ -43,11 +47,11 @@
             })|url_encode
         } %}
 
-        {% if not width and height %}
+        {% if not width and height and asset.height%}
             {% set width = (min(asset.height, height) * (asset.width / asset.height))|number_format %}
         {% endif %}
 
-        {% if not height and width %}
+        {% if not height and width and asset.width %}
             {% set height = (min(asset.width, width) * (asset.height / asset.width))|number_format %}
         {% endif %}
 
@@ -135,6 +139,12 @@
 
 {% macro link(button, args = {}, wrap = false) %}
     {% if button and not button.isEmpty %}
+        {% if args.prepend is defined %}
+            {% set args = args|merge({ text: "#{args.prepend}#{button.text}" }) %}
+        {% endif %}
+        {% if args.append is defined %}
+            {% set args = args|merge({ text: "#{button.text}#{args.append}" }) %}
+        {% endif %}
         {% if wrap %}
             {{ tag(wrap, { html: button.link(args) }) }}
         {% else %}
@@ -142,3 +152,25 @@
         {% endif %}
     {% endif %}
 {% endmacro %}
+
+{% macro swatch(background, keys) %}{% apply spaceless %}
+    {% set value = [] %}
+
+    {% if keys is not iterable %}
+        {% set keys = [keys] %}
+    {% endif %}
+
+    {% for key in keys %}
+        {% if background[key] is defined and key != 'color' %}
+            {% set value = value|push(background[key]) %}
+        {% endif %}
+
+        {% for def in background.color %}
+            {% if def[key] is defined %}
+                {% set value = value|push(def[key]) %}
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+
+    {{ value|unique|join(' ') }}
+{% endapply %}{% endmacro %}

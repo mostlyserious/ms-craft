@@ -1,4 +1,5 @@
 export default input => {
+
     let str = input.toString(),
         len = str.length,
         hash = 0,

@@ -37,9 +37,9 @@ return [
     'staging' => [
         'disallowRobots' => true,
         'allowAdminChanges' => false,
-        'testToEmailAddress' => [
-            App::env('SYSTEM_EMAIL_ADDRESS') => App::env('SYSTEM_EMAIL_NAME')
-        ]
+        'testToEmailAddress' => App::env('TEST_EMAIL_ADDRESS') ? [
+            App::env('TEST_EMAIL_ADDRESS') => sprintf('%s (staging)', App::env('PRIMARY_SITE_NAME'))
+        ] : false
     ],
 
     'production' => [

@@ -1,12 +1,15 @@
 @charset "UTF-8";
 
-@import "utilities";
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
 @import "components/button";
 @import "components/navbar";
 @import "components/video";
 @import "components/wysiwyg";
 
-@custom-selector :--headings :is(h1, h2, h3, h4, h5, h6);
+@custom-selector :--headings :where(h1, h2, h3, h4, h5, h6);
 
 @layer base {
     html {
@@ -32,9 +35,10 @@
             @apply font-bold;
         }
 
-        & a:focus,
-        & button:focus {
-            @apply outline-none;
+        & a,
+        & button {
+            & * { @apply pointer-events-none; }
+            &:focus { @apply outline-none; }
         }
 
         & hr {

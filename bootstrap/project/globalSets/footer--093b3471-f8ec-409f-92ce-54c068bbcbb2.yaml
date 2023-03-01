@@ -6,30 +6,18 @@ fieldLayouts:
         elements:
           -
             elementCondition: null
-            fieldUid: 301bc2d6-cfb4-4804-955b-40eb41aee9fb # Privacy Policy
+            fieldUid: 6e98616b-f275-44b8-850c-59d0bb424c74 # Menu
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 3ddc3ab0-b932-48cf-8323-1c5dfcdf6dd6
+            uid: c34d0026-68d5-4a57-9fb9-49bc56005435
             userCondition: null
             warning: null
-            width: 50
-          -
-            elementCondition: null
-            fieldUid: 0ef1ad7d-525e-46a5-bff9-8510cc570cfc # Terms of Use
-            instructions: null
-            label: null
-            required: false
-            tip: null
-            type: craft\fieldlayoutelements\CustomField
-            uid: de432770-4bab-4385-8c26-d82d7e7017ff
-            userCondition: null
-            warning: null
-            width: 50
+            width: 100
         name: Content
-        uid: bce527dc-f247-426b-9871-eb66f36330ba
+        uid: 6374103d-831d-477e-aa19-4e8e10dfa63f
         userCondition: null
 handle: footer
 name: Footer

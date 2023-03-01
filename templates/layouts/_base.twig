@@ -1,6 +1,6 @@
 {% set codeBlocks = (code ?? null) and (code.codeBlocks ?? null) ? code.codeBlocks.all : [] %}
 <!DOCTYPE html>
-<html style="max-height: var(--viewport-height); --viewport-height: 100vh;" lang="en">
+<html lang="{{ craft.app.language }}" style="max-height: var(--viewport-height); --viewport-height: 100vh;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -45,10 +45,10 @@
         <meta name="robots" content="noindex">
     {% endif %}
 
-    {% if craft.app.config.env == 'staging' and getenv('MARKERIO_DESTINATION') %}
+    {% if craft.app.config.env == 'staging' and getenv('MARKERIO_PROJECT') %}
         <script>
             window.markerConfig = {
-                destination: '{{ getenv("MARKERIO_DESTINATION") }}',
+                project: '{{ getenv("MARKERIO_PROJECT") }}',
                 source: 'snippet'
             };
         </script>
@@ -70,7 +70,7 @@
         })|json_encode(128)|raw }};
     </script>
 
-    {{ vite() }}
+    {{ vite('src/js/main.js') }}
 
     {{ codeBlocks|filter(c => c.position == 'headBottom')|map(c => c.code)|join('\n\n')|raw }}
 </head>

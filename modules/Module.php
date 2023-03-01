@@ -3,7 +3,6 @@
 namespace Modules;
 
 use Craft;
-use Exception;
 use craft\web\View;
 use yii\base\Event;
 use craft\helpers\App;
@@ -11,6 +10,7 @@ use craft\services\Assets;
 use craft\helpers\StringHelper;
 use yii\base\Module as BaseModule;
 use craft\events\ReplaceAssetEvent;
+use Modules\TwigHelpers\TwigExtensions\VitepackTwigExtensions;
 
 class Module extends BaseModule
 {
@@ -29,20 +29,18 @@ class Module extends BaseModule
                 View::class,
                 View::EVENT_BEFORE_RENDER_TEMPLATE,
                 function () {
+                    $vitepack_twig = new VitepackTwigExtensions();
                     $view = Craft::$app->getView();
-                    $view->registerCss('
-                        .button.button-prose { display: inline-block; padding: 0.5rem 1.5rem; margin-top: 0.5rem; margin-bottom: 0.5rem; border: 4px solid currentcolor; text-transform: uppercase; font-weight: bold; }
-                        .button.button-prose:hover { text-decoration: none; }
-                        .color-swatches { padding: 0 3px 3px 3px; }
-                    ');
 
-                    if (App::env('ENVIRONMENT') === 'staging' && App::env('MARKERIO_DESTINATION')) {
+                    $view->registerHtml($vitepack_twig->vite('src/js/cp.js'), View::POS_HEAD);
+
+                    if (App::env('ENVIRONMENT') === 'staging' && App::env('MARKERIO_PROJECT')) {
                         $view->registerJs(sprintf('
                             window.markerConfig = {
-                                destination: "%s",
+                                project: "%s",
                                 source: "snippet"
                             };
-                        ', App::env('MARKERIO_DESTINATION')));
+                        ', App::env('MARKERIO_PROJECT')));
 
                         $view->registerJs('!function(e,r,a){if(!e.__Marker){e.__Marker={};var t=[],n={__cs:t};["show","hide","isVisible","capture","cancelCapture","unload","reload","isExtensionInstalled","setReporter","setCustomData","on","off"].forEach(function(e){n[e]=function(){var r=Array.prototype.slice.call(arguments);r.unshift(e),t.push(r)}}),e.Marker=n;var s=r.createElement("script");s.async=1,s.src="https://edge.marker.io/latest/shim.js";var i=r.getElementsByTagName("script")[0];i.parentNode.insertBefore(s,i)}}(window,document);');
                     }

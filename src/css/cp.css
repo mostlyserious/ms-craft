@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+@config "../../tailwind.cp.config.js";
+
+@tailwind components;
+@tailwind utilities;
+
+@custom-selector :--headings :where(h1, h2, h3, h4, h5, h6);
+
+@layer components {
+    .redactor-styles {
+        & h2 { @apply text-3xl !important; }
+        & h3 { @apply text-2xl !important; }
+        & h4 { @apply text-xl !important; }
+
+        & .text-xl {
+            @apply text-xl;
+        }
+
+        & .button.button-prose {
+            @apply inline-block py-2 px-6 my-2 border-4 border-current font-bold uppercase;
+        }
+
+        & .button.button-prose:hover {
+            @apply no-underline;
+        }
+    }
+
+    .color-swatches {
+        @apply p-[3px] pt-0;
+    }
+
+    .easyaddressfield-marker {
+        @apply hidden;
+    }
+}

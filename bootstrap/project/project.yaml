@@ -1,4 +1,4 @@
-dateModified: 1666192684
+dateModified: 1677698505
 elementSources:
   craft\elements\Entry:
     -
@@ -44,7 +44,6 @@ fs:
     url: /assets/
 meta:
   __names__:
-    0ef1ad7d-525e-46a5-bff9-8510cc570cfc: 'Terms of Use' # Terms of Use
     1cf7995f-6f4d-4f3d-ae1b-725d7d2dacd0: 'Menu Item' # Menu Item
     1f4732b0-84b4-4302-9a0f-687b30fdd6a0: Pages # Pages
     2a6ba873-385a-4eb8-ae76-ed9b27ccd189: 'Menu Item' # Menu Item
@@ -72,7 +71,6 @@ meta:
     78d3d90c-61e4-4555-b7a4-556ac5117ad2: Details # Details
     88e11325-3ef0-4ce5-ab38-637b810d3a04: WYSIWYG # WYSIWYG
     093b3471-f8ec-409f-92ce-54c068bbcbb2: Footer # Footer
-    301bc2d6-cfb4-4804-955b-40eb41aee9fb: 'Privacy Policy' # Privacy Policy
     479b628a-5c5c-4ae8-a858-b5cd1b500c20: Button # Button
     995cc5a8-988f-47f0-ac78-76d6b68f6ac6: Blocks # Blocks
     1721cab1-b289-4a13-9143-1a55e53f453d: $PRIMARY_SITE_NAME # $PRIMARY_SITE_NAME
@@ -93,6 +91,7 @@ meta:
     d630234c-e5b7-4e5c-a00b-62c58a09595c: Errors # Errors
     dd7a858b-aedd-4c3d-9443-d3dbaf10f931: 'Edit Header' # Edit Header
     e0b672d4-19dc-4015-b9bf-5b890e45e200: Video # Video
+    e3a48e48-61f7-4c2b-b415-9670085c0ca9: Legal # Legal
     e4a11e84-cba4-4478-8b0a-e57b0a240c99: Flip # Flip
     e44aa8dd-32cb-4db9-89d2-544162e2627f: Block # Block
     e131b9cd-1baa-4334-bf9b-5ef313dc8393: Default # Default
@@ -125,17 +124,31 @@ plugins:
   icon-picker:
     edition: standard
     enabled: true
-    licenseKey: BICOAUXJDR7HRYZ1DGB17ST2
-    schemaVersion: 1.0.1
+    licenseKey:
+    schemaVersion: 1.2.3
+    settings:
+      enableCache: true
+      iconItemSize: 32
+      iconItemSizeLarge: 40
+      iconItemWrapperSize: 56
+      iconItemWrapperSizeLarge: 72
+      iconSetsPath: '@webroot/icons/'
+      iconSetsUrl: '@web/icons/'
+      redactorFieldHandle: ''
   neo:
     edition: standard
     enabled: true
-    licenseKey: GCD4I1HRGWEQ8BGNOTRGP4HU
-    schemaVersion: 3.3.0
+    licenseKey:
+    schemaVersion: 3.6.2
   redactor:
     edition: standard
     enabled: true
     schemaVersion: 2.3.0
+  retour:
+    edition: standard
+    enabled: true
+    licenseKey:
+    schemaVersion: 3.0.11
   sendgrid:
     edition: standard
     enabled: true
@@ -147,7 +160,7 @@ plugins:
   seomatic:
     edition: standard
     enabled: true
-    licenseKey: FTNHIIQ80ZIJIN5TU2TUJ9P2
+    licenseKey:
     schemaVersion: 3.0.11
   smith:
     edition: standard

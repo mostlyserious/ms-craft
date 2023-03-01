@@ -48,10 +48,10 @@ module.exports = {
             fontFamily: {
 
             },
-            minHeight: theme => theme('height'),
             maxHeight: theme => theme('height'),
-            minWidth: theme => ({ ...theme('width'), '8xl': '88rem', '9xl': '92rem' }),
+            minHeight: theme => theme('height'),
             maxWidth: theme => ({ ...theme('width'), '8xl': '88rem', '9xl': '92rem' }),
+            minWidth: theme => ({ ...theme('width'), ...theme('maxWidth'), '8xl': '88rem', '9xl': '92rem' }),
             borderWidth: {
                 '0.5': '0.5px',
                 '3': '3px',
