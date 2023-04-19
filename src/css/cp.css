@@ -9,28 +9,28 @@
 
 @layer components {
     .redactor-styles {
-        & h2 { @apply text-3xl !important; }
-        & h3 { @apply text-2xl !important; }
-        & h4 { @apply text-xl !important; }
+        & h2 { @apply cp-text-3xl !important; }
+        & h3 { @apply cp-text-2xl !important; }
+        & h4 { @apply cp-text-xl !important; }
 
         & .text-xl {
-            @apply text-xl;
+            @apply cp-text-xl;
         }
 
         & .button.button-prose {
-            @apply inline-block py-2 px-6 my-2 border-4 border-current font-bold uppercase;
+            @apply cp-inline-block cp-py-2 cp-px-6 cp-my-2 cp-border-4 cp-border-current cp-font-bold cp-uppercase;
         }
 
         & .button.button-prose:hover {
-            @apply no-underline;
+            @apply cp-no-underline;
         }
     }
 
     .color-swatches {
-        @apply p-[3px] pt-0;
+        @apply cp-p-[3px] cp-pt-0;
     }
 
     .easyaddressfield-marker {
-        @apply hidden;
+        @apply cp-hidden;
     }
 }

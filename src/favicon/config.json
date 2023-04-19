@@ -17,7 +17,7 @@
             "pictureAspect": "shadow",
             "themeColor": "#222222",
             "manifest": {
-                "name": "DMP",
+                "name": "PROJECT_NAME",
                 "display": "browser",
                 "orientation": "notSet",
                 "onConflict": "override",
