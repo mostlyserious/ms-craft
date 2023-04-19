@@ -14,6 +14,8 @@ export default vitepack(args, config => {
         ]
     };
 
+    config.resolve.alias['@icons'] = '/web/icons';
+
     // config.plugins.unshift(realFavicon({
     //     input: 'src/favicon/config.json'
     // }));

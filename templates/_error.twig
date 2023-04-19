@@ -1,7 +1,6 @@
 {% set entry = craft.entries
     .slug(craft.app.response.statusCode)
     .section('error')
-    .status(null)
     .one %}
 
 {% if entry %}

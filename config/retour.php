@@ -1,7 +1,7 @@
 <?php
 
-use craft\helpers\App;
+use Craft;
 
 return [
-    'createUriChangeRedirects' => App::env('CRAFT_ENVIRONMENT') === 'production'
+    'createUriChangeRedirects' => Craft::$app->config->env === 'production'
 ];

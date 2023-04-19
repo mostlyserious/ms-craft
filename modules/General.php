@@ -5,14 +5,14 @@ namespace Modules;
 use Craft;
 use craft\web\View;
 use yii\base\Event;
+use yii\base\Module;
 use craft\helpers\App;
 use craft\services\Assets;
 use craft\helpers\StringHelper;
-use yii\base\Module as BaseModule;
 use craft\events\ReplaceAssetEvent;
 use Modules\TwigHelpers\TwigExtensions\VitepackTwigExtensions;
 
-class Module extends BaseModule
+class General extends Module
 {
     public function init()
     {
@@ -34,7 +34,7 @@ class Module extends BaseModule
 
                     $view->registerHtml($vitepack_twig->vite('src/js/cp.js'), View::POS_HEAD);
 
-                    if (App::env('ENVIRONMENT') === 'staging' && App::env('MARKERIO_PROJECT')) {
+                    if (Craft::$app->config->env === 'staging' && App::env('MARKERIO_PROJECT')) {
                         $view->registerJs(sprintf('
                             window.markerConfig = {
                                 project: "%s",

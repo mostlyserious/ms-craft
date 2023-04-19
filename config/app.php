@@ -1,15 +1,15 @@
 <?php
 
-use Modules\Module;
+use Modules\General;
 use Modules\TwigHelpers\TwigHelpers;
 
 return [
     'modules' => [
-        'module' => Module::class,
+        'general' => General::class,
         'twighelpers' => TwigHelpers::class
     ],
    'bootstrap' => [
-       'module',
+       'general',
        'twighelpers'
    ]
 ];

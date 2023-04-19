@@ -1,4 +1,4 @@
-dateModified: 1677698505
+dateModified: 1681914440
 elementSources:
   craft\elements\Entry:
     -
@@ -96,7 +96,6 @@ meta:
     e44aa8dd-32cb-4db9-89d2-544162e2627f: Block # Block
     e131b9cd-1baa-4334-bf9b-5ef313dc8393: Default # Default
     ec7644f6-7285-429f-9185-28284f2532a4: Global # Global
-    f0762453-42d0-461a-8def-75f38a087a6a: Header # Header
     f9c5d4a4-e78f-476b-bdb0-b2bdb6204568: Code # Code
     f93ba9ca-aed6-465b-871c-a518711b649c: Buttons # Buttons
     fef5e771-2ab6-464f-b943-624452c0a52c: Body # Body
@@ -124,7 +123,7 @@ plugins:
   icon-picker:
     edition: standard
     enabled: true
-    licenseKey:
+    licenseKey: 7P24HFL5CCLKCVMMM1GH9BRI
     schemaVersion: 1.2.3
     settings:
       enableCache: true
@@ -138,8 +137,12 @@ plugins:
   neo:
     edition: standard
     enabled: true
-    licenseKey:
+    licenseKey: TDDD53YOAYX1BZCO9PSV4DIU
     schemaVersion: 3.6.2
+  password-policy:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
   redactor:
     edition: standard
     enabled: true
@@ -147,7 +150,7 @@ plugins:
   retour:
     edition: standard
     enabled: true
-    licenseKey:
+    licenseKey: ORSXEAGN5WH1QQTND99QYG99
     schemaVersion: 3.0.11
   sendgrid:
     edition: standard
@@ -160,7 +163,7 @@ plugins:
   seomatic:
     edition: standard
     enabled: true
-    licenseKey:
+    licenseKey: TMTJV5K6TRVGHXYVXKQ6HQFN
     schemaVersion: 3.0.11
   smith:
     edition: standard
@@ -184,7 +187,7 @@ system:
   live: true
   name: $PRIMARY_SITE_NAME
   retryDuration: null
-  schemaVersion: 4.0.0.9
+  schemaVersion: 4.4.0.4
   timeZone: America/Los_Angeles
 users:
   allowPublicRegistration: false

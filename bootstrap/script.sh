@@ -13,7 +13,7 @@ else
 fi
 
 echo ""
-echo "Your project YAML files have been bootstrapped.\nTo finish applying these updates run \`php craft project-config/apply\`"
+echo "Your project YAML files have been bootstrapped.\nTo finish applying these updates run \`php craft up\`"
 echo ""
 
 while true; do
