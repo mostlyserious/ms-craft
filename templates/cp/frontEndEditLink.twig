@@ -1,0 +1,19 @@
+{% if entry is defined and currentUser %}
+    {% if currentUser.can("editEntries:#{entry.section.handle}")
+        or (entry.author
+            and currentUser.id == entry.author.id
+            and currentUser.can("editOwnEntries:#{entry.section.handle}")) %}
+            <div class="group fixed bottom-20 lg:bottom-6 right-6 z-[9999]">
+                <div class="absolute transform top-1/2 left-0 -translate-x-[5.25rem] -translate-y-1/2 leading-6 px-2 bg-black/60 text-white text-sm rounded transition-opacity opacity-0 group-hover:opacity-100">
+                    <p class="whitespace-nowrap">Edit Entry</p>
+                </div>
+                <a href="{{ entry.cpEditUrl }}"
+                    class="block p-3.5 border-2 border-white bg-green-500 text-white rounded-full shadow-xl"
+                    target="_cpEdit">
+                    {{svg('@webroot/icon-picker/fontawesome/solid/pen-to-square.svg')|attr({
+                        class: 'block w-4 h-4 fill-current'
+                    }) }}
+                </a>
+            </div>
+    {% endif %}
+{% endif %}

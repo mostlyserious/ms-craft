@@ -98,6 +98,8 @@
         {% endblock %}
     </footer>
 
+    {% include '_cp/frontEndShortcut' %}
+
     {{ codeBlocks|filter(c => c.position == 'bodyBottom')|map(c => c.code)|join('\n\n')|raw }}
 </body>
 </html>
