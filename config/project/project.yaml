@@ -1,0 +1,199 @@
+dateModified: 1683665596
+elementSources:
+  craft\elements\Entry:
+    -
+      disabled: false
+      key: '*'
+      tableAttributes:
+        - section
+        - postDate
+        - expiryDate
+        - author
+        - link
+      type: native
+    -
+      key: singles
+      type: native
+    -
+      key: 'section:1f4732b0-84b4-4302-9a0f-687b30fdd6a0' # Pages
+      type: native
+    -
+      heading: ''
+      type: heading
+    -
+      key: 'section:d630234c-e5b7-4e5c-a00b-62c58a09595c' # Errors
+      type: native
+    -
+      key: 'section:04d5a0fa-7712-4c14-80b1-499740922557' # CMS Guide
+      type: native
+email:
+  fromEmail: $SYSTEM_EMAIL_ADDRESS
+  fromName: $SYSTEM_EMAIL_ADDRESS
+  replyToEmail: null
+  template: ''
+  transportSettings:
+    command: ''
+  transportType: craft\mail\transportadapters\Sendmail
+fs:
+  public:
+    hasUrls: true
+    name: Public
+    settings:
+      path: '@webroot/assets'
+    type: craft\fs\Local
+    url: /assets/
+meta:
+  __names__:
+    1cf7995f-6f4d-4f3d-ae1b-725d7d2dacd0: 'Menu Item' # Menu Item
+    1f4732b0-84b4-4302-9a0f-687b30fdd6a0: Pages # Pages
+    2a6ba873-385a-4eb8-ae76-ed9b27ccd189: 'Menu Item' # Menu Item
+    3dc3f5a1-bcf9-4805-9a54-f5dda1ad45a9: $PRIMARY_SITE_NAME # $PRIMARY_SITE_NAME
+    4b163ea7-a54e-41be-adc4-5f8b95859bcb: WYSIWYG # WYSIWYG
+    4b728f98-2a0a-48e1-b07d-c8da68c84b37: 'Module Listing' # Module Listing
+    04d5a0fa-7712-4c14-80b1-499740922557: 'CMS Guide' # CMS Guide
+    5be54c1c-ac69-43da-bb71-a1a6d019ce48: Defaults # Defaults
+    6c184387-ba60-4935-8061-dd95b2f72809: SEO # SEO
+    6e98616b-f275-44b8-850c-59d0bb424c74: Menu # Menu
+    7d84fe28-4297-4ece-b556-a79a7e1056e9: 'Image & Content' # Image & Content
+    7e5aa3b3-4acb-4a94-8428-0a84ac9c32c7: 'Edit Header' # Edit Header
+    7e56e437-1c93-46fe-8cdd-77c67ee0edf1: Details # Details
+    8c2efa0e-94d5-4d7d-86fc-b0af9e8d6f2c: Heading # Heading
+    9a2e6d73-49cc-4aa9-89da-29c29cc4a000: 'Code Blocks' # Code Blocks
+    9d256421-0632-483e-ab16-fe4449e04977: Home # Home
+    9fad34b4-ec00-4f1c-851e-7f96f31d86cf: Position # Position
+    12ccab30-5c28-433b-935f-ef54025155e4: 'Featured Video' # Featured Video
+    14bc7956-d13d-4317-8a7c-56b2bf6dca14: Button # Button
+    17eb1569-4de9-43de-9fc2-ae39a4845d60: 'Background Image' # Background Image
+    38b79782-e200-468f-9633-323021ffa8ca: Common # Common
+    39e1484c-3c1a-4d64-a2e0-ff13cccb2890: 'Public Schema' # Public Schema
+    45e98e00-01d3-4272-aa08-0b1227d51b81: 'Background Image' # Background Image
+    68fdf34e-a8b6-47ae-b3b7-4bc8fb135e54: Background # Background
+    78d3d90c-61e4-4555-b7a4-556ac5117ad2: Details # Details
+    88e11325-3ef0-4ce5-ab38-637b810d3a04: WYSIWYG # WYSIWYG
+    093b3471-f8ec-409f-92ce-54c068bbcbb2: Footer # Footer
+    479b628a-5c5c-4ae8-a858-b5cd1b500c20: Button # Button
+    995cc5a8-988f-47f0-ac78-76d6b68f6ac6: Blocks # Blocks
+    1721cab1-b289-4a13-9143-1a55e53f453d: $PRIMARY_SITE_NAME # $PRIMARY_SITE_NAME
+    2422fbb8-cff2-4371-912c-b4d1db9556ef: Default # Default
+    06849b6a-9229-4531-9e1f-7b2ccef2e40c: Default # Default
+    093484b2-ab15-45dc-bddf-d693ba866b3d: Code # Code
+    406273f7-b865-4c09-869c-5dd130b80c62: 'Featured Image' # Featured Image
+    3512190e-891a-4d0b-8849-52dcc47d3fc6: Foobar # Foobar
+    4346141d-e3ba-4871-8847-46ab08819877: Excerpt # Excerpt
+    50013135-72e9-4dd1-965e-424db1bb07b8: 'Main Menu' # Main Menu
+    abf8e78e-1b0c-422c-bbff-9c89770e9906: Complex # Complex
+    aca3b467-9b53-4288-91a9-eda4802a7623: Heading # Heading
+    b8699c81-02b6-46b7-8d48-b6a8a521454a: 'Module Listing' # Module Listing
+    bdaf0b53-486b-46c0-9216-faf3ecbbd941: Details # Details
+    be7373cf-5af8-4a9c-92bd-11ab39541795: Header # Header
+    c5cdbc1b-1b04-45b2-a9d4-e9a17059a72d: Home # Home
+    c7803b14-f9ca-4ea2-8adb-77d4730289de: Public # Public
+    d630234c-e5b7-4e5c-a00b-62c58a09595c: Errors # Errors
+    dd7a858b-aedd-4c3d-9443-d3dbaf10f931: 'Edit Header' # Edit Header
+    e0b672d4-19dc-4015-b9bf-5b890e45e200: Video # Video
+    e3a48e48-61f7-4c2b-b415-9670085c0ca9: Legal # Legal
+    e4a11e84-cba4-4478-8b0a-e57b0a240c99: Flip # Flip
+    e44aa8dd-32cb-4db9-89d2-544162e2627f: Block # Block
+    e131b9cd-1baa-4334-bf9b-5ef313dc8393: Default # Default
+    eabc24ff-ad84-400b-9693-00cee632dd8f: Default # Default
+    ec7644f6-7285-429f-9185-28284f2532a4: Global # Global
+    f9c5d4a4-e78f-476b-bdb0-b2bdb6204568: Code # Code
+    f93ba9ca-aed6-465b-871c-a518711b649c: Buttons # Buttons
+    fef5e771-2ab6-464f-b943-624452c0a52c: Body # Body
+plugins:
+  aws-s3:
+    edition: standard
+    enabled: true
+    schemaVersion: '2.0'
+  colour-swatches:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.4.3
+  copy:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  embeddedassets:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  environment-label:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  icon-picker:
+    edition: standard
+    enabled: true
+    licenseKey: 7P24HFL5CCLKCVMMM1GH9BRI
+    schemaVersion: 1.2.3
+    settings:
+      enableCache: true
+      iconItemSize: 32
+      iconItemSizeLarge: 40
+      iconItemWrapperSize: 56
+      iconItemWrapperSizeLarge: 72
+      iconSetsPath: '@webroot/icons/'
+      iconSetsUrl: '@web/icons/'
+      redactorFieldHandle: ''
+  neo:
+    edition: standard
+    enabled: true
+    licenseKey: TDDD53YOAYX1BZCO9PSV4DIU
+    schemaVersion: 3.6.2
+  password-policy:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  redactor:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.3.0
+  retour:
+    edition: standard
+    enabled: true
+    licenseKey: ORSXEAGN5WH1QQTND99QYG99
+    schemaVersion: 3.0.11
+  sendgrid:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  sentry-sdk:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  seomatic:
+    edition: standard
+    enabled: true
+    licenseKey: TMTJV5K6TRVGHXYVXKQ6HQFN
+    schemaVersion: 3.0.11
+  smith:
+    edition: standard
+    enabled: true
+    schemaVersion: 1.0.0
+  typedlinkfield:
+    edition: standard
+    enabled: true
+    schemaVersion: 2.0.0
+  usermanual:
+    edition: standard
+    enabled: true
+    schemaVersion: 4.0.0
+    settings:
+      enabledSideBar: true
+      pluginNameOverride: 'CMS Guide'
+      section: '1'
+      templateOverride: _cmsGuide.twig
+system:
+  edition: pro
+  live: true
+  name: $PRIMARY_SITE_NAME
+  retryDuration: null
+  schemaVersion: 4.4.0.4
+  timeZone: America/Los_Angeles
+users:
+  allowPublicRegistration: false
+  deactivateByDefault: false
+  defaultGroup: null
+  photoSubpath: null
+  photoVolumeUid: null
+  requireEmailVerification: true

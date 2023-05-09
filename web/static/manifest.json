@@ -10,7 +10,7 @@
       "_svelte.e2dc6789.js"
     ],
     "css": [
-      "assets/main.4114c74e.css"
+      "assets/main.b5df7001.css"
     ]
   },
   "src/js/cp.js": {
@@ -60,7 +60,7 @@
     "src": "src/js/cp.css"
   },
   "src/js/main.css": {
-    "file": "assets/main.4114c74e.css",
+    "file": "assets/main.b5df7001.css",
     "src": "src/js/main.css"
   }
 }

@@ -1,0 +1,48 @@
+childBlocks: null
+description: ''
+enabled: true
+field: 995cc5a8-988f-47f0-ac78-76d6b68f6ac6 # Blocks
+fieldLayouts:
+  9d0b6e37-4410-437a-bb73-508deb4894b0:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: 88e11325-3ef0-4ce5-ab38-637b810d3a04 # WYSIWYG
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: cfddb4fd-c79d-46ce-a1dd-c46d306a0911
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            elementCondition: null
+            fieldUid: 68fdf34e-a8b6-47ae-b3b7-4bc8fb135e54 # Background
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 783a9fc1-ad66-49bb-a661-dfc5a8d2777a
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: d05725fb-82f8-4780-abf7-d5009264250e
+        userCondition: null
+group: null
+handle: wysiwyg
+maxBlocks: 0
+maxChildBlocks: 0
+maxSiblingBlocks: 0
+minBlocks: 0
+minChildBlocks: 0
+minSiblingBlocks: 0
+name: WYSIWYG
+sortOrder: 4
+topLevel: true
