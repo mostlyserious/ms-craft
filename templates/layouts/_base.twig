@@ -98,6 +98,8 @@
         {% endblock %}
     </footer>
 
+    {{ include('cp/_frontEndEditLink.twig', ignore_missing=true)  }}
+
     {{ codeBlocks|filter(c => c.position == 'bodyBottom')|map(c => c.code)|join('\n\n')|raw }}
 </body>
 </html>
