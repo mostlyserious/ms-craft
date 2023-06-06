@@ -11,7 +11,7 @@
     "require": {
         "born05/craft-sentry": "2.0.1",
         "craftcms/aws-s3": "2.0.3",
-        "craftcms/cms": "4.4.7.1",
+        "craftcms/cms": "4.4.12",
         "craftcms/redactor": "3.0.4",
         "fortrabbit/craft-copy": "2.4.0",
         "hillholliday/craft-user-manual": "4.0.0",
