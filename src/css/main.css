@@ -6,8 +6,6 @@
 
 @import "components/button";
 @import "components/navbar";
-@import "components/video";
-@import "components/wysiwyg";
 
 @custom-selector :--headings :where(h1, h2, h3, h4, h5, h6);
 
@@ -45,7 +43,7 @@
             @apply border-none;
         }
 
-        &.is-tabbing :is(a, button, input, select, textarea, [tabindex="0"], .focusable):focus {
+        &.is-tabbing :where(a, button, input, select, textarea, [tabindex="0"], .focusable):focus {
             @apply outline-none ring-2 ring-blue-500 rounded;
         }
 

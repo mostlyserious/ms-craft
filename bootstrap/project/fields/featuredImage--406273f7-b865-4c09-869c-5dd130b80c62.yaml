@@ -4,16 +4,18 @@ fieldGroup: 38b79782-e200-468f-9633-323021ffa8ca # Common
 handle: featuredImage
 instructions: null
 name: 'Featured Image'
-searchable: false
+searchable: true
 settings:
   allowSelfRelations: false
   allowSubfolders: false
   allowUploads: true
   allowedKinds:
     - image
+  branchLimit: null
   defaultUploadLocationSource: 'volume:c7803b14-f9ca-4ea2-8adb-77d4730289de' # Public
   defaultUploadLocationSubpath: null
   localizeRelations: false
+  maintainHierarchy: false
   maxRelations: 1
   minRelations: null
   previewMode: full
@@ -37,7 +39,6 @@ settings:
   showSiteMenu: true
   showUnpermittedFiles: false
   showUnpermittedVolumes: false
-  source: null
   sources: '*'
   targetSiteId: null
   validateRelatedElements: true

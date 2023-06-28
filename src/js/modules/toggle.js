@@ -10,39 +10,60 @@ export default els => {
     });
 
     Array.prototype.forEach.call(els, el => {
-        getTarget(el).addEventListener('click', event => event.stopPropagation());
-        getTarget(el).setAttribute('aria-expanded', 'false');
+        const target = getTarget(el);
+        const className = el.dataset.toggleClass
+            ? el.dataset.toggleClass
+            : 'is-active';
+
+        target.addEventListener('click', event => event.stopPropagation());
+        el.setAttribute('aria-expanded', 'false');
+
+        handleUserTabbing(target, true);
 
         el.addEventListener('click', event => {
-            const toggle = event.target;
-            const target = getTarget(toggle);
+            const toggles = document.querySelectorAll(`[data-toggle="${el.dataset.toggle}"]`);
+            const lockScroll = el.dataset.toggleLockScroll !== undefined;
 
-            event.stopPropagation();
+            let delay = parseInt(el.dataset.toggleDuration);
 
-            Array.prototype.forEach.call(els, el => {
-                if (!getTarget(el).isSameNode(getTarget(toggle))
-                    && (!toggle.dataset.toggleGroup
-                        || toggle.dataset.toggleGroup !== el.dataset.toggleGroup)) {
-                    getTarget(el).classList.remove('is-active');
-                    el.setAttribute('aria-expanded', 'false');
+            if (!delay) {
+                delay = parseFloat(window.getComputedStyle(target).transitionDuration) * 1000;
+            }
+
+            Array.prototype.forEach.call(els, otherEl => {
+                const otherTarget = getTarget(otherEl);
+
+                if (!otherTarget.isSameNode(target)
+                    && (!el.dataset.toggleGroup
+                        || otherEl.dataset.toggleGroup !== el.dataset.toggleGroup)) {
+
+                    otherTarget.classList.remove(className);
+                    otherEl.setAttribute('aria-expanded', 'false');
+                    setTimeout(() => {
+                        handleUserTabbing(otherTarget, true);
+                    }, delay);
                 }
             });
 
-            target.classList.toggle('is-active');
-
-            if (target.classList.contains('is-active')) {
-                toggle.setAttribute('aria-expanded', 'true');
-                if (el.dataset.toggleTakeover !== undefined) {
-                    document.documentElement.classList.add('overflow-hidden');
-                    document.documentElement.classList.add('lg:overflow-auto');
-                }
+            if (target.classList.contains(className)) {
+                Array.prototype.forEach.call(toggles, t => t.setAttribute('aria-expanded', 'false'));
+                lockScroll && (document.body.style.overflow = 'auto');
+                setTimeout(() => {
+                    handleUserTabbing(target, true);
+                }, delay);
             } else {
-                toggle.setAttribute('aria-expanded', 'false');
-                if (el.dataset.toggleTakeover !== undefined) {
-                    document.documentElement.classList.remove('overflow-hidden');
-                    document.documentElement.classList.remove('lg:overflow-auto');
-                }
+                setTimeout(() => {
+                    handleUserTabbing(target, false);
+                }, delay);
+                lockScroll && (document.body.style.overflow = 'hidden');
+                Array.prototype.forEach.call(toggles, t => t.setAttribute('aria-expanded', 'true'));
             }
+
+            setTimeout(() => {
+                target.classList.toggle(className);
+            }, 50);
+
+            event.stopPropagation();
         });
     });
 };
@@ -54,8 +75,41 @@ function getTarget(el) {
 }
 
 function closeAll(els) {
+    // document.body.style.overflow = 'auto';
+
     Array.prototype.forEach.call(els, el => {
-        getTarget(el).classList.remove('is-active');
+        const target = getTarget(el);
+        const lockScroll = el.dataset.toggleLockScroll !== undefined;
+        const className = el.dataset.toggleClass
+            ? el.dataset.toggleClass
+            : 'is-active';
+
+        let delay = parseInt(el.dataset.toggleDuration);
+
+        if (!delay) {
+            delay = parseFloat(window.getComputedStyle(target).transitionDuration) * 1000;
+        }
+
+        target.classList.remove(className);
         el.setAttribute('aria-expanded', 'false');
+
+        lockScroll && (document.body.style.overflow = 'auto');
+
+        setTimeout(() => {
+            handleUserTabbing(target, true);
+        }, delay);
     });
+}
+
+function handleUserTabbing(target, hide) {
+    const toggleInvisible = target.querySelectorAll('.toggle\\:invisible');
+    const toggleVisible = target.querySelectorAll('.toggle\\:visible');
+
+    if (hide) {
+        Array.prototype.forEach.call(toggleInvisible, t => t.classList.remove('invisible'));
+        Array.prototype.forEach.call(toggleVisible, t => t.classList.add('invisible'));
+    } else {
+        Array.prototype.forEach.call(toggleInvisible, t => t.classList.add('invisible'));
+        Array.prototype.forEach.call(toggleVisible, t => t.classList.remove('invisible'));
+    }
 }

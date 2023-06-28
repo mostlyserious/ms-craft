@@ -10,6 +10,8 @@ settings:
   maxLevels: null
   maxTopBlocks: null
   minBlocks: null
+  minLevels: null
+  minTopBlocks: null
   propagationKeyFormat: null
   propagationMethod: all
 translationKeyFormat: null

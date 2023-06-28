@@ -5,7 +5,7 @@ A Craft CMS starter used for new sites built by the [Mostly Serious](https://www
 > **[Project Technical Documentation](#)**
 
 ## Software requirements
-- node >= 14.0
+- node >= 16.0
 - php >= 8.0.2
 - mysql >= 5.7.8
 - composer >= 2.0

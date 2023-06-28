@@ -6,11 +6,14 @@ instructions: null
 name: 'Code Blocks'
 searchable: false
 settings:
-  contentTable: '{{%matrixcontent_codeblocks}}'
   maxBlocks: null
+  maxLevels: null
+  maxTopBlocks: null
   minBlocks: null
+  minLevels: null
+  minTopBlocks: null
   propagationKeyFormat: null
   propagationMethod: all
 translationKeyFormat: null
 translationMethod: site
-type: craft\fields\Matrix
+type: benf\neo\Field

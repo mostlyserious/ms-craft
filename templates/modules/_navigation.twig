@@ -4,19 +4,19 @@
     <div class="navbar-container">
         <div id="navbar-inner" class="navbar-inner">
             <a class="navbar-logo" href="{{ siteUrl('/') }}" title="Home page">
-                {{ systemName }}
+                {{ seomatic.site.siteName }}
                 {# <img width="200" height="35"
                     src="{{ asset('img/logo.svg') }}"
-                    alt="{{ systemName }}"> #}
+                    alt="{{ seomatic.site.siteName }}"> #}
             </a>
             <nav aria-label="Main menu">
-                <ul id="main-menu" class="navbar-nav pl-4">
-                    {% for menuItem in mainMenu.menu.all %}
-                        {{ macros.link(menuItem.button, {
+                <menu id="main-menu" class="navbar-nav pl-4">
+                    {% for menuItem in mainMenu.menu %}
+                        {{ macros.link(menuItem, {
                             class: 'navbar-link'
                         }, 'li')|attr({ class: 'navbar-item' }) }}
                     {% endfor %}
-                </ul>
+                </menu>
                 <button type="button"
                     class="navbar-toggle w-5 h-4 my-4 ml-6 mr-0"
                     aria-controls="mobile-menu"

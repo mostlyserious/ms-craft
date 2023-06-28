@@ -1,9 +1,9 @@
-columnSuffix: fgqfguts
+columnSuffix: iktwacwd
 contentColumnType: text
 fieldGroup: 38b79782-e200-468f-9633-323021ffa8ca # Common
-handle: button
+handle: buttons
 instructions: null
-name: Button
+name: Buttons
 searchable: false
 settings:
   columnType: text
@@ -2278,9 +2278,9 @@ settings:
                               -
                                 - uid
                                 - 6d7b7b8b-d44d-4a04-9702-115769093ded
-  maxLinks: null
+  maxLinks: 2
   minLinks: null
-  multipleLinks: false
+  multipleLinks: true
   newWindow: true
 translationKeyFormat: null
 translationMethod: none

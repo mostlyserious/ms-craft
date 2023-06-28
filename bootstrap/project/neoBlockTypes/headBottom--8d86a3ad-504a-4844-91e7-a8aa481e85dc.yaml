@@ -1,0 +1,40 @@
+childBlocks: null
+conditions: null
+description: null
+enabled: true
+field: 9a2e6d73-49cc-4aa9-89da-29c29cc4a000 # Code Blocks
+fieldLayouts:
+  4a07748f-4cda-4c65-8a95-9f0eb4cc8c36:
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            elementCondition: null
+            fieldUid: d6cfec69-0b38-4af7-9020-cdbbb89273ea # Code
+            instructions: null
+            label: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: a2bea9bd-6a46-47b6-a14f-bb2fd8ee7c9b
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: c19ea8ae-f340-4738-ae9f-55fef2b423c6
+        userCondition: null
+group: fc1eb19e-c206-4b9a-adc3-32ed25f88eab # Head
+groupChildBlockTypes: true
+handle: headBottom
+icon: null
+ignorePermissions: true
+maxBlocks: 0
+maxChildBlocks: 0
+maxSiblingBlocks: 0
+minBlocks: 0
+minChildBlocks: 0
+minSiblingBlocks: 0
+name: 'Head Bottom'
+sortOrder: 3
+topLevel: true

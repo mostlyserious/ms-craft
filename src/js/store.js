@@ -1,5 +1,5 @@
-import throttle from './modules/throttle';
-import { readable, writable } from 'svelte/store';
+import throttle from './util/throttle';
+import { writable } from 'svelte/store';
 
 export const screen = writable({
     is2xs: matchMedia('(min-width: 380px)').matches,
@@ -20,37 +20,3 @@ addEventListener('resize', throttle(() => {
         isXl: matchMedia('(min-width: 1280px)').matches
     });
 }, 1000 / 30, 'prepare'));
-
-export const storage = readable((key, value = undefined, fallback = null) => {
-    if (value !== undefined) {
-        localStorage.setItem(key, JSON.stringify(value));
-
-        return value;
-    }
-
-    if (localStorage.getItem(key)) {
-        return JSON.parse(localStorage.getItem(key));
-    }
-
-    return fallback;
-});
-
-export const isVisible = readable((el, handler, args = {}, once = false) => {
-    if (window.IntersectionObserver) {
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    handler(el, entry);
-
-                    if (once) {
-                        observer.unobserve(entry.target);
-                    }
-                }
-            });
-        }, args);
-
-        observer.observe(el);
-    } else {
-        handler(el, null);
-    }
-});

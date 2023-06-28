@@ -1,8 +1,10 @@
+{% import 'helpers/_macros.twig' as macros %}
+
 {# This is just a good default pattern to follow when creating content blocks. You can delete this file. #}
 
-<section class="relative {{ background.class }}">
+<section class="relative {{ macros.swatch(block.background, ['class', 'text']) }}">
     <div class="{{ padding }}">
-        <div class="container">
+        <div class="{{ container }}">
             {# Module Content #}
             <header class="mb-8">
                 <h2 class="text-4xl sm:text-5xl md:text-6xl font-display">Block Heading</h2>

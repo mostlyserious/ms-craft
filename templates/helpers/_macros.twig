@@ -138,12 +138,16 @@
 {% endapply %}{% endmacro %}
 
 {% macro link(button, args = {}, wrap = false) %}
+    {% if button[0] is defined %}
+        {% set button = button|first %}
+    {% endif %}
+
     {% if button and not button.isEmpty %}
         {% if args.prepend is defined %}
-            {% set args = args|merge({ text: "#{args.prepend}#{button.text}" }) %}
+            {% set args = args|merge({ linkText: "#{args.prepend}#{button.text}" }) %}
         {% endif %}
         {% if args.append is defined %}
-            {% set args = args|merge({ text: "#{button.text}#{args.append}" }) %}
+            {% set args = args|merge({ linkText: "#{button.text}#{args.append}" }) %}
         {% endif %}
         {% if wrap %}
             {{ tag(wrap, { html: button.link(args) }) }}
@@ -153,24 +157,38 @@
     {% endif %}
 {% endmacro %}
 
-{% macro swatch(background, keys) %}{% apply spaceless %}
-    {% set value = [] %}
+{%- macro swatch(background, keys) -%}
+    {% apply spaceless %}
+        {% set value = [] %}
+        {% set custom = false %}
 
-    {% if keys is not iterable %}
-        {% set keys = [keys] %}
-    {% endif %}
-
-    {% for key in keys %}
-        {% if background[key] is defined and key != 'color' %}
-            {% set value = value|push(background[key]) %}
+        {% if keys[0] is not defined %}
+            {% if keys is iterable %}
+                {% set custom = keys %}
+                {% set keys = ['label'] %}
+            {% else %}
+                {% set keys = [keys] %}
+            {% endif %}
         {% endif %}
 
-        {% for def in background.color %}
-            {% if def[key] is defined %}
-                {% set value = value|push(def[key]) %}
+        {% for key in keys %}
+            {% if background[key] is defined and key != 'color' %}
+                {% set value = value|push(background[key]) %}
+            {% endif %}
+
+            {% if background['color'] is defined %}
+                {% for def in background.color %}
+                    {% if def[key] is defined %}
+                        {% set value = value|push(def[key]) %}
+                    {% endif %}
+                {% endfor %}
             {% endif %}
         {% endfor %}
-    {% endfor %}
 
-    {{ value|unique|join(' ') }}
-{% endapply %}{% endmacro %}
+        {% if custom %}
+            {{ custom[value|first] is defined ? custom[value|first] }}
+        {% else %}
+            {{ value|unique|join(' ') }}
+        {% endif %}
+    {% endapply %}
+{%- endmacro -%}

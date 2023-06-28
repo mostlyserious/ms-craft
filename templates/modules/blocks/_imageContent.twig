@@ -1,6 +1,6 @@
 {% import 'helpers/_macros.twig' as macros %}
 
-<section class="relative {{ background.class }}">
+<section class="relative {{ macros.swatch(block.background, ['class', 'text']) }}">
     <div class="{{ padding }}">
         <div class="container container-lg">
             <div class="flex flex-col -m-6 items-center {{ block.isFlipped ? 'md:flex-row-reverse' : 'md:flex-row' }}">

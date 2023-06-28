@@ -1,17 +1,42 @@
+import propertyAccess from '../util/property-access';
+
+const styles = document.documentElement.style;
+
+let interval;
+
 export default els => {
-    const customProperties = () => {
-        const styles = document.documentElement.style;
+    if (interval) {
+        removeEventListener('resize', () => customProperties(els));
+        removeEventListener('load', () => customProperties(els));
+        clearInterval(interval);
+    }
 
-        styles.setProperty('--viewport-height', `${innerHeight}px`);
+    addEventListener('resize', () => customProperties(els));
+    addEventListener('load', () => customProperties(els));
+    interval = setInterval(() => customProperties(els), 1000);
 
-        Array.prototype.forEach.call(els, el => {
-            const [ property, key ] = JSON.parse(el.dataset.property);
-
-            styles.setProperty(property, `${el[key]}px`);
-        });
-    };
-
-    addEventListener('resize', customProperties);
-    addEventListener('load', customProperties);
-    setInterval(customProperties, 1000);
+    customProperties(els);
 };
+
+function customProperties(els) {
+    Array.prototype.forEach.call(els, el => {
+        const properties = el.dataset.property.trim().split(';').filter(Boolean);
+
+        properties.forEach(property => {
+            let args = property.trim(),
+                value = undefined,
+                prop = '',
+                unit = '',
+                key = '';
+
+            [ prop, key ] = args.split(':').map(str => str.trim());
+            [ key, unit ] = key.split('|').map(str => str.trim());
+
+            value = propertyAccess(el, key);
+
+            if (value !== undefined) {
+                styles.setProperty(prop, `${value}${unit || ''}`);
+            }
+        });
+    });
+}

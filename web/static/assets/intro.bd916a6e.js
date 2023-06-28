@@ -1,0 +1,1 @@
+const o=(t,e,s={})=>{window.IntersectionObserver?new IntersectionObserver(r=>{r.forEach(i=>i.isIntersecting&&e(i))},s).observe(t):e(null)},n=t=>{Array.from(t).forEach(e=>{o(e,s=>{s.isIntersecting&&s.target.classList.add("intro-active")},{threshold:0})})};export{n as default};

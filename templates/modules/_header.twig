@@ -19,9 +19,17 @@
                     <h1 class="inline-block text-4xl md:text-5xl font-semibold">
                         {{ title|striptags('<strong><span><br>')|trim|raw }}
                     </h1>
-                    {{ macros.link(block.button|default(null), {
-                        class: 'button button-white'
-                    }, 'div')|attr({ class: 'pt-2' }) }}
+                    {% if block and block.buttons|length %}
+                        <div class="flex justify-center gap-4 mt-4">
+                            {% for button in block.buttons %}
+                                {{ macros.link(button, {
+                                    class: loop.first
+                                        ? 'button button-white'
+                                        : 'button button-white button-outline'
+                                }) }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
