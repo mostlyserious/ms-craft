@@ -1,7 +1,8 @@
 {
     "name": "mostlyserious/ms-craft",
-    "description": "Craft CMS",
+    "description": "A Craft CMS Starter",
     "type": "project",
+    "license": "Unlicense",
     "repositories": [
         {
             "type": "vcs",
@@ -13,7 +14,6 @@
         "craftcms/aws-s3": "2.0.3",
         "craftcms/cms": "4.4.7.1",
         "craftcms/redactor": "3.0.4",
-        "fortrabbit/craft-copy": "2.4.0",
         "hillholliday/craft-user-manual": "4.0.0",
         "nystudio107/craft-retour": "4.1.12",
         "nystudio107/craft-seomatic": "4.0.23",
@@ -42,15 +42,13 @@
         "allow-plugins": {
             "craftcms/plugin-installer": true,
             "yiisoft/yii2-composer": true,
-            "fortrabbit/craft-auto-migrate": true,
-            "treeware/plant": true
+            "treeware/plant": true,
+            "php-http/discovery": true
         }
     },
     "scripts": {
         "post-create-project-cmd": [
             "@php -r \"copy('.env.example', '.env');\"",
-            "@php -r \"unlink('composer.json');\"",
-            "@php -r \"rename('composer.json.default', 'composer.json');\"",
             "@composer dump-autoload -o",
             "@php craft setup/keys"
         ]
