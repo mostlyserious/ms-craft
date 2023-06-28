@@ -1,12 +1,26 @@
 childBlocks: null
-description: null
+conditions: null
+description: ''
+enabled: true
 field: be7373cf-5af8-4a9c-92bd-11ab39541795 # Header
 fieldLayouts:
-  99c8eddf-7322-4397-97f4-943783ccb2be:
+  f8616918-971f-4c96-9be2-5f9b456ea0a8:
     tabs:
       -
         elementCondition: null
         elements:
+          -
+            elementCondition: null
+            fieldUid: 49d949e8-4a78-40f9-9039-c172ba89d3a7 # Label
+            instructions: null
+            label: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 7438d395-6020-4f17-b4e8-6dc2f2619850
+            userCondition: null
+            warning: null
+            width: 100
           -
             elementCondition: null
             fieldUid: aca3b467-9b53-4288-91a9-eda4802a7623 # Heading
@@ -33,13 +47,13 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: 14bc7956-d13d-4317-8a7c-56b2bf6dca14 # Button
+            fieldUid: 93cffabf-ec24-4999-bdbd-87b98466ab50 # Buttons
             instructions: null
             label: null
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 88839b51-0e9b-4943-b05c-69eba9c81c64
+            uid: eed2e471-27ff-4ec2-9577-484174dde7e0
             userCondition: null
             warning: null
             width: 100
@@ -47,10 +61,16 @@ fieldLayouts:
         uid: 6c36b2c0-2a98-4100-897b-4503119fb962
         userCondition: null
 group: null
+groupChildBlockTypes: true
 handle: block
+icon: null
+ignorePermissions: true
 maxBlocks: 0
 maxChildBlocks: 0
 maxSiblingBlocks: 0
+minBlocks: 0
+minChildBlocks: 0
+minSiblingBlocks: 0
 name: 'Edit Header'
 sortOrder: 1
 topLevel: true

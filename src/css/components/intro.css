@@ -20,37 +20,35 @@
         }
     }
 
-    @screen motion-safe {
-        .intro-slide-left {
-            transform: translateX(calc(5% + 25px));
-        }
+    .intro-slide-left {
+        @apply motion-safe:translate-x-[calc(5%+25px)];
+    }
 
-        .intro-slide-right {
-            transform: translateX(calc(-5% - 25px));
-        }
+    .intro-slide-right {
+        @apply motion-safe:translate-x-[calc(-5%-25px)];
+    }
 
-        .intro-slide-up {
-            transform: translateY(calc(5% + 25px));
-        }
+    .intro-slide-up {
+        @apply motion-safe:translate-y-[calc(5%+25px)];
+    }
 
-        .intro-slide-down {
-            transform: translateY(calc(-5% - 25px));
-        }
+    .intro-slide-down {
+        @apply motion-safe:translate-y-[calc(-5%-25px)];
+    }
 
-        .intro-wipe-left {
-            clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
-        }
+    .intro-wipe-left {
+        @apply motion-safe:[clip-path:polygon(100%_0,_100%_0,_100%_100%,_100%_100%)];
+    }
 
-        .intro-wipe-right {
-            clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
-        }
+    .intro-wipe-right {
+        @apply motion-safe:[clip-path:polygon(0_0,_0_0,_0_100%,_0_100%)];
+    }
 
-        .intro-wipe-up {
-            clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
-        }
+    .intro-wipe-up {
+        @apply motion-safe:[clip-path:polygon(0_100%,_100%_100%,_100%_100%,_0_100%)];
+    }
 
-        .intro-wipe-down {
-            clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-        }
+    .intro-wipe-down {
+        @apply motion-safe:[clip-path:polygon(0_0,_100%_0,_100%_0,_0_0)];
     }
 }

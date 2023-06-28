@@ -1,7 +1,7 @@
 {% set regex = '/src="([^"]+)"/m' %}
 {% set replace = 'srcset="$1?auto=compress,format&width=848, $1?auto=compress,format&width=1696 2x"' %}
 
-<section class="relative {{ background.class }}">
+<section class="relative {{ macros.swatch(block.background, ['class', 'text']) }}">
     <div class="{{ padding }}">
         <div class="container container-sm">
             <div class="prose">

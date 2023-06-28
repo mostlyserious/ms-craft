@@ -1,19 +1,49 @@
-{% set blocks = entry.blocks.level(1).all %}
+{% set filterByLevel = false %}
 {% set defaultBackground = { color: '#FFF', class: 'bg-white' } %}
 
+{% if blocks is not defined %}
+    {% set filterByLevel = true %}
+    {% do craft.app.elements.eagerLoadElements(className(entry), [entry], [
+        'blocks'
+    ]) %}
+
+    {% set blocks = entry.blocks.all %}
+
+    {% for block in entry.blocks %}
+        {% do block.useMemoized(entry.blocks) %}
+    {% endfor %}
+{% endif %}
+
+{% set index = 0 %}
 {% for block in blocks %}
-    {% set nextBlock = blocks[loop.index]|default(null) %}
-    {% set background = block.background|default({ color: [] })
-        .color|first|default(defaultBackground) %}
-    {% set nextBackground = nextBlock.background|default({ color: [] })
-        .color|first|default(defaultBackground) %}
+    {% if not filterByLevel or (filterByLevel and block.level == 1) %}
+        {% set nextBlock = blocks[index]|default(null) %}
+        {% set background = block.background|default({ color: [] })
+            .color|first|default(defaultBackground) %}
+        {% set nextBackground = nextBlock.background|default({ color: [] })
+            .color|first|default(defaultBackground) %}
 
-    {% if not nextBlock %}
-        {% set nextBackground = { class: null } %}
+        {% if not nextBlock %}
+            {% set nextBackground = { class: null } %}
+        {% endif %}
+
+        {% set canBeAdjacent = block.background|default(null) and nextBlock.background|default(null) and block.background.color is defined == nextBlock.background.color is defined %}
+        {% set isAdjacent = canBeAdjacent and background.class == nextBackground.class %}
+
+        {% switch block.type.handle %}
+            {% default %}
+                {% set padding = isAdjacent
+                    ? 'pt-12 md:pt-24'
+                    : 'py-12 md:py-24' %}
+        {% endswitch %}
+
+        {% switch block.type.handle %}
+            {% default %}
+                {% set container = 'container' %}
+        {% endswitch %}
+
+        {% include 'modules/blocks/_' ~ block.type.handle ignore missing %}
+
+        {% set index = index + 1 %}
     {% endif %}
-
-    {% set isAdjacent = background.class == nextBackground.class %}
-    {% set padding = isAdjacent ? 'pt-12 md:pt-24' : 'py-12 md:py-24' %}
-
-    {% include 'modules/blocks/_' ~ block.type.handle ignore missing %}
 {% endfor %}

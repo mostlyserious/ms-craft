@@ -1,4 +1,4 @@
-dateModified: 1681914440
+dateModified: 1687965557
 elementSources:
   craft\elements\Entry:
     -
@@ -47,17 +47,19 @@ meta:
     1cf7995f-6f4d-4f3d-ae1b-725d7d2dacd0: 'Menu Item' # Menu Item
     1f4732b0-84b4-4302-9a0f-687b30fdd6a0: Pages # Pages
     2a6ba873-385a-4eb8-ae76-ed9b27ccd189: 'Menu Item' # Menu Item
+    3bd52b92-84f3-44de-9218-4133ee15e563: 'Body Bottom' # Body Bottom
     3dc3f5a1-bcf9-4805-9a54-f5dda1ad45a9: $PRIMARY_SITE_NAME # $PRIMARY_SITE_NAME
     4b163ea7-a54e-41be-adc4-5f8b95859bcb: WYSIWYG # WYSIWYG
     4b728f98-2a0a-48e1-b07d-c8da68c84b37: 'Module Listing' # Module Listing
     04d5a0fa-7712-4c14-80b1-499740922557: 'CMS Guide' # CMS Guide
-    5be54c1c-ac69-43da-bb71-a1a6d019ce48: Defaults # Defaults
     6c184387-ba60-4935-8061-dd95b2f72809: SEO # SEO
     6e98616b-f275-44b8-850c-59d0bb424c74: Menu # Menu
     7d84fe28-4297-4ece-b556-a79a7e1056e9: 'Image & Content' # Image & Content
     7e5aa3b3-4acb-4a94-8428-0a84ac9c32c7: 'Edit Header' # Edit Header
     7e56e437-1c93-46fe-8cdd-77c67ee0edf1: Details # Details
+    8b508ea4-6641-468f-86d6-698255a181c6: 'Head Top' # Head Top
     8c2efa0e-94d5-4d7d-86fc-b0af9e8d6f2c: Heading # Heading
+    8d86a3ad-504a-4844-91e7-a8aa481e85dc: 'Head Bottom' # Head Bottom
     9a2e6d73-49cc-4aa9-89da-29c29cc4a000: 'Code Blocks' # Code Blocks
     9d256421-0632-483e-ab16-fe4449e04977: Home # Home
     9fad34b4-ec00-4f1c-851e-7f96f31d86cf: Position # Position
@@ -65,12 +67,14 @@ meta:
     14bc7956-d13d-4317-8a7c-56b2bf6dca14: Button # Button
     17eb1569-4de9-43de-9fc2-ae39a4845d60: 'Background Image' # Background Image
     38b79782-e200-468f-9633-323021ffa8ca: Common # Common
+    39ce1abd-a82c-4d5d-ad3a-71d3c528e717: 'Body Top' # Body Top
     39e1484c-3c1a-4d64-a2e0-ff13cccb2890: 'Public Schema' # Public Schema
     45e98e00-01d3-4272-aa08-0b1227d51b81: 'Background Image' # Background Image
+    49d949e8-4a78-40f9-9039-c172ba89d3a7: Label # Label
     68fdf34e-a8b6-47ae-b3b7-4bc8fb135e54: Background # Background
     78d3d90c-61e4-4555-b7a4-556ac5117ad2: Details # Details
     88e11325-3ef0-4ce5-ab38-637b810d3a04: WYSIWYG # WYSIWYG
-    093b3471-f8ec-409f-92ce-54c068bbcbb2: Footer # Footer
+    93cffabf-ec24-4999-bdbd-87b98466ab50: Buttons # Buttons
     479b628a-5c5c-4ae8-a858-b5cd1b500c20: Button # Button
     995cc5a8-988f-47f0-ac78-76d6b68f6ac6: Blocks # Blocks
     1721cab1-b289-4a13-9143-1a55e53f453d: $PRIMARY_SITE_NAME # $PRIMARY_SITE_NAME
@@ -88,16 +92,19 @@ meta:
     be7373cf-5af8-4a9c-92bd-11ab39541795: Header # Header
     c5cdbc1b-1b04-45b2-a9d4-e9a17059a72d: Home # Home
     c7803b14-f9ca-4ea2-8adb-77d4730289de: Public # Public
+    d6cfec69-0b38-4af7-9020-cdbbb89273ea: Code # Code
     d630234c-e5b7-4e5c-a00b-62c58a09595c: Errors # Errors
     dd7a858b-aedd-4c3d-9443-d3dbaf10f931: 'Edit Header' # Edit Header
     e0b672d4-19dc-4015-b9bf-5b890e45e200: Video # Video
     e3a48e48-61f7-4c2b-b415-9670085c0ca9: Legal # Legal
     e4a11e84-cba4-4478-8b0a-e57b0a240c99: Flip # Flip
+    e36dbcec-7a83-47ff-ad97-dba3e4d3345b: Body # Body
     e44aa8dd-32cb-4db9-89d2-544162e2627f: Block # Block
     e131b9cd-1baa-4334-bf9b-5ef313dc8393: Default # Default
     ec7644f6-7285-429f-9185-28284f2532a4: Global # Global
     f9c5d4a4-e78f-476b-bdb0-b2bdb6204568: Code # Code
     f93ba9ca-aed6-465b-871c-a518711b649c: Buttons # Buttons
+    fc1eb19e-c206-4b9a-adc3-32ed25f88eab: Head # Head
     fef5e771-2ab6-464f-b943-624452c0a52c: Body # Body
 plugins:
   aws-s3:
@@ -119,6 +126,11 @@ plugins:
   environment-label:
     edition: standard
     enabled: true
+    schemaVersion: 1.0.0
+  hyper:
+    edition: standard
+    enabled: true
+    licenseKey: KPXWGO138DFXVQLED9M47LWR
     schemaVersion: 1.0.0
   icon-picker:
     edition: standard
@@ -164,15 +176,11 @@ plugins:
     edition: standard
     enabled: true
     licenseKey: TMTJV5K6TRVGHXYVXKQ6HQFN
-    schemaVersion: 3.0.11
+    schemaVersion: 3.0.12
   smith:
     edition: standard
     enabled: true
     schemaVersion: 1.0.0
-  typedlinkfield:
-    edition: standard
-    enabled: true
-    schemaVersion: 2.0.0
   usermanual:
     edition: standard
     enabled: true

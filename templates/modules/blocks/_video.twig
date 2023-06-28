@@ -1,7 +1,7 @@
 {% set embed = craft.videoEmbedder.getEmbedUrl(block.embed) %}
 
 {% if embed|length %}
-    <section class="relative {{ background.class }}">
+    <section class="relative {{ macros.swatch(block.background, ['class', 'text']) }}">
         <div class="{{ padding }}">
             <div class="container container-sm">
                 <div class="video">

@@ -4,7 +4,7 @@ fieldGroup: 38b79782-e200-468f-9633-323021ffa8ca # Common
 handle: featuredVideo
 instructions: null
 name: 'Featured Video'
-searchable: false
+searchable: true
 settings:
   allowSelfRelations: false
   allowSubfolders: false
@@ -12,9 +12,11 @@ settings:
   allowedKinds:
     - json
     - video
+  branchLimit: null
   defaultUploadLocationSource: 'volume:c7803b14-f9ca-4ea2-8adb-77d4730289de' # Public
   defaultUploadLocationSubpath: null
   localizeRelations: false
+  maintainHierarchy: false
   maxRelations: 1
   minRelations: null
   previewMode: full
@@ -23,11 +25,21 @@ settings:
   restrictedDefaultUploadSubpath: null
   restrictedLocationSource: 'volume:c7803b14-f9ca-4ea2-8adb-77d4730289de' # Public
   restrictedLocationSubpath: null
+  selectionCondition:
+    __assoc__:
+      -
+        - elementType
+        - craft\elements\Asset
+      -
+        - fieldContext
+        - global
+      -
+        - class
+        - craft\elements\conditions\assets\AssetCondition
   selectionLabel: 'Select Video'
-  showSiteMenu: false
+  showSiteMenu: true
   showUnpermittedFiles: false
   showUnpermittedVolumes: false
-  source: null
   sources: '*'
   targetSiteId: null
   validateRelatedElements: false

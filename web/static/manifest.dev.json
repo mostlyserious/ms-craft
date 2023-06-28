@@ -1,7 +1,0 @@
-{
-	"url": "http://ms-craft.test:5173/static/",
-	"inputs": {
-		"src/js/main.js": "src/js/main.js",
-		"src/js/cp.js": "src/js/cp.js"
-	}
-}

@@ -1,6 +1,6 @@
 {# This is just a good default pattern to follow when creating content blocks. You can delete this file. #}
 
-<section class="relative {{ background.class }}">
+<section class="relative {{ macros.swatch(block.background, ['class', 'text']) }}">
     <div class="{{ padding }}">
         <div class="container">
             {# Module Content #}

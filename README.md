@@ -1,11 +1,11 @@
 # MS Craft
 
-A Craft CMS starter used for new sites built by the [Mostly Serious](https://www.mostlyserious.io) team. It's designed to pair with our build tool, [Brightpack](https://github.com/mostlyserious/brightpack).
+A Craft CMS starter used for new sites built by the [Mostly Serious](https://www.mostlyserious.io) team. It's designed to pair with our build tool, [Vitepack](https://github.com/mostlyserious/vitepack).
 
 > **[Project Technical Documentation](#)**
 
 ## Software requirements
-- node >= 14.0
+- node >= 16.0
 - php >= 8.0.2
 - mysql >= 5.7.8
 - composer >= 2.0

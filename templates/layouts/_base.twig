@@ -1,7 +1,8 @@
-{% set codeBlocks = (code ?? null) and (code.codeBlocks ?? null) ? code.codeBlocks.all : [] %}
 <!DOCTYPE html>
 <html lang="{{ craft.app.language }}" style="max-height: var(--viewport-height); --viewport-height: 100vh;">
 <head>
+    {% set codeBlocks = code.codeBlocks.collect %}
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -39,7 +40,7 @@
     {% set agent = craft.app.request.headers.get('User-Agent') %}
     {% set isCrawler = agent matches regex %}
 
-    {{ codeBlocks|filter(c => c.position == 'headTop')|map(c => c.code)|join('\n\n')|raw }}
+    {{ codeBlocks.firstWhere('type', 'headTop').code|default('')|raw }}
 
     {% if craft.app.config.general.disallowRobots %}
         <meta name="robots" content="noindex">
@@ -72,10 +73,10 @@
 
     {{ vite('src/js/main.js') }}
 
-    {{ codeBlocks|filter(c => c.position == 'headBottom')|map(c => c.code)|join('\n\n')|raw }}
+    {{ codeBlocks.firstWhere('type', 'headBottom').code|default('')|raw }}
 </head>
 <body id="app" class="transition" style="padding-bottom: var(--appbar-height);">
-    {{ codeBlocks|filter(c => c.position == 'bodyTop')|map(c => c.code)|join('\n\n')|raw }}
+    {{ codeBlocks.firstWhere('type', 'bodyTop').code|default('')|raw }}
 
     <a href="#maincontent" id="skip-to-content">Skip to Main Content</a>
 
@@ -98,8 +99,8 @@
         {% endblock %}
     </footer>
 
-    {{ include('cp/_frontEndEditLink.twig', ignore_missing=true)  }}
+    {% include 'cp/_quickEdit' %}
 
-    {{ codeBlocks|filter(c => c.position == 'bodyBottom')|map(c => c.code)|join('\n\n')|raw }}
+    {{ codeBlocks.firstWhere('type', 'bodyBottom').code|default('')|raw }}
 </body>
 </html>
