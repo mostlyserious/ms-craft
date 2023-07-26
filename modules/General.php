@@ -17,6 +17,8 @@ use benf\neo\records\BlockType;
 use craft\helpers\StringHelper;
 use Illuminate\Support\Collection;
 use craft\events\ReplaceAssetEvent;
+use craft\events\RegisterCpNavItemsEvent;
+use craft\web\twig\variables\Cp as ControlPanel;
 use percipiolondon\colourswatches\ColourSwatches;
 use Modules\TwigHelpers\TwigExtensions\VitepackTwigExtensions;
 use percipiolondon\colourswatches\fields\ColourSwatches as ColourSwatchesField;
@@ -52,6 +54,22 @@ class General extends Module
                         ', App::env('MARKERIO_PROJECT')));
 
                         Craft::$app->view->registerJs('!function(e,r,a){if(!e.__Marker){e.__Marker={};var t=[],n={__cs:t};["show","hide","isVisible","capture","cancelCapture","unload","reload","isExtensionInstalled","setReporter","setCustomData","on","off"].forEach(function(e){n[e]=function(){var r=Array.prototype.slice.call(arguments);r.unshift(e),t.push(r)}}),e.Marker=n;var s=r.createElement("script");s.async=1,s.src="https://edge.marker.io/latest/shim.js";var i=r.getElementsByTagName("script")[0];i.parentNode.insertBefore(s,i)}}(window,document);');
+                    }
+                }
+            );
+
+            Event::on(
+                ControlPanel::class,
+                ControlPanel::EVENT_REGISTER_CP_NAV_ITEMS,
+                function(RegisterCpNavItemsEvent $event) {
+                    if (Craft::$app->user->identity->admin) {
+                        $event->navItems = array_map(function ($item) {
+                            if ($item['label'] === 'Entries') {
+                                $item['label'] = 'Content';
+                            }
+
+                            return $item;
+                        }, $event->navItems);
                     }
                 }
             );
