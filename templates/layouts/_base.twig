@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html lang="{{ craft.app.language }}">
 <head>
-    {% set codeBlocks = scripts.codeBlocks.collect %}
+    {% set globals = craft.entries.section(['mainMenu', 'legal', 'code']).collect %}
+    {% set mainMenu = globals.firstWhere('section.handle', 'mainMenu') %}
+    {% set legal = globals.firstWhere('section.handle', 'legal') %}
+    {% set code = globals.firstWhere('section.handle', 'code') %}
+
+    {% set codeBlocks = code.codeBlocks.collect %}
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
