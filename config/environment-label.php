@@ -4,7 +4,7 @@ use Craft;
 use craft\helpers\App;
 
 return [
-    'showLabel' => Craft::$app->user->identity->admin,
+    'showLabel' => true,
     'labelText' => App::env('HTTP_HOST'),
     'prefixText' => sprintf('%s | php@%s | ', App::env('CRAFT_ENVIRONMENT'), App::phpVersion()),
     'labelColor' => App::env('CRAFT_ENVIRONMENT') !== 'production'

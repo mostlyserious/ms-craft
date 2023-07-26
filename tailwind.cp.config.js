@@ -6,7 +6,7 @@ module.exports = {
         'vendor/spicyweb/**/*.{twig,html}'
     ],
     safelist: [
-        { pattern: /redactor-styles/ }
+        { pattern: /page-container/ }
     ],
     corePlugins: {
         container: false

@@ -1,19 +1,20 @@
 childBlocks: null
+conditions: null
 description: ''
 enabled: true
 field: 995cc5a8-988f-47f0-ac78-76d6b68f6ac6 # Blocks
 fieldLayouts:
-  9d0b6e37-4410-437a-bb73-508deb4894b0:
+  6c001cba-db20-4328-a532-b5d99c5cad54:
     tabs:
       -
         elementCondition: null
         elements:
           -
             elementCondition: null
-            fieldUid: 88e11325-3ef0-4ce5-ab38-637b810d3a04 # WYSIWYG
+            fieldUid: 88e11325-3ef0-4ce5-ab38-637b810d3a04 # Rich Text
             instructions: null
-            label: null
-            required: false
+            label: __blank__
+            required: true
             tip: null
             type: craft\fieldlayoutelements\CustomField
             uid: cfddb4fd-c79d-46ce-a1dd-c46d306a0911
@@ -36,13 +37,16 @@ fieldLayouts:
         uid: d05725fb-82f8-4780-abf7-d5009264250e
         userCondition: null
 group: null
-handle: wysiwyg
+groupChildBlockTypes: true
+handle: text
+icon: null
+ignorePermissions: true
 maxBlocks: 0
 maxChildBlocks: 0
 maxSiblingBlocks: 0
 minBlocks: 0
 minChildBlocks: 0
 minSiblingBlocks: 0
-name: WYSIWYG
-sortOrder: 4
+name: Text
+sortOrder: 3
 topLevel: true

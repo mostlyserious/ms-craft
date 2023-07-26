@@ -1,5 +1,5 @@
 fieldLayouts:
-  8755c60f-c1ce-4477-bd62-4a44d340f65e:
+  26d1add7-adf3-4626-bc0f-d661f2b5e29b:
     tabs:
       -
         elementCondition: null
@@ -12,13 +12,18 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 2542332c-3ada-4e6c-b974-6c99eaf698c7
+            uid: cac6e292-7095-4c5c-a597-0dea22e4e116
             userCondition: null
             warning: null
             width: 100
         name: Content
-        uid: e921e50d-4dbb-47d1-8e58-997df285a947
+        uid: 498b9a9b-f019-4487-b4e0-9a743f1cc672
         userCondition: null
 handle: mainMenu
+hasTitleField: false
 name: 'Main Menu'
-sortOrder: 2
+section: d12aeb65-dd35-4b14-b50e-836d83eaee1c # Main Menu
+sortOrder: 1
+titleFormat: '{section.name|raw}'
+titleTranslationKeyFormat: null
+titleTranslationMethod: site

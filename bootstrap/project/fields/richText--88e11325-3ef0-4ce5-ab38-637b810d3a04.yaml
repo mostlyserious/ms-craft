@@ -1,12 +1,12 @@
 columnSuffix: null
 contentColumnType: text
 fieldGroup: 38b79782-e200-468f-9633-323021ffa8ca # Common
-handle: wysiwyg
+handle: richText
 instructions: null
-name: WYSIWYG
+name: 'Rich Text'
 searchable: true
 settings:
-  availableTransforms: '*'
+  availableTransforms: ''
   availableVolumes: '*'
   columnType: text
   configSelectionMode: choose

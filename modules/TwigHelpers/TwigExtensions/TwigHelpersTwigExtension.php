@@ -10,6 +10,17 @@ use Twig\Extension\AbstractExtension;
 
 class TwigHelpersTwigExtension extends AbstractExtension implements GlobalsInterface
 {
+    private static $instance;
+
+    public static function instance()
+    {
+        if (!self::$instance) {
+            self::$instance = new TwigHelpersTwigExtension();
+        }
+
+        return self::$instance;
+    }
+
     public function getName()
     {
         return 'TwigHelpers';

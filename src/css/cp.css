@@ -8,29 +8,131 @@
 @custom-selector :--headings :where(h1, h2, h3, h4, h5, h6);
 
 @layer components {
-    .redactor-styles {
-        & h2 { @apply cp-text-3xl !important; }
-        & h3 { @apply cp-text-2xl !important; }
-        & h4 { @apply cp-text-xl !important; }
+    #page-container {
+        & .redactor-styles {
+            & h2 { @apply cp-text-3xl !important; }
+            & h3 { @apply cp-text-2xl !important; }
+            & h4 { @apply cp-text-xl !important; }
 
-        & .text-xl {
-            @apply cp-text-xl;
+            & .text-xl {
+                @apply cp-text-xl;
+            }
+
+            & .button.button-prose {
+                @apply cp-inline-block cp-py-2 cp-px-6 cp-my-2 cp-border-4 cp-border-current cp-font-bold cp-uppercase;
+            }
+
+            & .button.button-prose:hover {
+                @apply cp-no-underline;
+            }
         }
 
-        & .button.button-prose {
-            @apply cp-inline-block cp-py-2 cp-px-6 cp-my-2 cp-border-4 cp-border-current cp-font-bold cp-uppercase;
+        & #sidebar li.heading {
+            @apply cp-mt-3;
         }
 
-        & .button.button-prose:hover {
-            @apply cp-no-underline;
+        & #sidebar li.heading > span {
+            @apply cp-block cp-border-t cp-border-solid cp-border-slate-300 cp-pb-1 cp-pt-3 !important;
+            @apply cp-text-[--link-color] cp-text-[13px] cp-tracking-wide cp-normal-case !important;
         }
-    }
 
-    .color-swatches {
-        @apply cp-p-[3px] cp-pt-0;
-    }
+        & .text.readable {
+            @apply cp-font-semibold;
+        }
 
-    .easyaddressfield-marker {
-        @apply cp-hidden;
+        & .hyper-body-wrapper {
+            @apply cp-rounded-[6px];
+        }
+
+        & .color-swatches {
+            @apply cp-p-[3px] cp-pt-0;
+        }
+
+        & .easyaddressfield-field .form__row + .inline,
+        & .easyaddressfield-marker {
+            @apply cp-hidden;
+        }
+
+        & .ni_block_topbar_left::before {
+            @apply cp-hidden;
+        }
+
+        & .ni_block_topbar {
+            @apply cp-bg-[#5a6572] cp-text-white !important;
+            @apply cp-rounded-t-[4px] -cp-m-px;
+
+            & .blocktype {
+                @apply cp-font-bold;
+            }
+
+            & .copytextbtn,
+            & .copytextbtn input {
+                @apply cp-text-white cp-border-white/50;
+            }
+
+            & .copytextbtn:hover {
+                @apply cp-bg-white;
+
+                & :where(input, span) {
+                    @apply cp-text-slate-500 !important;
+                }
+            }
+
+            & .copytextbtn span,
+            & .icon.move::before {
+                @apply cp-text-white/70 !important;
+            }
+
+            & .icon.move,
+            & span[aria-label="Error"] {
+                @apply cp-inline-block -cp-translate-y-[2px];
+            }
+
+            & .tab:not(.is-selected) {
+                @apply cp-text-white !important;
+
+                &:hover {
+                    @apply cp-text-white !important;
+                }
+            }
+
+            & .preview .preview_section {
+                @apply cp-text-blue-50 !important;
+            }
+        }
+
+        & .ni_block {
+            &.is-collapsed {
+                & .ni_block_topbar {
+                    @apply cp-rounded-[4px];
+                }
+
+                & .ni_block_body {
+                    @apply cp-py-0;
+                }
+            }
+
+            &.is-empty {
+                @apply cp-py-0;
+
+                & .ni_block_topbar {
+                    @apply cp-rounded-[4px];
+                }
+            }
+
+            &.has-errors {
+                & > .ni_block_topbar {
+                    @apply cp-bg-red-600 cp-text-white !important;
+
+                    & .blocktype.has-errors {
+                        @apply cp-text-white;
+                    }
+
+                    & [aria-label="Error"]::before {
+                        @apply cp-text-red-900;
+                    }
+                }
+            }
+        }
     }
 }

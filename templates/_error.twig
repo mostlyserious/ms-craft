@@ -3,6 +3,9 @@
     .section('error')
     .one %}
 
+{% do seomatic.meta.seoTitle(craft.app.response.statusCode) %}
+{% do seomatic.meta.siteNamePosition('after') %}
+
 {% if entry %}
     {% include 'entries/_index' %}
 {% else %}

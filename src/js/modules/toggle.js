@@ -75,8 +75,6 @@ function getTarget(el) {
 }
 
 function closeAll(els) {
-    // document.body.style.overflow = 'auto';
-
     Array.prototype.forEach.call(els, el => {
         const target = getTarget(el);
         const lockScroll = el.dataset.toggleLockScroll !== undefined;

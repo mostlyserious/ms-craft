@@ -32,7 +32,7 @@ fieldLayouts:
             width: 100
           -
             elementCondition: null
-            fieldUid: 88e11325-3ef0-4ce5-ab38-637b810d3a04 # WYSIWYG
+            fieldUid: 88e11325-3ef0-4ce5-ab38-637b810d3a04 # Rich Text
             instructions: null
             label: __blank__
             required: false

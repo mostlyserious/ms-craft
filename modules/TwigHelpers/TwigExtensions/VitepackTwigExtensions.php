@@ -8,6 +8,17 @@ use Twig\Extension\AbstractExtension;
 
 class VitepackTwigExtensions extends AbstractExtension
 {
+    private static $instance;
+
+    public static function instance()
+    {
+        if (!self::$instance) {
+            self::$instance = new VitepackTwigExtensions();
+        }
+
+        return self::$instance;
+    }
+
     /**
      * @inheritdoc
      */

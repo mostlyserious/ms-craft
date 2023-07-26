@@ -26,11 +26,10 @@ class TwigHelpers extends Module
     public function init()
     {
         parent::init();
+
         self::$instance = $this;
 
-        Craft::$app->view->registerTwigExtension(new TwigHelpersTwigExtension());
-        Craft::$app->view->registerTwigExtension(new VitepackTwigExtensions());
-
-        Craft::info('twighelpers module loaded', __METHOD__);
+        Craft::$app->view->registerTwigExtension(TwigHelpersTwigExtension::instance());
+        Craft::$app->view->registerTwigExtension(VitepackTwigExtensions::instance());
     }
 }

@@ -1,5 +1,6 @@
 childBlocks: null
-description: ''
+conditions: null
+description: null
 enabled: true
 field: 995cc5a8-988f-47f0-ac78-76d6b68f6ac6 # Blocks
 fieldLayouts:
@@ -84,7 +85,10 @@ fieldLayouts:
         uid: 26b0e459-0379-47be-912a-2e99682cdccc
         userCondition: null
 group: null
+groupChildBlockTypes: true
 handle: imageContent
+icon: null
+ignorePermissions: true
 maxBlocks: 0
 maxChildBlocks: 0
 maxSiblingBlocks: 0
