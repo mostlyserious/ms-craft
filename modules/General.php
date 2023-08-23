@@ -61,7 +61,7 @@ class General extends Module
             Event::on(
                 ControlPanel::class,
                 ControlPanel::EVENT_REGISTER_CP_NAV_ITEMS,
-                function(RegisterCpNavItemsEvent $event) {
+                function (RegisterCpNavItemsEvent $event) {
                     if (Craft::$app->user->identity->admin) {
                         $event->navItems = array_map(function ($item) {
                             if ($item['label'] === 'Entries') {

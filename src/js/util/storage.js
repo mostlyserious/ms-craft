@@ -15,11 +15,11 @@ export function local(key, value = undefined, fallback = null) {
     }
 
     if (localStorage.getItem(key)) {
-        return JSON.parse(localStorage.getItem(key));
+        return JSON.parse(localStorage.getItem(key) ?? '');
     }
 
     return fallback;
-};
+}
 
 /**
  * Stores or retrieves a value in the session storage. If a value is provided, the function will store it. Otherwise, it will attempt to retrieve it.
@@ -38,47 +38,47 @@ export function session(key, value = undefined, fallback = null) {
     }
 
     if (sessionStorage.getItem(key)) {
-        return JSON.parse(sessionStorage.getItem(key));
+        return JSON.parse(sessionStorage.getItem(key) ?? '');
     }
 
     return fallback;
-};
+}
 
 /**
  * Sets a cookie with a certain value and expiry date, or retrieves the value of a cookie.
  *
  * @param {string} key - The name of the cookie.
- * @param {*} [value=undefined] - Optional. The value to be stored in the cookie. If not provided, the function will attempt to retrieve the cookie's value.
- * @param {number} [expires=3.154e+7] - Optional. The expiry date of the cookie in milliseconds since the Unix epoch. By default, the cookie expires after one year.
+ * @param {string} [value=undefined] - Optional. The value to be stored in the cookie. If not provided, the function will attempt to retrieve the cookie's value.
+ * @param {number} [expires=3.154e+7] - Optional. The duration for which the cookie should be valid in milliseconds. By default, the cookie expires after one year.
  *
  * @returns {string} The stored value or the retrieved value if the cookie exists. If the cookie does not exist or no value is provided, returns an empty string.
  */
 export function cookie(key, value = undefined, expires = 3.154e+7) {
     if (value === undefined) {
-        const value = `; ${document.cookie}`;
-        const parts = value.split(`; ${name}=`);
+        const cookieValue = `; ${document.cookie}`;
+        const parts = cookieValue.split(`; ${key}=`);
 
         if (parts.length === 2) {
-            return parts.pop().split(';').shift();
+            return parts[1].split(';').shift() ?? '';
         }
 
         return '';
     }
 
-    document.cookie = `${key}=${value};expires=${expiration(expires).toUTCString()};path=/;secure=true`;
+    return document.cookie = `${key}=${value};expires=${expiration(expires).toUTCString()};path=/;secure=true`;
 }
 
 /**
  * Sets the expiration time for a cookie.
  *
- * @param {number} expires - The expiry date of the cookie in milliseconds since the Unix epoch.
+ * @param {number} expires - The duration for which the cookie should be valid in milliseconds.
  *
- * @returns {number} The exact expiry date and time of the cookie in milliseconds since the Unix epoch.
+ * @returns {Date} The exact expiry date and time of the cookie.
  */
 function expiration(expires) {
     const now = new Date();
-    const time = now.getTime();
-    const expireTime = time + 1000 * expires;
 
-    return now.setTime(expireTime);
+    now.setTime(now.getTime() + expires);
+
+    return now;
 }

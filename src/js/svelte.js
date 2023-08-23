@@ -1,33 +1,37 @@
-import { detach, insert, noop } from 'svelte/internal';
-
-const store = () => import('./store');
+/**
+ * @type {Record<string, () => Promise<typeof import('*.svelte')>>}
+ */
 const components = {
-    // 'example-component': () => import('./components/ExampleComponent')
+    // 'example-component': () => import('./components/ExampleComponent.svelte')
 };
 
-export default els => {
-    els.forEach(target => {
-        const component = target.getAttribute('component');
+/**
+  * Processes elements to replace with Svelte components.
+  * @param {NodeListOf<HTMLElement>} els - Elements to be processed.
+  */
+export default function(els) {
+    Array.from(els).forEach((target => {
+        const component = target.getAttribute('component') ?? '';
         const request = components[component];
 
         if (request) {
-            Promise.all([
-                request(),
-                store()
-            ]).then(([ { default: Component }, { default: store } ]) => {
+            request().then(({ default: Component }) => {
+                /** @type {NodeListOf<HTMLTemplateElement>} */
                 const slotElements = target.querySelectorAll(':scope > template');
+
+                /** @type {Record<string, DocumentFragment>} */
                 const slots = {};
 
                 slotElements.forEach(el => {
-                    const name = el.getAttribute('slot');
+                    /** @type {string} */
+                    const name = el.getAttribute('slot') ?? 'default';
 
-                    slots[name ? name : 'default'] = el.content;
+                    slots[name] = el.content;
                 });
 
                 target.innerHTML = '';
                 new Component({
                     target,
-                    store,
                     props: {
                         ...target.dataset,
                         $$slots: createSlots(slots),
@@ -36,10 +40,17 @@ export default els => {
                 });
             });
         }
-    });
-};
+    }));
+}
 
+/**
+ * Create slots for Svelte components.
+ * @param {Record<string, DocumentFragment>} templates - The templates to create slots from.
+ *
+ * @returns {Record<string, Function[]>} - A record of slot functions.
+ */
 function createSlots(templates) {
+    /** @type {Record<string, Function[]>} */
     const slots = {};
 
     for (const name in templates) {
@@ -48,22 +59,28 @@ function createSlots(templates) {
         }
     }
 
+    /**
+     * @param {DocumentFragment} element - The template element to create a slot from.
+     * @returns {Function} - Returns a function representing the slot.
+     */
     function createSlot(element) {
         const nodes = [ ...element.childNodes ];
 
         return function() {
             return {
-                c: noop,
-                l: noop,
-                m: (target, anchor) => {
-                    Array.prototype.forEach.call(nodes, node => {
-                        insert(target, node, anchor);
+                c: () => {},
+                l: () => {},
+                m: (/** @type {HTMLElement} */ target, /** @type {Node} */ anchor) => {
+                    Array.from(nodes).forEach(node => {
+                        target.insertBefore(node, anchor || null);
                     });
                 },
-                d: detaching => {
+                d: /** @type {(detaching: boolean) => void} */ detaching => {
                     if (detaching) {
-                        Array.prototype.forEach.call(nodes, node => {
-                            detach(node);
+                        Array.from(nodes).forEach(node => {
+                            if (node.parentNode) {
+                                node.parentNode.removeChild(node);
+                            }
                         });
                     }
                 }

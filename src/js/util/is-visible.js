@@ -4,7 +4,7 @@
  * a handler function when the element intersects with the viewport or given ancestor.
  * If Intersection Observer is not available, it immediately invokes the handler function with null.
  *
- * @param {Element} el - The Element to observe.
+ * @param {HTMLElement} el - The Element to observe.
  * @param {Function} handler - The function to invoke when the element intersects.
  * @param {Object} [args={}] - Optional. An object containing options for the IntersectionObserver. Default is an empty object.
  */

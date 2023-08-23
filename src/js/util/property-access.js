@@ -1,29 +1,30 @@
 /**
- * A function to get the value at the specified path of the provided object.
+ * Navigates through an object using a string path and returns the value at the end of the path.
  *
- * @param {Object} obj - The object to query.
- * @param {string} path - The string path to get the value of.
- * @returns {*} - The value at the specified path of the object, or undefined if the path does not exist or if no path is provided.
+ * @param {Record<string, ReturnType<any>>} obj - The object to navigate through.
+ * @param {string} path - A dot-separated string representing the path to navigate.
+ *
+ * @returns {*} The value found at the end of the path, or undefined if not found.
  */
 export default (obj, path) => {
     if (!path) {
         return undefined;
     }
 
-    path = path.split('.');
-
-    let len = path.length,
+    let parts = path.split('.'),
+        len = parts.length,
+        val,
         i;
 
     for (i = 0; i < len; i++) {
-        if (path[i] === 'computedStyle' && typeof getComputedStyle !== 'undefined') {
-            obj = getComputedStyle(obj);
+        if (parts[i] === 'computedStyle' && obj instanceof Element) {
+            val = getComputedStyle(obj);
         } else if (obj) {
-            obj = obj[path[i]];
+            val = obj[parts[i]];
         } else {
             return undefined;
         }
     }
 
-    return obj;
+    return val;
 };

@@ -1,12 +1,8 @@
-module.exports = {
+export default {
     prefix: 'cp-',
     content: [
-        'vendor/percipioglobal/**/*.{twig,html}',
-        'vendor/craftcms/**/*.{twig,html}',
-        'vendor/spicyweb/**/*.{twig,html}'
-    ],
-    safelist: [
-        { pattern: /page-container/ }
+        // Only here to avoid "No utility classes were detected" warning in CLI.
+        { raw: '<div class="cp-block"></div>', extension: 'html' }
     ],
     corePlugins: {
         container: false

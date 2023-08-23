@@ -10,7 +10,7 @@
  * hash collisions may occur whereby two different inputs will produce the
  * same output, but this is highly unlikely in practice.
  *
- * @param {any} input - The input to compute the hash from.
+ * @param {{ toString: () => string }} input - The input to compute the hash from.
  * @returns {string} The computed hash as a string.
  */
 export default input => {
@@ -20,7 +20,7 @@ export default input => {
         chr;
 
     if (len === 0) {
-        return hash;
+        return hash.toString();
     }
 
     for (let i = 0; i < len; i++) {

@@ -1,25 +1,33 @@
 /**
- * Parses the provided markup string into a DOM Node or an HTML string.
- * This function can also set attributes on the root node of the parsed markup.
- *
- * @param {string} markup - The markup string to parse.
- * @param {Object} [attrs={}] - Optional. An object representing attributes to be set on the root node. Defaults to an empty object.
- * @param {boolean} [returnNode=false] - Optional. A boolean indicating whether the function should return the actual DOM Node or its outer HTML string. Defaults to false.
- *
- * @returns {(Node|string)} Returns the root Node of the parsed markup if returnNode is true. Otherwise, returns the outer HTML string of the root Node. If markup is not parseable, returns an empty string.
+ * Creates a range for parsing markup strings.
+ * @type {Range}
  */
 const range = document.createRange();
+
+/**
+ * Parses a markup string and returns a document fragment.
+ * @type {(markup: string) => DocumentFragment}
+ */
 const parse = range.createContextualFragment.bind(range);
 
+/**
+ * Creates a node (or an outerHTML string) from a given markup string and sets attributes on it.
+ *
+ * @param {string} markup - The markup string to be parsed into a node.
+ * @param {Record<string, string>} [attrs={}] - An object of attributes to set on the created node.
+ * @param {boolean} [returnNode=false] - Determines whether to return the node object or its outerHTML string.
+ *
+ * @returns {HTMLElement | string} - Returns the node or the outerHTML string of the node.
+ */
 export default (markup, attrs = {}, returnNode = false) => {
-    const node = parse(markup).firstChild;
+    const fragment = parse(markup).firstChild;
 
-    if (node) {
+    if (fragment && fragment instanceof HTMLElement) {
         Object.keys(attrs).forEach(attr => {
-            node.setAttribute(attr, attrs[attr]);
+            fragment.setAttribute(attr, attrs[attr]);
         });
 
-        return returnNode ? node : node.outerHTML;
+        return returnNode ? fragment : fragment.outerHTML;
     }
 
     return '';

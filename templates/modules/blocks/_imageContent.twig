@@ -16,7 +16,7 @@
                 </div>
                 <div class="md:w-1/2 p-6">
                     <h2 class="text-5xl leading-none mb-8">
-                        {{ block.heading|striptags('<strong><span><br>')|trim|raw }}
+                        {{ block.heading|striptags(HEADING_TAGS)|trim|raw }}
                     </h2>
                     <div class="prose">
                         {{ block.body }}

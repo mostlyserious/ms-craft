@@ -2,8 +2,14 @@ import propertyAccess from '../util/property-access';
 
 const styles = document.documentElement.style;
 
+/**
+ * @type {ReturnType<typeof setInterval>}
+ */
 let interval;
 
+/**
+ * @param {NodeListOf<HTMLElement>} els - A collection of DOM elements.
+ */
 export default els => {
     if (interval) {
         removeEventListener('resize', () => customProperties(els));
@@ -18,9 +24,15 @@ export default els => {
     customProperties(els);
 };
 
+/**
+ * @param {NodeListOf<HTMLElement>} els - A collection of DOM elements.
+ */
 function customProperties(els) {
-    Array.prototype.forEach.call(els, el => {
-        const properties = el.dataset.property.trim().split(';').filter(Boolean);
+    Array.from(els).forEach(el => {
+        /** @type {Array<string>} */
+        const properties = el.dataset.property
+            ? el.dataset.property.trim().split(';').filter(Boolean)
+            : [];
 
         properties.forEach(property => {
             let args = property.trim(),

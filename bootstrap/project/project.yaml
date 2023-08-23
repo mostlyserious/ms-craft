@@ -1,4 +1,4 @@
-dateModified: 1690387915
+dateModified: 1692804760
 elementSources:
   craft\elements\Entry:
     -
@@ -190,7 +190,7 @@ plugins:
     edition: standard
     enabled: true
     licenseKey: 2EG2WGX199TPM0IQFPF6CNJK
-    schemaVersion: 3.0.11
+    schemaVersion: 3.0.12
   sendgrid:
     edition: standard
     enabled: true
@@ -222,7 +222,7 @@ system:
   live: true
   name: $PRIMARY_SITE_NAME
   retryDuration: null
-  schemaVersion: 4.4.0.4
+  schemaVersion: 4.5.0.3
   timeZone: America/Los_Angeles
 users:
   allowPublicRegistration: false

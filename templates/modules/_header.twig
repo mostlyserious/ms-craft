@@ -2,8 +2,8 @@
 
 {% import 'helpers/_macros.twig' as macros %}
 
-{% set title = block and block.heading|striptags('<strong><span><em><br><a>')|trim
-    ? block.heading
+{% set title = block and block.heading|striptags|trim
+    ? block.heading|striptags(HEADING_TAGS)
     : entry.title %}
 
 <section class="relative">
@@ -17,7 +17,7 @@
                         </p>
                     {% endif %}
                     <h1 class="inline-block text-4xl md:text-5xl font-semibold">
-                        {{ title|striptags('<strong><span><br>')|trim|raw }}
+                        {{ title|trim|raw }}
                     </h1>
                     {% if block and block.buttons|length %}
                         <div class="flex justify-center gap-4 mt-4">

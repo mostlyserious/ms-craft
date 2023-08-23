@@ -1,0 +1,51 @@
+{
+    "extends": "@tsconfig/svelte/tsconfig.json",
+    "include": [
+        "ambient.d.ts",
+        "./vite.config.ts",
+        "./src/types/**/$types.d.ts",
+        "./src/**/*.js",
+        "./src/**/*.ts",
+        "./src/**/*.svelte",
+        "./tests/**/*.js",
+        "./tests/**/*.ts",
+        "./tests/**/*.svelte"
+    ],
+    "exclude": [
+        "./node_modules/**",
+    ],
+    "compilerOptions": {
+        "checkJs": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "resolveJsonModule": true,
+        "skipLibCheck": true,
+        "sourceMap": true,
+        "strict": true,
+        "types": [ "vite/client" ],
+        "paths": {
+            "@icons": [
+                "./web/icons"
+            ],
+            "@icons/*": [
+                "./web/icons/*"
+            ]
+        },
+        "rootDirs": [
+            ".",
+            "./src/types"
+        ],
+        "importsNotUsedAsValues": "error",
+        "isolatedModules": true,
+        "preserveValueImports": true,
+        "lib": [
+            "esnext",
+            "DOM",
+            "DOM.Iterable"
+        ],
+        "moduleResolution": "node",
+        "module": "esnext",
+        "target": "esnext",
+        "ignoreDeprecations": "5.0"
+    }
+}
