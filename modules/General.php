@@ -9,15 +9,20 @@ use yii\base\Module;
 use craft\helpers\App;
 use craft\base\Element;
 use craft\services\Assets;
+use craft\web\Application;
 use benf\neo\Plugin as Neo;
 use benf\neo\elements\Block;
 use craft\events\ModelEvent;
+use craft\services\Utilities;
 use craft\helpers\ArrayHelper;
 use benf\neo\records\BlockType;
 use craft\helpers\StringHelper;
 use Illuminate\Support\Collection;
 use craft\events\ReplaceAssetEvent;
 use craft\events\RegisterCpNavItemsEvent;
+use Modules\Utilities\EnvironmentUtility;
+use craft\events\RegisterTemplateRootsEvent;
+use craft\events\RegisterComponentTypesEvent;
 use craft\web\twig\variables\Cp as ControlPanel;
 use percipiolondon\colourswatches\ColourSwatches;
 use Modules\TwigHelpers\TwigExtensions\VitepackTwigExtensions;
@@ -35,113 +40,131 @@ class General extends Module
             $this->controllerNamespace = 'Modules\\Controllers';
         }
 
-        if (Craft::$app->request->getIsCpRequest()) {
-            Event::on(
-                View::class,
-                View::EVENT_BEFORE_RENDER_TEMPLATE,
-                function () {
-                    Craft::$app->view->registerHtml(
-                        VitepackTwigExtensions::instance()->vite('src/js/cp.js'),
-                        View::POS_HEAD
-                    );
+        Craft::$app->on(Application::EVENT_INIT, function () {
+            if (Craft::$app->request->getIsCpRequest()) {
+                Event::on(
+                    View::class,
+                    View::EVENT_BEFORE_RENDER_TEMPLATE,
+                    function () {
+                        Craft::$app->view->registerHtml(
+                            VitepackTwigExtensions::instance()->vite('src/js/cp.js'),
+                            View::POS_HEAD
+                        );
 
-                    if (Craft::$app->config->env === 'staging' && App::env('MARKERIO_PROJECT')) {
-                        Craft::$app->view->registerJs(sprintf('
-                            window.markerConfig = {
-                                project: "%s",
-                                source: "snippet"
-                            };
-                        ', App::env('MARKERIO_PROJECT')));
+                        if (Craft::$app->config->env === 'staging' && App::env('MARKERIO_PROJECT')) {
+                            Craft::$app->view->registerJs(sprintf('
+                                window.markerConfig = {
+                                    project: "%s",
+                                    source: "snippet"
+                                };
+                            ', App::env('MARKERIO_PROJECT')));
 
-                        Craft::$app->view->registerJs('!function(e,r,a){if(!e.__Marker){e.__Marker={};var t=[],n={__cs:t};["show","hide","isVisible","capture","cancelCapture","unload","reload","isExtensionInstalled","setReporter","setCustomData","on","off"].forEach(function(e){n[e]=function(){var r=Array.prototype.slice.call(arguments);r.unshift(e),t.push(r)}}),e.Marker=n;var s=r.createElement("script");s.async=1,s.src="https://edge.marker.io/latest/shim.js";var i=r.getElementsByTagName("script")[0];i.parentNode.insertBefore(s,i)}}(window,document);');
+                            Craft::$app->view->registerJs('!function(e,r,a){if(!e.__Marker){e.__Marker={};var t=[],n={__cs:t};["show","hide","isVisible","capture","cancelCapture","unload","reload","isExtensionInstalled","setReporter","setCustomData","on","off"].forEach(function(e){n[e]=function(){var r=Array.prototype.slice.call(arguments);r.unshift(e),t.push(r)}}),e.Marker=n;var s=r.createElement("script");s.async=1,s.src="https://edge.marker.io/latest/shim.js";var i=r.getElementsByTagName("script")[0];i.parentNode.insertBefore(s,i)}}(window,document);');
+                        }
                     }
-                }
-            );
+                );
 
-            Event::on(
-                ControlPanel::class,
-                ControlPanel::EVENT_REGISTER_CP_NAV_ITEMS,
-                function (RegisterCpNavItemsEvent $event) {
-                    if (Craft::$app->user->identity->admin) {
-                        $event->navItems = array_map(function ($item) {
-                            if ($item['label'] === 'Entries') {
-                                $item['label'] = 'Content';
+                Event::on(
+                    Element::class,
+                    Element::EVENT_BEFORE_SAVE,
+                    function (ModelEvent $event) {
+                        $element = $event->sender;
+
+                        if (!$element->fieldLayout) {
+                            return;
+                        }
+
+                        if (isset($element->section) && $element->section->handle === 'moduleListing') {
+                            $blocks_field = Craft::$app->fields->getFieldByHandle('blocks');
+                            $block_types = ArrayHelper::index(Neo::$plugin->blockTypes->getByFieldId($blocks_field->id), 'handle');
+                            $existing = $element->blocks->all();
+                            $existing_handles = array_map(fn ($block) => $block->type->handle, $existing);
+
+                            $block_records = array_filter(BlockType::find()->where([
+                                'topLevel' => true,
+                                'fieldId' => $blocks_field->id,
+                            ])->orderBy('RAND()')->all(), function ($block) use ($existing_handles) {
+                                return !in_array($block->handle, $existing_handles);
+                            });
+
+                            $existing = array_map(function ($block) {
+                                if (isset($block->type->handle)) {
+                                    return $this->newBlockFrom($block);
+                                }
+
+                                return $block;
+                            }, $existing);
+
+                            foreach ($block_records as $record) {
+                                $block = Block::find()->where(['typeId' => $record->id])->one();
+                                if ($block) {
+                                    $existing[] = $this->newBlockFrom($block);
+                                    $this->handleChildren($block, $existing);
+                                }
                             }
 
-                            return $item;
-                        }, $event->navItems);
+                            $element->setFieldValue('blocks', array_filter($existing, function ($block) use ($block_types) {
+                                return isset($block['type'], $block_types[$block['type']]);
+                            }));
+                        }
+
+                        $palettes = ColourSwatches::$plugin->settings->palettes;
+                        $fields = new Collection($element->fieldLayout->customFields);
+                        $background = $fields->whereInstanceOf(ColourSwatchesField::class)->first();
+
+                        if ($background && isset($palettes[$background->palette]) && !$element->getFieldValue($background->handle)) {
+                            $options = new Collection($palettes[$background->palette]);
+                            $element->setFieldValue($background->handle, $options->firstWhere('default', true) ?: $options->first());
+                            $element->setScenario(Element::SCENARIO_LIVE);
+                        }
                     }
+                );
+
+                Event::on(
+                    ControlPanel::class,
+                    ControlPanel::EVENT_REGISTER_CP_NAV_ITEMS,
+                    function (RegisterCpNavItemsEvent $event) {
+                        if (Craft::$app->user->identity->admin) {
+                            $event->navItems = array_map(function ($item) {
+                                if ($item['label'] === 'Entries') {
+                                    $item['label'] = 'Content';
+                                }
+
+                                return $item;
+                            }, $event->navItems);
+                        }
+                    }
+                );
+
+                Event::on(
+                    View::class,
+                    View::EVENT_REGISTER_CP_TEMPLATE_ROOTS,
+                    function (RegisterTemplateRootsEvent $event) {
+                        $event->roots['general'] = __DIR__ . '/templates';
+                    }
+                );
+
+                Event::on(
+                    Utilities::class,
+                    Utilities::EVENT_REGISTER_UTILITY_TYPES,
+                    function (RegisterComponentTypesEvent $event) {
+                        array_splice($event->types, 2, 0, EnvironmentUtility::class);
+                    }
+                );
+            }
+
+            Event::on(
+                Assets::class,
+                Assets::EVENT_BEFORE_REPLACE_ASSET,
+                function (ReplaceAssetEvent $asset) {
+                    $asset->filename = implode('.', [
+                        pathinfo($asset->filename, PATHINFO_FILENAME),
+                        StringHelper::randomStringWithChars('abcdefghijklmnopqrstuvwxyz0123456789', 7),
+                        strtolower(pathinfo($asset->filename, PATHINFO_EXTENSION))
+                    ]);
                 }
             );
-        }
-
-        Event::on(
-            Element::class,
-            Element::EVENT_BEFORE_SAVE,
-            function (ModelEvent $event) {
-                $element = $event->sender;
-
-                if (!$element->fieldLayout) {
-                    return;
-                }
-
-                if (isset($element->section) && $element->section->handle === 'moduleListing') {
-                    $blocks_field = Craft::$app->fields->getFieldByHandle('blocks');
-                    $block_types = ArrayHelper::index(Neo::$plugin->blockTypes->getByFieldId($blocks_field->id), 'handle');
-                    $existing = $element->blocks->all();
-                    $existing_handles = array_map(fn ($block) => $block->type->handle, $existing);
-
-                    $block_records = array_filter(BlockType::find()->where([
-                        'topLevel' => true,
-                        'fieldId' => $blocks_field->id,
-                    ])->orderBy('RAND()')->all(), function ($block) use ($existing_handles) {
-                        return !in_array($block->handle, $existing_handles);
-                    });
-
-                    $existing = array_map(function ($block) {
-                        if (isset($block->type->handle)) {
-                            return $this->newBlockFrom($block);
-                        }
-
-                        return $block;
-                    }, $existing);
-
-                    foreach ($block_records as $record) {
-                        $block = Block::find()->where(['typeId' => $record->id])->one();
-                        if ($block) {
-                            $existing[] = $this->newBlockFrom($block);
-                            $this->handleChildren($block, $existing);
-                        }
-                    }
-
-                    $element->setFieldValue('blocks', array_filter($existing, function ($block) use ($block_types) {
-                        return isset($block['type'], $block_types[$block['type']]);
-                    }));
-                }
-
-                $palettes = ColourSwatches::$plugin->settings->palettes;
-                $fields = new Collection($element->fieldLayout->customFields);
-                $background = $fields->whereInstanceOf(ColourSwatchesField::class)->first();
-
-                if ($background && isset($palettes[$background->palette]) && !$element->getFieldValue($background->handle)) {
-                    $options = new Collection($palettes[$background->palette]);
-                    $element->setFieldValue($background->handle, $options->firstWhere('default', true) ?: $options->first());
-                    $element->setScenario(Element::SCENARIO_LIVE);
-                }
-            }
-        );
-
-        Event::on(
-            Assets::class,
-            Assets::EVENT_BEFORE_REPLACE_ASSET,
-            function (ReplaceAssetEvent $asset) {
-                $asset->filename = implode('.', [
-                    pathinfo($asset->filename, PATHINFO_FILENAME),
-                    StringHelper::randomStringWithChars('abcdefghijklmnopqrstuvwxyz0123456789', 7),
-                    strtolower(pathinfo($asset->filename, PATHINFO_EXTENSION))
-                ]);
-            }
-        );
+        });
     }
 
     protected function newBlockFrom($block)

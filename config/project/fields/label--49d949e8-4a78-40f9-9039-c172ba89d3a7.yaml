@@ -1,0 +1,19 @@
+columnSuffix: cbjknyfc
+contentColumnType: text
+fieldGroup: 38b79782-e200-468f-9633-323021ffa8ca # Common
+handle: label
+instructions: null
+name: Label
+searchable: true
+settings:
+  byteLimit: null
+  charLimit: null
+  code: false
+  columnType: null
+  initialRows: 4
+  multiline: false
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

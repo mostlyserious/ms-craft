@@ -7,18 +7,19 @@ use Twig\TwigFunction;
 use craft\helpers\StringHelper;
 use Twig\Extension\GlobalsInterface;
 use Twig\Extension\AbstractExtension;
+use verbb\hyper\links\Custom as HypeLink;
+use percipiolondon\colourswatches\ColourSwatches;
 
 class TwigHelpersTwigExtension extends AbstractExtension implements GlobalsInterface
 {
+    public $summaries = [];
+
+    private static $instance;
     const DATE_FORMAT = 'n/j/Y';
 
     const TIME_FORMAT = 'H:i';
 
     const HEADING_TAGS = '<strong><span><em><br><a><u>';
-
-    public $summaries = [];
-
-    private static $instance;
 
     public static function instance()
     {
@@ -53,8 +54,9 @@ class TwigHelpersTwigExtension extends AbstractExtension implements GlobalsInter
     public function getFunctions()
     {
         return [
-            new TwigFunction('uuid', [$this, 'getUuid']),
-            new TwigFunction('env', [$this, 'env']),
+            new TwigFunction('swatch', [$this, 'getSwatch']),
+            new TwigFunction('hyper', [$this, 'createLink']),
+            new TwigFunction('uuid', [$this, 'getUuid'])
         ];
     }
 
@@ -63,6 +65,7 @@ class TwigHelpersTwigExtension extends AbstractExtension implements GlobalsInter
         return [
             new TwigFilter('summaryFromBlocks', [$this, 'summaryFromBlocks']),
             new TwigFilter('propSort', [$this, 'propSort']),
+            new TwigFilter('hyper', [$this, 'createLink']),
             new TwigFilter('find', [$this, 'find'])
         ];
     }
@@ -70,7 +73,7 @@ class TwigHelpersTwigExtension extends AbstractExtension implements GlobalsInter
     public function summaryFromBlocks($entry, $min_chars = 80, $flexability = 40)
     {
         $summary = '';
-        $key = implode('-', [ $entry->id, $min_chars ]);
+        $key = implode('-', [$entry->id, $min_chars]);
 
         if (isset($this->summaries[$key])) {
             return $this->summaries[$key];
@@ -136,5 +139,27 @@ class TwigHelpersTwigExtension extends AbstractExtension implements GlobalsInter
     public function getUuid()
     {
         return StringHelper::UUID();
+    }
+
+    public function getSwatch($palette_handle, $label = null)
+    {
+        $pallette = ColourSwatches::$plugin->settings->palettes[$palette_handle];
+
+        return current(array_filter($pallette, function ($color) use ($label) {
+            return $label ? $color['label'] === $label : $color['default'];
+        }));
+    }
+
+    public function createLink($args = [])
+    {
+        $link = new HypeLink();
+        $link->handle = 'custom';
+        $link->isCustom = true;
+
+        foreach ($args as $key => $value) {
+            $link->$key = $value;
+        }
+
+        return $link;
     }
 }

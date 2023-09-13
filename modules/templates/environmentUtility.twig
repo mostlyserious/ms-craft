@@ -1,0 +1,48 @@
+<div class="readable">
+    <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+        <h2 style="margin-bottom: 0;">Environment Variables</h2>
+
+        {% if currentUser.admin %}
+            <div class="buttons" style="margin-top: 0; margin-left: auto;">
+                <a href="/admin/actions/general/environment" id="download" class="btn" data-icon="download">
+                    Download
+                </a>
+            </div>
+        {% endif %}
+    </div>
+
+    <table class="data fullwidth fixed-layout" dir="ltr">
+        <tbody>
+            {% for label, value in env %}
+                <tr>
+                    <th class="light">
+                        {{ label }}
+                    </th>
+                    {%  if 'private' in label|lower
+                        or 'secret' in label|lower
+                        or 'token' in label|lower
+                        or 'pass' in label|lower
+                        or 'key' in label|lower %}
+                        <td>
+                            {% if value != '' %}
+                                {% for char in value|split('') %}
+                                    {{- loop.index < value|length - 4 ? '•' : char -}}
+                                {% endfor %}
+                            {% else %}
+                                <span class="disabled">empty</span>
+                            {% endif %}
+                        </td>
+                    {% else %}
+                        <td>
+                            {% if value != '' %}
+                                {{ value }}
+                            {% else %}
+                                <span class="disabled">empty</span>
+                            {% endif %}
+                        </td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

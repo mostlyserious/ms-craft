@@ -3,9 +3,10 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
+        "test": "uvu tests",
         "build": "vite build",
-        "bootstrap": "bootstrap/script.sh",
-        "test": "uvu tests"
+        "bootstrap": "bootstrap/apply.sh",
+        "bootstrap:publish": "bootstrap/publish.sh"
     },
     "devDependencies": {
         "@axe-core/webdriverjs": "^4.4.4",
