@@ -1,6 +1,10 @@
 #!/usr/bin/env sh
 
-rm config/license.key
+
+if [[ -f "./config/license.key" ]]; then
+    rm config/license.key
+fi
+
 rm -r config/project
 
 cp -r bootstrap/project config/project
