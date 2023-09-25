@@ -14,4 +14,7 @@
 /config/license.key
 /package-lock.json
 /yarn.lock
+/bun.lockb
+/pnpm-lock.yaml
 /manifest.dev.json
+/DEVSENSE

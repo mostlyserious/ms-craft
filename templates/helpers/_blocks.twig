@@ -14,10 +14,9 @@
     {% endfor %}
 {% endif %}
 
-{% set index = 0 %}
 {% for block in blocks %}
     {% if not filterByLevel or (filterByLevel and block.level == 1) %}
-        {% set nextBlock = blocks[index]|default(null) %}
+        {% set nextBlock = block.nextSibling|default(null) %}
         {% set background = block.background|default({ color: [] })
             .color|first|default(defaultBackground) %}
         {% set nextBackground = nextBlock.background|default({ color: [] })
@@ -43,7 +42,5 @@
         {% endswitch %}
 
         {% include 'modules/blocks/_' ~ block.type.handle ignore missing %}
-
-        {% set index = index + 1 %}
     {% endif %}
 {% endfor %}
