@@ -15,6 +15,7 @@ class TwigHelpersTwigExtension extends AbstractExtension implements GlobalsInter
     public $summaries = [];
 
     private static $instance;
+
     const DATE_FORMAT = 'n/j/Y';
 
     const TIME_FORMAT = 'H:i';

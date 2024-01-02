@@ -7,8 +7,8 @@
     <div class="{{ padding }}">
         <div class="container container-sm">
             <div class="prose">
-                {% apply replace(getenv('AWS_CLOUDFRONT_URL'), getenv('IMGIX_URL'))|raw %}
-                    {% apply replace(regex, replace)|raw %}
+                {% apply replace(regex, replace)|raw %}
+                    {% apply replace('src="' ~ getenv('AWS_CLOUDFRONT_URL'), 'src="' ~ getenv('IMGIX_URL'))|raw %}
                         {{ block.richText }}
                     {% endapply %}
                 {% endapply %}
