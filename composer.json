@@ -5,6 +5,10 @@
     "license": "Unlicense",
     "repositories": [
         {
+            "type": "path",
+            "url": "/Users/cornelius/Git/@mostlyserious/craft-promptly"
+        },
+        {
             "type": "vcs",
             "url": "git@github.com:mostlyserious/craft-s3-logger.git"
         },
@@ -21,7 +25,7 @@
     "require": {
         "born05/craft-sentry": "2.0.1",
         "craftcms/aws-s3": "2.0.3",
-        "craftcms/cms": "4.5.4",
+        "craftcms/cms": "4.5.11.1",
         "craftcms/redactor": "3.0.4",
         "hillholliday/craft-user-manual": "4.0.0",
         "nystudio107/craft-retour": "4.1.13",
