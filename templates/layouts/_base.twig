@@ -88,11 +88,11 @@
     <header>
         {% block navigation %}
         {% endblock %}
-        {% block header %}
-        {% endblock %}
     </header>
 
     <main id="maincontent">
+        {% block header %}
+        {% endblock %}
         {% block main %}
         {% endblock %}
         {% block cta %}
