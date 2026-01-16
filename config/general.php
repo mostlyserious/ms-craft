@@ -18,6 +18,7 @@ return [
         'defaultSearchTermOptions' => ['subLeft' => true, 'subRight' => true],
         'timezone' => 'America/Chicago',
         'previewTokenDuration' => DateTimeHelper::SECONDS_MONTH,
+        'loginPath' => false,
         'aliases' => [
             '@web' => App::env('PRIMARY_SITE_URL')
         ]
